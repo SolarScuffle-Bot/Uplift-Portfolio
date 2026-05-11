@@ -3,54 +3,47 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="Sona — Senior Roblox Gameplay & Systems Engineer portfolio." />
-	<meta name="theme-color" content="#0d0e1d" />
-	<title>Sona — Roblox Gameplay & Systems Engineer</title>
-	<link rel="preload" href="assets/Sona.webp" as="image" type="image/webp" />
-	<link rel="preload" href="assets/NPA.webp" as="image" type="image/webp" />
-	<link rel="preload" href="assets/Github.webp" as="image" type="image/webp" />
-	<link rel="preload" href="assets/Roblox.webp" as="image" type="image/webp" />
+	<title>Sona | Senior Roblox Gameplay & Systems Engineer</title>
+	<meta name="description" content="Portfolio for Sona, a Senior Roblox Gameplay & Systems Engineer focused on gameplay feel, systems optimization, Luau infrastructure, production tooling, and release-safe engineering." />
+	<link rel="preload" href="assets/Sona.webp" as="image" />
+	<link rel="preload" href="assets/Github.webp" as="image" />
+	<link rel="preload" href="assets/Roblox.webp" as="image" />
 	<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-	<a class="skip-link" href="#main">Skip to content</a>
+	<header class="site-header" aria-label="Site header">
+		<div class="identity-cluster" aria-label="Profile and account links">
+			<button class="mark-button nav-trigger" data-route="home" aria-label="Return home">
+				<img src="assets/Sona.webp" alt="Sona mark" />
+			</button>
+			<div class="site-name" aria-hidden="true">Sona</div>
+			<a class="account-link github-link" href="https://github.com/SolarScuffle-Bot" target="_blank" rel="noreferrer" aria-label="Open Sona GitHub">
+				<img src="assets/Github.webp" alt="" />
+				<span>Sona</span>
+			</a>
+			<a class="account-link github-link" href="https://github.com/3065325" target="_blank" rel="noreferrer" aria-label="Open NPA GitHub">
+				<img src="assets/Github.webp" alt="" />
+				<span>NPA</span>
+			</a>
+			<a class="account-link roblox-link" href="https://www.roblox.com/users/2722909519/profile" target="_blank" rel="noreferrer" aria-label="Open Sona Roblox profile">
+				<img src="assets/Roblox.webp" alt="" />
+			</a>
+		</div>
 
-	<div class="site-shell">
-		<header class="topbar" aria-label="Site header">
-			<div class="topbar-cluster" aria-label="External profiles">
-				<button class="profile-home nav-trigger" data-route="home" aria-label="Return home">
-					<img src="assets/Sona.webp" alt="Sona" />
-				</button>
+		<nav class="route-nav" aria-label="Portfolio views">
+			<button class="nav-pill nav-trigger" data-route="home">Home</button>
+			<button class="nav-pill nav-trigger" data-route="work">Work</button>
+			<button class="nav-pill nav-trigger" data-route="technical">Technical</button>
+			<button class="nav-pill nav-trigger" data-route="leadership">Leadership</button>
+			<button class="nav-pill nav-trigger" data-route="about">About</button>
+			<button class="nav-pill nav-trigger" data-route="gaps">Gaps</button>
+		</nav>
 
-				<span class="brand-name" aria-label="Sona">Sona</span>
+		<div class="header-role" aria-hidden="true">Senior Gameplay Engineer</div>
+	</header>
 
-				<a class="account-stack" href="https://github.com/SolarScuffle-Bot" target="_blank" rel="noreferrer" aria-label="Sona GitHub">
-					<img src="assets/Github.webp" alt="" />
-					<span>Sona</span>
-				</a>
+	<main id="main" class="view" tabindex="-1" aria-live="polite"></main>
 
-				<a class="account-stack" href="https://github.com/3065325" target="_blank" rel="noreferrer" aria-label="NPA GitHub">
-					<img src="assets/Github.webp" alt="" />
-					<span>NPA</span>
-				</a>
-
-				<a class="account-icon account-icon-tilt" href="https://www.roblox.com/users/2722909519/profile" target="_blank" rel="noreferrer" aria-label="Sona Roblox">
-					<img src="assets/Roblox.webp" alt="Roblox" />
-				</a>
-			</div>
-
-			<nav class="topnav" aria-label="Primary navigation">
-				<button class="nav-pill nav-trigger" data-route="home">Home</button>
-				<button class="nav-pill nav-trigger" data-route="work">Work</button>
-				<button class="nav-pill nav-trigger" data-route="leadership">Leadership</button>
-				<button class="nav-pill nav-trigger" data-route="about">About</button>
-				<button class="nav-pill nav-trigger" data-route="gaps">Gaps</button>
-			</nav>
-		</header>
-
-		<main id="main" class="view" tabindex="-1" aria-live="polite"></main>
-	</div>
-
-	<script src="app.js" defer></script>
+	<script src="app.js"></script>
 </body>
 </html>
