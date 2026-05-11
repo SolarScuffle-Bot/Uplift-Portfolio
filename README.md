@@ -1,27 +1,21 @@
-# Sona Portfolio Draft v3
+# Sona Portfolio Draft v6
 
-Raw JavaScript single-page portfolio draft.
+Raw HTML/CSS/JavaScript single-page portfolio draft.
 
-## v3 changes
+## v6 changes
 
-- Reworked the topbar into the requested symmetrical layout:
-  - Sona profile icon + name + Sona GitHub + Sona Roblox on the left.
-  - NPA Roblox + NPA GitHub + NPA name + NPA profile icon on the right.
-  - Both corner profile icons return to the home route.
-- Removed visible wireframe borders from text boxes, section boxes, media boxes, and project regions.
-- Kept hover-responsive behavior, route fade transitions, and mouse-position glow behavior.
-- Changed the typography stack to prefer Cascadia Code ExtraLight / Cascadia Code with a 200-weight local font face.
+- Reworked the header into the compact top-left cluster from the latest reference.
+- Kept the profile icon returning home.
+- Kept the Sona name non-clickable and non-selectable.
+- Kept both GitHub buttons with their text labels treated as part of each button.
+- Kept the tilted Roblox icon in the compact header cluster.
+- Restored the top navigation buttons from the earlier draft: Home, Work, Leadership, About, and Gaps.
+- Restored the alternate organizational pages so viewers can review the same data by project, technical area, leadership signal, or missing proof.
+- Adjusted project pages toward the newer mockup: top-centered description block plus clickable external project card above the role heading.
+- Preserved hover responsiveness, route fade transitions, and local Cascadia Code ExtraLight font targeting.
 
-## Font note
+## Running locally
 
-The draft does not bundle or redistribute Cascadia Code font files. For the exact intended look during local testing, install Cascadia Code locally and make sure the ExtraLight face is available. The CSS falls back to Cascadia Code, Cascadia Mono, and common monospace fonts.
+Open `index.html` directly in a browser, or serve the folder with any static server.
 
-## Run locally
-
-Open `index.html` directly, or serve the folder with any static server.
-
-```bash
-python3 -m http.server 8080
-```
-
-Then open `http://localhost:8080`.
+The CSS uses local font detection for Cascadia Code ExtraLight and falls back to standard monospace fonts if it is not installed.

@@ -17,33 +17,35 @@
 
 	<div class="site-shell">
 		<header class="topbar" aria-label="Site header">
-			<div class="topbar-side topbar-left">
+			<div class="topbar-cluster" aria-label="External profiles">
 				<button class="profile-home nav-trigger" data-route="home" aria-label="Return home">
 					<img src="assets/Sona.webp" alt="Sona" />
 				</button>
-				<button class="name-home nav-trigger" data-route="home" aria-label="Return home">Sona</button>
-				<a class="account-icon" href="https://github.com/SolarScuffle-Bot" target="_blank" rel="noreferrer" aria-label="Sona GitHub">
-					<img src="assets/Github.webp" alt="GitHub" />
+
+				<span class="brand-name" aria-label="Sona">Sona</span>
+
+				<a class="account-stack" href="https://github.com/SolarScuffle-Bot" target="_blank" rel="noreferrer" aria-label="Sona GitHub">
+					<img src="assets/Github.webp" alt="" />
+					<span>Sona</span>
 				</a>
+
+				<a class="account-stack" href="https://github.com/3065325" target="_blank" rel="noreferrer" aria-label="NPA GitHub">
+					<img src="assets/Github.webp" alt="" />
+					<span>NPA</span>
+				</a>
+
 				<a class="account-icon account-icon-tilt" href="https://www.roblox.com/users/2722909519/profile" target="_blank" rel="noreferrer" aria-label="Sona Roblox">
 					<img src="assets/Roblox.webp" alt="Roblox" />
 				</a>
 			</div>
 
-			<div class="topbar-center" aria-hidden="true"></div>
-
-			<div class="topbar-side topbar-right">
-				<a class="account-icon account-icon-tilt reverse-tilt" href="https://www.roblox.com/users/86032838/profile" target="_blank" rel="noreferrer" aria-label="NPA Roblox">
-					<img src="assets/Roblox.webp" alt="Roblox" />
-				</a>
-				<a class="account-icon" href="https://github.com/3065325" target="_blank" rel="noreferrer" aria-label="NPA GitHub">
-					<img src="assets/Github.webp" alt="GitHub" />
-				</a>
-				<span class="npa-name">NPA</span>
-				<button class="profile-home nav-trigger" data-route="home" aria-label="Return home">
-					<img src="assets/NPA.webp" alt="NPA" />
-				</button>
-			</div>
+			<nav class="topnav" aria-label="Primary navigation">
+				<button class="nav-pill nav-trigger" data-route="home">Home</button>
+				<button class="nav-pill nav-trigger" data-route="work">Work</button>
+				<button class="nav-pill nav-trigger" data-route="leadership">Leadership</button>
+				<button class="nav-pill nav-trigger" data-route="about">About</button>
+				<button class="nav-pill nav-trigger" data-route="gaps">Gaps</button>
+			</nav>
 		</header>
 
 		<main id="main" class="view" tabindex="-1" aria-live="polite"></main>

@@ -214,7 +214,9 @@ const homeColumns = [
 
 const routes = new Map([
 	["home", renderHome],
+	["work", renderWork],
 	["technical", renderTechnical],
+	["leadership", renderLeadership],
 	["about", renderAbout],
 	["gaps", renderGaps],
 ]);
@@ -253,6 +255,7 @@ function render(route) {
 	if (!routes.has(route)) route = "home";
 	if (route === currentRoute && main.innerHTML.length > 0) return;
 	currentRoute = route;
+	setNav(route);
 
 	main.classList.add("is-exiting");
 	window.setTimeout(() => {
@@ -264,6 +267,17 @@ function render(route) {
 		window.setTimeout(() => main.classList.remove("is-entering"), 360);
 		main.focus({ preventScroll: true });
 	}, 150);
+}
+
+
+function setNav(route) {
+	document.querySelectorAll(".nav-pill[data-route]").forEach((pill) => {
+		pill.removeAttribute("aria-current");
+		const pillRoute = pill.dataset.route;
+		if (pillRoute === route || (projects[route] && pillRoute === "work")) {
+			pill.setAttribute("aria-current", "page");
+		}
+	});
 }
 
 function bindRouteTriggers(root = document) {
@@ -334,22 +348,17 @@ function renderProject(project) {
 	return `
 		<article class="project-page">
 			<header class="project-top-wire">
+				<p class="project-description-card hoverable">${escapeHtml(project.description)}</p>
+
 				<div class="top-project-card">
-					<button class="tiny-card hoverable nav-trigger" data-route="home" aria-label="Return home">
+					<a class="tiny-card linked-project-card hoverable" href="${escapeHtml(project.link)}" target="_blank" rel="noreferrer" aria-label="Open ${escapeHtml(project.title)} external link">
+						<span class="card-link-hint">click me to go<br>to link</span>
 						<span class="project-image-wrap ${escapeHtml(project.imageClass)}">
 							<img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" />
 						</span>
 						<span class="project-card-fallback">${escapeHtml(project.cardTitle)}</span>
-					</button>
-					<div class="project-label project-label-tiny">${escapeHtml(project.title)}</div>
-				</div>
-
-				<div class="project-link-block">
-					<a class="external-project-link hoverable" href="${escapeHtml(project.link)}" target="_blank" rel="noreferrer">
-						<img src="${project.linkLabel.includes("Roblox") ? ASSETS.roblox : ASSETS.github}" alt="" />
-						<span>${escapeHtml(project.linkLabel)}</span>
 					</a>
-					<p class="project-description">${escapeHtml(project.description)}</p>
+					<div class="project-label project-label-tiny">${escapeHtml(project.title)}</div>
 				</div>
 			</header>
 
@@ -378,6 +387,99 @@ function renderProject(project) {
 				`).join("")}
 			</section>
 		</article>
+	`;
+}
+
+
+function miniTags(items) {
+	return `<div class="tag-list">${items.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</div>`;
+}
+
+function renderWork() {
+	const featured = ["asylum-life", "eclipsis", "offset-camera", "squash", "rocket-spleef"];
+	const support = ["reflector", "depths-of-industry"];
+	return `
+		<section class="work-page">
+			<header class="route-heading">
+				<h1 class="project-role-title">Featured Work</h1>
+				<p class="center-copy">The same portfolio content reorganized for fast hiring review: production proof first, then systems depth, gameplay feel, open-source infrastructure, original game ownership, and supporting technical breadth.</p>
+			</header>
+
+			<section class="work-grid featured-work-grid" aria-label="Featured projects">
+				${featured.map((id) => {
+					const p = projects[id];
+					return `
+						<button class="work-tile hoverable nav-trigger" data-route="${escapeHtml(id)}">
+							<img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)}" />
+							<span class="work-kicker">${escapeHtml(p.category)}</span>
+							<h2>${escapeHtml(p.title)}</h2>
+							<p>${escapeHtml(p.description)}</p>
+							${miniTags(p.proof.slice(0, 4))}
+						</button>
+					`;
+				}).join("")}
+			</section>
+
+			<section class="route-heading route-heading-small">
+				<h2>Supporting Technical Work</h2>
+				<p>Projects that add breadth without replacing the main proof path.</p>
+			</section>
+			<section class="work-grid support-work-grid" aria-label="Supporting work">
+				${support.map((id) => {
+					const p = projects[id];
+					return `
+						<button class="work-tile compact-work-tile hoverable nav-trigger" data-route="${escapeHtml(id)}">
+							<img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)}" />
+							<h2>${escapeHtml(p.title)}</h2>
+							<p>${escapeHtml(p.description)}</p>
+						</button>
+					`;
+				}).join("")}
+			</section>
+		</section>
+	`;
+}
+
+function renderLeadership() {
+	return `
+		<section class="text-page leadership-page">
+			<h1 class="project-role-title">Production & Leadership</h1>
+			<p class="center-copy">Senior engineering is not only implementation speed. This page collects the production habits behind the project work: release safety, QA clarity, documentation, technical standards, mentorship, and cross-disciplinary communication.</p>
+			<div class="panel-grid">
+				<section class="panel hoverable">
+					<h2>Release Risk Management</h2>
+					<ul>
+						<li>Write QA notes that explain the feature, intended behavior, risky edges, and exact testing instructions.</li>
+						<li>Use profiler data, runtime diagnostics, and creator analytics to turn vague production issues into concrete fixes.</li>
+						<li>Keep changes understandable enough for testers, designers, artists, and leadership to evaluate before release.</li>
+					</ul>
+				</section>
+				<section class="panel hoverable">
+					<h2>Mentorship & Standards</h2>
+					<ul>
+						<li>Create engineering notes, style guides, and architecture explanations that make safer contribution possible.</li>
+						<li>Explain tradeoffs through constraints, invariants, production risk, and maintainability instead of preference alone.</li>
+						<li>Favor simple, inspectable systems that are easier to profile, debug, teach, and extend.</li>
+					</ul>
+				</section>
+				<section class="panel hoverable">
+					<h2>Cross-Disciplinary Work</h2>
+					<ul>
+						<li>Translate game-design intent into implementation plans programmers and non-programmers can reason about.</li>
+						<li>Coordinate around ownership, release readiness, and player-facing outcomes rather than isolated code tasks.</li>
+						<li>Use sanitized artifacts such as QA checklists, bug triage notes, onboarding notes, and style guide excerpts as public proof.</li>
+					</ul>
+				</section>
+				<section class="panel hoverable">
+					<h2>Artifacts Still Needed</h2>
+					<ul>
+						<li>Sanitized QA checklist or release-risk template.</li>
+						<li>Style-guide excerpt or architecture note.</li>
+						<li>Bug triage example showing diagnosis, ownership, and production outcome.</li>
+					</ul>
+				</section>
+			</div>
+		</section>
 	`;
 }
 
