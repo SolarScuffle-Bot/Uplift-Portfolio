@@ -1,39 +1,14 @@
-# Sona Portfolio Compact Draft
+# Sona Portfolio Compact v5
 
-This is a raw HTML/CSS/JavaScript single-page portfolio draft built around the final résumé structure and the newer box-layout plan.
+Raw HTML/CSS/JavaScript single-page portfolio draft.
 
-## Public navigation
+Changes in this version:
+- Added Voxel Carver and Cursor assets.
+- Replaced the previous Voxel Destruction placeholder with Voxel Carver.
+- Moved more About/contact content into the Home portfolio panel.
+- Added primary action buttons to Home: Work, Skills, Technical, Leadership, Resume, GitHub, Roblox.
+- Replaced all 128x128 and 256x256 site assets with 1024x1024 upscaled versions for cleaner display at larger sizes.
 
-- Home: résumé mirror and three experience pillars.
-- Work: project cabinet.
-- Skills: skill map organized around the proof each project provides.
-- Technical: engineering-domain board.
-- Leadership: production and team-reliability board.
-- About: short bio and links.
-
-## Project detail views
-
-Project cards open hash routes such as `#project/eclipsis`. These use reusable case-file blocks:
-
-- Hero / quick facts
-- Proof statement
-- My Contributions
-- Result / Impact
-- Media
-
-Eclipsis has a specialized metric/diagram layout because the pipe-network asset is currently the strongest technical proof artifact.
-
-## Structure note
-
-The portfolio is intentionally data-driven in `app.js`. Page structure and project content can change as more proof arrives, especially clips, diagrams, metrics, screenshots, and adoption data.
-
-## Font note
-
-The CSS prefers `Cascadia Code ExtraLight` for display/UI text and uses a clean sans-serif fallback stack for content text. No font files are bundled.
-
-## Current iteration
-
-- Primary background updated to `#111122`.
-- Header height increased.
-- Home pillar project buttons and Skills project tags now use image-backed rounded blocks.
-- Project hero panels are clickable external links and scaled down so quick facts stay visible.
+Notes:
+- The upscaled assets are preservation-focused so the icons keep their hard-edged style.
+- Cascadia Code ExtraLight is referenced as a local/preferred font but not bundled.

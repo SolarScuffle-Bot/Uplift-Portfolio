@@ -165,30 +165,30 @@ const projects = {
 	},
 	"voxel-destruction": {
 		id: "voxel-destruction",
-		title: "Voxel Destruction",
-		image: "assets/Eclipsis.webp",
+		title: "Voxel Carver",
+		image: "assets/Carver.webp",
 		link: "#technical",
-		role: "Systems Design / Prototype",
-		proof: "Data-oriented Roblox destruction pipeline using chunking, occupancy, and greedy meshing.",
+		role: "Voxel Systems Prototype",
+		proof: "High-performance Roblox voxel carving built around chunking, occupancy, and localized remeshing.",
 		tags: ["Performance", "Spatial", "Data-Oriented", "Rendering"],
 		status: "In Progress",
 		contributions: [
-			"Designed around hierarchical chunking and localized regeneration.",
-			"Used compact occupancy state instead of per-object bookkeeping where possible.",
+			"Designed chunked carve state around localized regeneration instead of global rebuilds.",
+			"Used compact occupancy data to keep the renderer focused on what changed.",
 			"Focused on update bounds, render count, and Roblox engine constraints.",
-			"Kept the working octree renderer as a stable base for the next meshing layer."
+			"Kept the working octree renderer as the stable base for the next meshing layer."
 		],
 		impact: [
-			"Strong proof of low-level systems thinking inside Roblox constraints.",
-			"Needs destruction clip, chunking diagram, and meshing diagram."
+			"Shows low-level systems thinking inside Roblox constraints.",
+			"Needs carve clip, chunking diagram, and meshing diagram."
 		],
 		media: []
 	},
 	"cursor": {
 		id: "cursor",
 		title: "Cursor",
-		image: "assets/Squash.webp",
-		link: links.squash,
+		image: "assets/Cursor.webp",
+		link: "#technical",
 		role: "Library / Support Infrastructure",
 		proof: "Procedural buffer workflow for push/pop data layouts and compact encoding.",
 		tags: ["Luau", "Buffers", "Infrastructure"],
@@ -227,25 +227,32 @@ const projects = {
 
 const pillars = [
 	{
-		title: "Independent Developer",
-		meta: "Roblox · 2019 – Present",
-		text: "Open-source Luau infrastructure, original Roblox games, developer education, and end-to-end release practice.",
-		projects: ["squash", "rocket-spleef", "offset-camera", "depths-of-industry"],
-		tone: "linear-gradient(145deg, rgba(117,255,243,0.10), transparent)"
-	},
-	{
-		title: "Asylum Life",
-		meta: "Gameplay Engineer · Acting Operations Lead",
-		text: "Live production work across features, QA, communication, runtime debugging, and inherited systems.",
+		title: "Production",
+		meta: "Asylum Life · 2024 – 2025",
+		text: "Live feature work, QA handoffs, runtime debugging, and release support on a front-page Roblox game.",
 		projects: ["asylum-life"],
-		tone: "linear-gradient(145deg, rgba(255,136,159,0.10), transparent)"
+		tone: "linear-gradient(145deg, rgba(255,136,159,0.11), transparent)"
 	},
 	{
-		title: "Eclipsis",
-		meta: "Systems Engineer · Game Designer",
-		text: "Systems modernization, design collaboration, performance work, and team throughput on an active Roblox game.",
-		projects: ["eclipsis"],
-		tone: "linear-gradient(145deg, rgba(130,168,255,0.12), transparent)"
+		title: "Systems",
+		meta: "Eclipsis · 2022 – Present",
+		text: "Legacy modernization, performance work, game design, and team throughput on an active Roblox game.",
+		projects: ["eclipsis", "voxel-destruction"],
+		tone: "linear-gradient(145deg, rgba(130,168,255,0.13), transparent)"
+	},
+	{
+		title: "Design",
+		meta: "Independent · Roblox",
+		text: "Original game loops, player motivation, readable chaos, and end-to-end release practice.",
+		projects: ["rocket-spleef", "depths-of-industry"],
+		tone: "linear-gradient(145deg, rgba(255,210,138,0.10), transparent)"
+	},
+	{
+		title: "Tooling",
+		meta: "Independent · Public Work",
+		text: "Reusable Luau libraries, camera tooling, Studio workflow support, docs, and public APIs.",
+		projects: ["squash", "offset-camera", "reflector", "cursor"],
+		tone: "linear-gradient(145deg, rgba(215,124,255,0.12), transparent)"
 	}
 ];
 
@@ -273,8 +280,8 @@ const signals = [
 ];
 
 const technicalDomains = [
-	{ title: "Performance & Profiling", meta: "Eclipsis · Asylum Life · Voxel", text: "Profiling-led work around live-server behavior, load time, draw calls, and incremental updates.", wide: true },
-	{ title: "Systems Architecture", meta: "Eclipsis · Voxel · Squash", text: "Aggregation, spatial partitioning, compact state, and structures built around the work that actually changes." },
+	{ title: "Performance & Profiling", meta: "Eclipsis · Asylum Life · Voxel Carver", text: "Profiling-led work around live-server behavior, load time, draw calls, and incremental updates.", wide: true },
+	{ title: "Systems Architecture", meta: "Eclipsis · Voxel Carver · Squash", text: "Aggregation, spatial partitioning, compact state, and structures built around the work that actually changes." },
 	{ title: "Roblox Gameplay", meta: "Asylum Life · Rocket Spleef · Offset Camera", text: "Server authority, camera feel, GUI-driven features, interaction loops, and cross-platform comfort." },
 	{ title: "Luau Infrastructure", meta: "Squash · Cursor", text: "Strict Luau, public APIs, compact buffer workflows, documentation, examples, and maintainer discipline." },
 	{ title: "Studio Tooling", meta: "Reflector · Offset Camera", text: "Creator workflows, validation, transform tooling, integration comfort, and pragmatic AI-assisted direction." }
@@ -346,20 +353,26 @@ function renderHome() {
 	return html`
 		<div class="home-grid">
 			<section class="home-hero panel">
-				<div>
+				<div class="home-copy">
 					<p class="kicker">Portfolio</p>
 					<h1>Sona</h1>
 					<p class="thesis">Senior Gameplay & Systems Engineer focused on Roblox gameplay, systems optimization, Luau tooling, and production reliability.</p>
+					<p class="home-about">I build player-facing features and practical systems with a bias toward clear UX, readable architecture, and code that can survive production pressure.</p>
+					<p class="home-about subdued">My work sits between gameplay, legacy-system recovery, open-source Luau infrastructure, and team support.</p>
 				</div>
-				<div>
-					<div class="hero-actions">
-						<a class="link-pill" href="#work">Work</a>
-						<a class="link-pill" href="#skills">Skills</a>
-						<a class="link-pill" href="${links.resume}" target="_blank" rel="noopener noreferrer">Resume</a>
-					</div>
-					<div class="metric-strip">
-						${metrics.map(item => html`<div class="metric-card"><span class="metric-value">${escapeHtml(item.value)}</span><span class="metric-label">${escapeHtml(item.label)}</span></div>`).join("")}
-					</div>
+
+				<div class="home-link-board" aria-label="Primary portfolio links">
+					<a class="link-pill" href="#work">Work</a>
+					<a class="link-pill" href="#skills">Skills</a>
+					<a class="link-pill" href="#technical">Technical</a>
+					<a class="link-pill" href="#leadership">Leadership</a>
+					<a class="link-pill" href="${links.resume}" target="_blank" rel="noopener noreferrer">Resume</a>
+					<a class="link-pill" href="${links.sonaGithub}" target="_blank" rel="noopener noreferrer">GitHub</a>
+					<a class="link-pill" href="${links.sonaRoblox}" target="_blank" rel="noopener noreferrer">Roblox</a>
+				</div>
+
+				<div class="metric-strip compact-metrics">
+					${metrics.slice(0, 4).map(item => html`<div class="metric-card"><span class="metric-value">${escapeHtml(item.value)}</span><span class="metric-label">${escapeHtml(item.label)}</span></div>`).join("")}
 				</div>
 			</section>
 
@@ -441,23 +454,40 @@ function renderLeadership() {
 
 function renderAbout() {
 	return html`
-		<div class="about-layout">
-			<section class="about-card">
-				<p class="kicker">About</p>
-				<h1>Sona</h1>
-				<p>I build Roblox gameplay and systems with a bias toward clear UX, practical architecture, and code that can survive production pressure.</p>
-				<p>My work sits between player-facing features, legacy-system recovery, Luau infrastructure, and team support. I care about simple systems because they are easier to ship, debug, explain, and extend.</p>
-				<p>Outside programming, I compose music for games and experimental media, which shapes how I think about pacing, atmosphere, and player response.</p>
+		<div class="about-float-layout">
+			<section class="about-profile-card">
+				<img class="about-avatar" src="assets/Sona.webp" alt="Sona profile icon" loading="lazy" />
+				<div>
+					<p class="kicker">About</p>
+					<h1>Sona</h1>
+					<p class="about-title">Senior Gameplay & Systems Engineer</p>
+				</div>
 			</section>
-			<aside class="contact-card">
+
+			<section class="about-note-card">
+				<h3>Working Focus</h3>
+				<p>I build Roblox gameplay and systems with a bias toward clear UX, practical architecture, and code that can survive production pressure.</p>
+				<p>My work sits between player-facing features, legacy-system recovery, Luau infrastructure, and team support.</p>
+			</section>
+
+			<section class="about-note-card small-note">
+				<h3>Style</h3>
+				<p>Simple systems are easier to ship, debug, explain, and extend.</p>
+			</section>
+
+			<section class="about-note-card small-note">
+				<h3>Creative Work</h3>
+				<p>I also compose music for games and experimental media, which shapes how I think about pacing and player response.</p>
+			</section>
+
+			<aside class="contact-card floating-contact">
 				<p class="kicker">Links</p>
-				<h2>Contact / Proof</h2>
+				<h2>Full Proof</h2>
 				<div class="contact-list">
+					<a class="contact-link" href="#work"><strong>Work</strong><span>Projects</span></a>
+					<a class="contact-link" href="#skills"><strong>Skills</strong><span>Map</span></a>
+					<a class="contact-link" href="#technical"><strong>Technical</strong><span>Depth</span></a>
 					<a class="contact-link" href="${links.resume}" target="_blank" rel="noopener noreferrer"><strong>Resume</strong><span>PDF</span></a>
-					<a class="contact-link" href="${links.sonaGithub}" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><span>Sona</span></a>
-					<a class="contact-link" href="${links.npaGithub}" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><span>NPA</span></a>
-					<a class="contact-link" href="${links.sonaRoblox}" target="_blank" rel="noopener noreferrer"><strong>Roblox</strong><span>Sona</span></a>
-					<a class="contact-link" href="${links.npaRoblox}" target="_blank" rel="noopener noreferrer"><strong>Roblox</strong><span>NPA</span></a>
 				</div>
 			</aside>
 		</div>
@@ -540,8 +570,10 @@ function caseNav(project) {
 }
 
 function caseHero(project) {
+	const isExternal = /^https?:\/\//.test(project.link);
+	const target = isExternal ? ` target="_blank" rel="noopener noreferrer"` : "";
 	return html`
-		<a class="case-hero" href="${project.link}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(project.title)} link">
+		<a class="case-hero" href="${project.link}"${target} aria-label="Open ${escapeHtml(project.title)} link">
 			<img src="${project.image}" alt="${escapeHtml(project.title)}" loading="lazy" />
 			<div class="case-hero-text">
 				<h1>${escapeHtml(project.title)}</h1>

@@ -967,3 +967,322 @@ h3 {
 		scroll-behavior: auto !important;
 	}
 }
+
+/* v4 layout tuning */
+.home-grid {
+	grid-template-columns: minmax(260px, 0.78fr) minmax(560px, 1.62fr);
+	gap: clamp(14px, 1.6vw, 24px);
+}
+
+.home-hero {
+	padding: clamp(15px, 1.9vw, 26px);
+}
+
+.home-hero h1 {
+	font-size: clamp(34px, 4.4vw, 70px);
+}
+
+.thesis {
+	font-size: clamp(13px, 1.08vw, 16px);
+	line-height: 1.38;
+}
+
+.metric-strip {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 8px;
+}
+
+.metric-card {
+	min-height: 62px;
+	padding: 10px;
+}
+
+.metric-value {
+	font-size: clamp(14px, 1.15vw, 18px);
+}
+
+.pillar-grid {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.pillar-card {
+	min-height: 286px;
+	padding: clamp(15px, 1.35vw, 20px);
+}
+
+.pillar-card h3 {
+	font-size: clamp(18px, 1.6vw, 27px);
+}
+
+.pillar-card p {
+	font-size: clamp(12px, 0.95vw, 14px);
+	line-height: 1.35;
+}
+
+.project-list {
+	gap: 9px;
+}
+
+.project-line {
+	min-height: 68px;
+	padding: 15px 16px;
+	border-radius: 20px;
+}
+
+.project-line span:first-child {
+	font-size: 14px;
+}
+
+.project-line span:last-child {
+	font-size: 10px;
+}
+
+/* About page: small floating gestalt blocks instead of void-filling panels */
+.about-float-layout {
+	flex: 1;
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	grid-auto-rows: max-content;
+	gap: clamp(12px, 1.35vw, 18px);
+	align-content: center;
+	padding: clamp(4px, 1vw, 14px) 0;
+}
+
+.about-profile-card,
+.about-note-card,
+.floating-contact {
+	background: linear-gradient(135deg, var(--panel), rgba(255,255,255,0.024));
+	box-shadow: var(--shadow);
+	border-radius: 26px;
+}
+
+.about-profile-card {
+	grid-column: 2 / span 5;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	gap: clamp(16px, 1.9vw, 28px);
+	padding: clamp(18px, 2vw, 30px);
+	background:
+		radial-gradient(circle at 18% 35%, rgba(238,139,255,0.16), transparent 42%),
+		linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.026));
+}
+
+.about-avatar {
+	width: clamp(84px, 9vw, 138px);
+	aspect-ratio: 1 / 1;
+	object-fit: contain;
+	filter: drop-shadow(0 0 22px rgba(238,139,255,0.18));
+	transform: rotate(-4deg);
+}
+
+.about-profile-card h1 {
+	font-size: clamp(42px, 6vw, 88px);
+	line-height: 0.9;
+}
+
+.about-title {
+	margin: 8px 0 0;
+	font-family: var(--display);
+	font-size: clamp(12px, 1.1vw, 16px);
+	color: var(--soft);
+}
+
+.about-note-card {
+	padding: clamp(16px, 1.65vw, 24px);
+}
+
+.about-note-card h3 {
+	margin-bottom: 10px;
+}
+
+.about-note-card p {
+	font-size: clamp(13px, 1.05vw, 16px);
+	line-height: 1.48;
+	color: var(--soft);
+	margin-bottom: 9px;
+}
+
+.about-note-card p:last-child {
+	margin-bottom: 0;
+}
+
+.about-note-card:nth-of-type(2) {
+	grid-column: 7 / span 5;
+	margin-top: 18px;
+}
+
+.about-note-card.small-note:nth-of-type(3) {
+	grid-column: 3 / span 4;
+}
+
+.about-note-card.small-note:nth-of-type(4) {
+	grid-column: 7 / span 4;
+	margin-top: -8px;
+}
+
+.floating-contact {
+	grid-column: 4 / span 6;
+	padding: clamp(16px, 1.7vw, 24px);
+	align-self: start;
+}
+
+.floating-contact .contact-list {
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 8px;
+	margin-top: 14px;
+}
+
+.floating-contact .contact-link {
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	min-height: 58px;
+	padding: 10px;
+}
+
+/* Case file: keep the hero square, but constrain it so facts fit on-screen. */
+.case-layout {
+	grid-template-columns: minmax(250px, min(34vw, 430px)) minmax(390px, 1fr);
+}
+
+.case-side {
+	--case-hero-size: min(100%, 430px, calc(100vh - var(--header-height) - (var(--page-pad) * 2) - 174px));
+	align-items: center;
+}
+
+.case-hero {
+	width: var(--case-hero-size);
+	height: auto;
+	aspect-ratio: 1 / 1;
+	max-height: var(--case-hero-size);
+	min-height: 0;
+}
+
+.case-hero img {
+	padding: clamp(12px, 1.3vw, 18px);
+}
+
+.fact-box {
+	width: var(--case-hero-size);
+	max-width: 100%;
+}
+
+.case-hero-text h1 {
+	font-size: clamp(24px, 2.8vw, 48px);
+}
+
+@media (max-width: 1100px) {
+	.home-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.pillar-grid {
+		grid-template-columns: repeat(2, minmax(230px, 1fr));
+		overflow: visible;
+	}
+
+	.about-float-layout {
+		align-content: start;
+	}
+
+	.about-profile-card,
+	.about-note-card:nth-of-type(2),
+	.about-note-card.small-note:nth-of-type(3),
+	.about-note-card.small-note:nth-of-type(4),
+	.floating-contact {
+		grid-column: 1 / -1;
+		margin-top: 0;
+	}
+
+	.floating-contact .contact-list {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.case-side {
+		--case-hero-size: min(100%, 520px, calc(100vh - var(--header-height) - (var(--page-pad) * 2) - 168px));
+	}
+}
+
+@media (max-width: 720px) {
+	.metric-strip,
+	.pillar-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.pillar-card {
+		min-height: auto;
+	}
+
+	.project-line {
+		min-height: 62px;
+	}
+
+	.about-profile-card {
+		grid-template-columns: 1fr;
+		justify-items: start;
+	}
+
+	.floating-contact .contact-list {
+		grid-template-columns: 1fr;
+	}
+
+	.case-side {
+		--case-hero-size: min(100%, calc(100vh - var(--header-height) - (var(--page-pad) * 2) - 160px));
+	}
+}
+
+/* v5: Home absorbs About/Contact actions; new Carver/Cursor assets */
+.home-hero {
+	gap: clamp(12px, 1.4vw, 20px);
+}
+
+.home-copy {
+	display: grid;
+	gap: 0;
+}
+
+.home-about {
+	max-width: 620px;
+	margin: 12px 0 0;
+	font-size: clamp(12px, 1vw, 15px);
+	line-height: 1.45;
+	color: var(--soft);
+}
+
+.home-about.subdued {
+	margin-top: 8px;
+	color: var(--muted);
+}
+
+.home-link-board {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-content: start;
+	margin-top: clamp(8px, 1.2vw, 16px);
+}
+
+.home-link-board .link-pill {
+	min-height: 34px;
+	padding-inline: 12px;
+}
+
+.compact-metrics {
+	margin-top: clamp(8px, 1.1vw, 16px);
+}
+
+.compact-metrics .metric-card {
+	min-height: 58px;
+}
+
+@media (min-width: 1101px) {
+	.home-grid {
+		grid-template-columns: minmax(300px, 0.82fr) minmax(560px, 1.58fr);
+	}
+
+	.home-hero {
+		min-height: calc(100vh - var(--header-height) - (var(--page-pad) * 2));
+	}
+}
