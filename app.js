@@ -5,6 +5,8 @@ const ASSETS = {
 	npa: "assets/NPA.webp",
 	asylum: "assets/AsylumLife.webp",
 	eclipsis: "assets/Eclipsis.webp",
+	eclipsisPipeDiagram: "assets/EclipsisPipeDiagram.webp",
+	eclipsisPipeAnnotated: "assets/EclipsisPipeAnnotated.webp",
 	squash: "assets/Squash.webp",
 	rocketSpleef: "assets/RocketSpleef.webp",
 	offsetCamera: "assets/OffsetCamera.webp",
@@ -121,14 +123,13 @@ const projects = {
 			{ value: "near O(1)", label: "normal pipe update behavior" },
 		],
 		media: [
-			{ title: "Pipe Network Diagram", kind: "diagram", caption: "Add old vs new update diagrams showing where repeated work was removed and what now bounds the update cost." },
-			{ title: "Terrain / Rendering Chart", kind: "diagram", caption: "Add before/after profiler capture or chart supporting load-time and draw-call improvements." },
+			{ title: "Pipe Network Optimization", kind: "image", image: ASSETS.eclipsisPipeDiagram, caption: "Refactored pipe-network updates by separating physical ports from abstract network state. Producers and consumers now contribute to aggregate network totals instead of repeatedly propagating across every connected structure." },
+			{ title: "Engineering Sketch", kind: "image", image: ASSETS.eclipsisPipeAnnotated, caption: "Annotated design note showing the three-layer model: physical nodes, network nodes, and networks. The sketch records why the new data layout reduces redundant merge, split, and update work." },
 		],
 		proves: ["Systems optimization", "Profiling", "Architecture", "Technical-debt reduction", "Design-aware engineering"],
 		missing: [
 			"Before/after chart or profiler capture for the load-time reduction.",
 			"Before/after chart or capture for draw calls.",
-			"Sanitized pipe-network update diagram.",
 			"Short explanation of what player-facing behavior was preserved."
 		]
 	},
@@ -493,21 +494,18 @@ function renderHome() {
 				<h2 class="column-title">Gameplay</h2>
 				${card("asylum-life", "large")}
 				<div class="card-caption">Asylum Life</div>
-				<button class="summary-card nav-trigger" data-route="work"><strong>summary</strong><span>Live production, original games, camera feel, and player-facing Roblox systems.</span></button>
 				<div class="small-row">${card("rocket-spleef", "small")}${card("depths-of-industry", "small")}</div>
 			</div>
 			<div class="column-stack">
 				<h2 class="column-title">Systems</h2>
 				${card("eclipsis", "large")}
 				<div class="card-caption">Eclipsis</div>
-				<button class="summary-card nav-trigger" data-route="work"><strong>summary</strong><span>Inherited-system optimization, data-oriented architecture, and performance-sensitive Luau work.</span></button>
 				<button class="summary-card nav-trigger" data-route="voxel-destruction"><strong>Technical Expertise</strong><span>Profiling, spatial partitioning, serialization, greedy meshing, and QA-aware refactors.</span></button>
 			</div>
 			<div class="column-stack">
 				<h2 class="column-title">Tooling</h2>
 				${card("squash", "large")}
 				<div class="card-caption">Squash</div>
-				<button class="summary-card nav-trigger" data-route="work"><strong>summary</strong><span>Reusable Luau libraries, developer-facing APIs, camera tooling, and Studio workflow support.</span></button>
 				<div class="small-row">${card("offset-camera", "small")}${card("reflector", "small")}</div>
 			</div>
 		</section>
@@ -618,7 +616,7 @@ function renderGaps() {
 			<p class="hero-thesis">This page collects what the current draft exposes: missing proof, media, metrics, contribution details, and public-safe artifacts.</p>
 		</section>
 		<section class="two-col reveal" style="margin-top:48px">
-			<div class="panel"><h2>Now Filled</h2>${list(["Sona GitHub and Roblox links.", "NPA GitHub and Roblox links.", "Public links for Asylum Life, Eclipsis, Squash, Rocket Spleef, Offset Camera, Reflector, and Depths of Industry.", "WEBP images for main cards and supporting project cards."])}</div>
+			<div class="panel"><h2>Now Filled</h2>${list(["Sona GitHub and Roblox links.", "NPA GitHub and Roblox links.", "Public links for Asylum Life, Eclipsis, Squash, Rocket Spleef, Offset Camera, Reflector, and Depths of Industry.", "WEBP images for main cards and supporting project cards.", "Eclipsis pipe-network optimization diagram and annotated engineering sketch."])}</div>
 			<div class="panel"><h2>Highest Priority</h2>${list(["Create the Eclipsis diagrams/charts first because they support the strongest metrics.", "Record Offset Camera and Rocket Spleef videos because game feel is not proven by text.", "Collect Squash adoption or benchmark evidence before using stronger language than 'recognized'.", "Prepare sanitized QA/style-guide artifacts for Asylum Life and Production Leadership.", "Keep Reflector honest as AI-assisted implementation."])}</div>
 		</section>
 		<section class="section-heading reveal"><h2>Project-Specific Gaps</h2><p>Each item below corresponds to proof that would make the draft safer, more concrete, or more hiring-manager-readable.</p></section>
