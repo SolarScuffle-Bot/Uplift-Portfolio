@@ -8,6 +8,7 @@ const links = {
 	eclipsis: "https://www.roblox.com/games/632574862/Eclipsis",
 	squash: "https://data-oriented-house.github.io/Squash/",
 	rocket: "https://www.roblox.com/games/106404336773666/Rocket-Spleef",
+	rocketDemo: "https://i.gyazo.com/62c5a056391249fdae10184a9c62aa1a.mp4",
 	offset: "https://devforum.roblox.com/t/offset-camera-classic-camera-extension-for-fps-shiftlock-over-the-shoulder-for-all-platforms/3177209",
 	reflector: "https://devforum.roblox.com/t/reflector-plugin-to-mirror-just-about-anything-in-studio/4617810",
 	depths: "https://www.roblox.com/games/119768530425232/Depths-of-Industry"
@@ -99,22 +100,29 @@ const projects = {
 		image: "assets/RocketSpleef.webp",
 		link: links.rocket,
 		role: "Creator / Lead Developer",
-		proof: "Original Roblox game built around readable chaos and server-authoritative rockets.",
+		proof: "Original Roblox game built around client-predicted, server-validated rocket physics.",
 		tags: ["Server Authority", "Game Design", "Gameplay Feel", "Ownership"],
 		status: "Active / Iterating",
 		contributions: [
-			"Designed the core competitive loop around fast, legible destruction pressure.",
-			"Built server-authoritative rocket behavior to keep outcomes trustworthy.",
-			"Kept the interface low-friction so players can understand the game quickly.",
-			"Planned progression and monetization around long-term play instead of short-term pressure."
+			"Designed the core loop around fast, readable destruction pressure.",
+			"Built rocket firing so the client gets instant feel while the server owns the result.",
+			"Used pooled rockets, network ownership transfer, blockcast validation, and ping compensation.",
+			"Handled disagreement by killing, recycling, or restoring rockets from server truth."
 		],
 		impact: [
-			"Demonstrates original game ownership from mechanic to product direction.",
-			"Shows gameplay judgment around fairness, readability, and chaos control.",
-			"Needs gameplay clips and a simple authority diagram."
+			"Keeps chaotic physics responsive without trusting client outcomes blindly.",
+			"Lets the shooter feel immediate feedback while peers see server-approved results.",
+			"Shows original game ownership from mechanic design to network behavior."
+		],
+		authority: [
+			{ title: "Predict", text: "The client fires a pooled rocket it temporarily owns, so shooting feels instant." },
+			{ title: "Validate", text: "The server receives the shot request and blockcasts the expected path." },
+			{ title: "Resolve", text: "The server rejects cheats/desyncs, confirms early hits, or retakes ownership with ping compensation." },
+			{ title: "Recycle", text: "Rocket logic disconnects, ownership returns to the client, and the pool entry becomes reusable." }
 		],
 		media: [
-			{ title: "Game icon", image: "assets/RocketSpleef.webp", caption: "Replace with a 20–30 second match clip when ready." }
+			{ title: "Authority diagram", image: "assets/RocketAuthorityFlow.png", caption: "Client prediction, server validation, peer rendering, reconciliation, and rocket pool recycling." },
+			{ title: "Gameplay sync clip", video: links.rocketDemo, caption: "External MP4 showing the rocket behavior in motion." }
 		]
 	},
 	"offset-camera": {
@@ -279,21 +287,104 @@ const signals = [
 	{ title: "Mentorship / Communication", projects: ["asylum-life", "eclipsis", "squash"], text: "Standards, docs, technical explanations, and support for peers and the open-source community." }
 ];
 
-const technicalDomains = [
-	{ title: "Performance & Profiling", meta: "Eclipsis · Asylum Life · Voxel Carver", text: "Profiling-led work around live-server behavior, load time, draw calls, and incremental updates.", wide: true },
-	{ title: "Systems Architecture", meta: "Eclipsis · Voxel Carver · Squash", text: "Aggregation, spatial partitioning, compact state, and structures built around the work that actually changes." },
-	{ title: "Roblox Gameplay", meta: "Asylum Life · Rocket Spleef · Offset Camera", text: "Server authority, camera feel, GUI-driven features, interaction loops, and cross-platform comfort." },
-	{ title: "Luau Infrastructure", meta: "Squash · Cursor", text: "Strict Luau, public APIs, compact buffer workflows, documentation, examples, and maintainer discipline." },
-	{ title: "Studio Tooling", meta: "Reflector · Offset Camera", text: "Creator workflows, validation, transform tooling, integration comfort, and pragmatic AI-assisted direction." }
+const technicalFamilies = [
+	{
+		title: "Legacy Recovery",
+		kicker: "Inherited Systems",
+		text: "Stabilize old systems without stopping production work.",
+		examples: [
+			{ project: "eclipsis", label: "Pipe networks", note: "Split physical ports from aggregate network state so normal updates stop traversing every connected structure." },
+			{ project: "asylum-life", label: "Live legacy debugging", note: "Debugged inherited systems across live servers while player-facing work kept moving." },
+			{ project: "eclipsis", label: "Modernization path", note: "Prioritized the systems blocking design work, then refactored toward simpler update boundaries." }
+		]
+	},
+	{
+		title: "Server Authority",
+		kicker: "Trustworthy Gameplay",
+		text: "Keep outcomes server-owned without making the player wait for every response.",
+		examples: [
+			{ project: "rocket-spleef", label: "Client prediction", note: "The shooter fires a temporary network-owned rocket immediately for feel." },
+			{ project: "rocket-spleef", label: "Server validation", note: "The server blockcasts, rejects desyncs, confirms early hits, or retakes ownership with ping compensation." },
+			{ project: "rocket-spleef", label: "Reconciliation", note: "Disagreement resolves by killing, restoring, exploding, or recycling from server truth." }
+		]
+	},
+	{
+		title: "Optimization",
+		kicker: "Bounded Work",
+		text: "Make expensive systems cheaper by changing what needs to update.",
+		examples: [
+			{ project: "eclipsis", label: "~24s → ~9s", note: "Reduced load time through terrain and rendering work." },
+			{ project: "eclipsis", label: "~3000 → ~900", note: "Reduced draw calls by reworking how world content renders." },
+			{ project: "voxel-destruction", label: "Localized carving", note: "Chunked occupancy and regeneration focused on the region that changed." }
+		]
+	},
+	{
+		title: "Plugins & Libraries",
+		kicker: "Reusable Tools",
+		text: "Build public or creator-facing tools that make other developers faster.",
+		examples: [
+			{ project: "squash", label: "Squash", note: "Public Luau serialization API for compact Roblox data workflows." },
+			{ project: "cursor", label: "Cursor", note: "Procedural buffer workflow for push/pop data layouts." },
+			{ project: "reflector", label: "Reflector", note: "AI-assisted Studio plugin directed through requirements, edge cases, and validation." }
+		]
+	}
 ];
 
 const leadershipDomains = [
-	{ title: "Production Coordination", meta: "Asylum Life · Eclipsis", text: "Clarified priorities and communication paths so teams could move faster without hiding risk." },
-	{ title: "QA / Release Risk", meta: "Asylum Life · Eclipsis", text: "Raised testing expectations, change notes, and release visibility around fast update cycles." },
-	{ title: "Mentorship", meta: "Independent Work · Asylum Life", text: "Helped peers through standards, review, documentation, and open-source examples." },
-	{ title: "Documentation", meta: "Squash · Asylum Life", text: "Wrote technical material that makes systems easier to adopt, maintain, and discuss." },
-	{ title: "Cross-Discipline Work", meta: "Asylum Life · Eclipsis", text: "Worked with executives, engineers, designers, artists, and community feedback without losing engineering clarity." },
-	{ title: "Operations Support", meta: "Asylum Life", text: "Stepped into coordination work during a staffing gap while continuing to contribute as an engineer." }
+	{
+		title: "Production Pressure",
+		text: "Keep work moving when timelines are short, systems are inherited, and priorities change.",
+		examples: [
+			{ project: "asylum-life", label: "Live update pressure", note: "Built and polished player-facing work under sub-weekly production deadlines." },
+			{ project: "asylum-life", label: "Live-server debugging", note: "Debugged complex legacy behavior across hundreds of active servers." },
+			{ project: "eclipsis", label: "Active production", note: "Balanced refactors, design needs, and release risk on an active Roblox project." }
+		]
+	},
+	{
+		title: "Communication Paths",
+		text: "Turn vague work into shared expectations between engineering, leadership, QA, and contributors.",
+		examples: [
+			{ project: "asylum-life", label: "Cross-team workflow", note: "Established communication habits that made production easier to coordinate." },
+			{ project: "eclipsis", label: "Design alignment", note: "Kept modernization work tied to actual game-design goals." },
+			{ project: "squash", label: "Public explanation", note: "Maintained docs and examples so other developers could adopt the library." }
+		]
+	},
+	{
+		title: "Standards & QA",
+		text: "Raise the floor through clearer handoffs, safer changes, and explicit testing expectations.",
+		examples: [
+			{ project: "asylum-life", label: "QA practice", note: "Helped establish stronger coding and QA expectations around live changes." },
+			{ project: "eclipsis", label: "Repository hygiene", note: "Modernized codebase and GitHub practices around ongoing production work." },
+			{ project: "reflector", label: "Validation loops", note: "Repeatedly tested edge cases around transforms, rigs, meshes, decals, and accessories." }
+		]
+	},
+	{
+		title: "Delivery",
+		text: "Ship features that survive contact with players instead of stopping at implementation.",
+		examples: [
+			{ project: "asylum-life", label: "Data-driven features", note: "Worked with executives and cross-disciplinary teams to deploy polished production features." },
+			{ project: "rocket-spleef", label: "Original loop", note: "Built a readable, server-authoritative competitive loop for fast product validation." },
+			{ project: "offset-camera", label: "Usable integration", note: "Released a drop-in camera extension that developers can understand and adopt." }
+		]
+	},
+	{
+		title: "Modernization",
+		text: "Choose old systems worth fixing, then make them smaller, clearer, and easier to extend.",
+		examples: [
+			{ project: "eclipsis", label: "Pipe networking", note: "Moved production and consumption into aggregate network state." },
+			{ project: "eclipsis", label: "Rendering cost", note: "Reduced load time and draw calls through terrain/rendering changes." },
+			{ project: "voxel-destruction", label: "Voxel architecture", note: "Designed localized regeneration around chunks, occupancy, and update bounds." }
+		]
+	},
+	{
+		title: "Peer Growth",
+		text: "Make teammates and community developers more effective through examples, standards, and reusable work.",
+		examples: [
+			{ project: "squash", label: "Open-source education", note: "Docs and examples turn the library into an explanation, not just code." },
+			{ project: "asylum-life", label: "Architecture guidance", note: "Helped clarify code expectations and production handoffs during a staffing gap." },
+			{ project: "eclipsis", label: "Workload balance", note: "Helped coordinate priorities and quality expectations across multiple teams." }
+		]
+	}
 ];
 
 const app = document.querySelector("#app");
@@ -356,9 +447,12 @@ function renderHome() {
 				<div class="home-copy">
 					<p class="kicker">Portfolio</p>
 					<h1>Sona</h1>
-					<p class="thesis">Senior Gameplay & Systems Engineer focused on Roblox gameplay, systems optimization, Luau tooling, and production reliability.</p>
-					<p class="home-about">I build player-facing features and practical systems with a bias toward clear UX, readable architecture, and code that can survive production pressure.</p>
-					<p class="home-about subdued">My work sits between gameplay, legacy-system recovery, open-source Luau infrastructure, and team support.</p>
+					<div class="home-role">Senior Gameplay Engineer</div>
+					<div class="home-role-detail">Systems Engineer · Luau Tooling · Production Support</div>
+					<div class="objective-card">
+						<p>I own Roblox features from concept to release, balancing gameplay feel, code quality, production risk, and team communication.</p>
+						<p>When technical debt or setbacks block progress, I adapt the system, clarify the work, and help the team keep shipping.</p>
+					</div>
 				</div>
 
 				<div class="home-link-board" aria-label="Primary portfolio links">
@@ -422,30 +516,80 @@ function renderSkills() {
 	`;
 }
 
+function technicalExample(example) {
+	const project = projects[example.project];
+	return html`
+		<a class="tech-example" href="#project/${project.id}" style="--tech-img:url('${project.image}')">
+			<span class="tech-example-image"><img src="${project.image}" alt="" loading="lazy" /></span>
+			<span class="tech-example-copy">
+				<strong>${escapeHtml(example.label)}</strong>
+				<small>${escapeHtml(project.title)}</small>
+				<em>${escapeHtml(example.note)}</em>
+			</span>
+		</a>
+	`;
+}
+
 function renderTechnical() {
 	return html`
-		${pageTitle("Systems Board", "Technical", "Engineering depth grouped by domain instead of by project name.")}
-		<section class="technical-board">
-			${technicalDomains.map((domain, index) => html`
-				<article class="domain-card ${domain.wide ? "wide" : ""} ${index === 4 ? "center" : ""}">
-					<h3>${escapeHtml(domain.title)}</h3>
-					<div class="domain-meta">${escapeHtml(domain.meta)}</div>
-					<p>${escapeHtml(domain.text)}</p>
-				</article>
-			`).join("")}
+		${pageTitle("Technical Frame", "Technical", "A load-bearing view of the work: inherited systems, server authority, optimization, and reusable tools.")}
+		<section class="tech-frame" aria-label="Technical frame">
+			<div class="tech-frame-title">
+				<span>Technical Workload</span>
+				<small>Bound the work · keep authority clear · make tools reusable</small>
+			</div>
+			<div class="tech-pillar-row">
+				${technicalFamilies.map((family, index) => html`
+					<article class="tech-pillar tech-pillar-${index + 1}">
+						<div class="tech-pillar-head">
+							<p>${escapeHtml(family.kicker)}</p>
+							<h3>${escapeHtml(family.title)}</h3>
+							<span>${escapeHtml(family.text)}</span>
+						</div>
+						<div class="tech-example-stack">
+							${family.examples.map(example => technicalExample(example)).join("")}
+						</div>
+					</article>
+				`).join("")}
+			</div>
+			<div class="tech-foundation">
+				<div>
+					<strong>Core habit</strong>
+					<span>Prefer systems where the important work is explicit, bounded, testable, and easy for the next developer to explain.</span>
+				</div>
+				<a href="#project/eclipsis">Eclipsis pipe diagram</a>
+				<a href="#project/voxel-destruction">Voxel update bounds</a>
+				<a href="#project/squash">Luau data layout</a>
+			</div>
 		</section>
+	`;
+}
+
+function leadershipExample(example) {
+	const project = projects[example.project];
+	return html`
+		<a class="road-example" href="#project/${project.id}" style="--road-img:url('${project.image}')">
+			<span class="road-example-meta">${escapeHtml(project.title)}</span>
+			<strong>${escapeHtml(example.label)}</strong>
+			<small>${escapeHtml(example.note)}</small>
+		</a>
 	`;
 }
 
 function renderLeadership() {
 	return html`
-		${pageTitle("Production Board", "Leadership", "The senior signal outside the code: communication, safety, documentation, mentorship, and production throughput.")}
-		<section class="lead-grid">
-			${leadershipDomains.map(item => html`
-				<article class="lead-card">
-					<h3>${escapeHtml(item.title)}</h3>
-					<div class="lead-meta">${escapeHtml(item.meta)}</div>
-					<p>${escapeHtml(item.text)}</p>
+		${pageTitle("Production Roadmap", "Leadership", "How production work becomes clearer: pressure, communication, standards, delivery, modernization, and peer growth.")}
+		<section class="roadmap" aria-label="Leadership roadmap">
+			${leadershipDomains.map((item, index) => html`
+				<article class="road-step">
+					<div class="road-marker"><span>${String(index + 1).padStart(2, "0")}</span></div>
+					<div class="road-card">
+						<h3>${escapeHtml(item.title)}</h3>
+						<p>${escapeHtml(item.text)}</p>
+						<div class="road-examples">
+							${item.examples.map(example => leadershipExample(example)).join("")}
+						</div>
+					</div>
 				</article>
 			`).join("")}
 		</section>
@@ -502,6 +646,10 @@ function renderProject(id) {
 		return renderEclipsis(project);
 	}
 
+	if (project.id === "rocket-spleef") {
+		return renderRocketSpleef(project);
+	}
+
 	return html`
 		${caseNav(project)}
 		<section class="case-layout">
@@ -518,6 +666,42 @@ function renderProject(id) {
 				<div class="detail-box">
 					<h3>Proof Statement</h3>
 					<p>${escapeHtml(project.proof)}</p>
+				</div>
+				<div class="case-grid-2">
+					${bulletBox("My Contributions", project.contributions)}
+					${bulletBox("Result / Impact", project.impact)}
+				</div>
+				${mediaGrid(project)}
+			</div>
+		</section>
+	`;
+}
+
+function renderRocketSpleef(project) {
+	return html`
+		${caseNav(project)}
+		<section class="case-layout rocket-case">
+			<div class="case-side">
+				${caseHero(project)}
+				<div class="fact-box">
+					<h3>Quick Facts</h3>
+					<p>${escapeHtml(project.role)}</p>
+					<p>${escapeHtml(project.status)}</p>
+					${tags(project, 5)}
+				</div>
+			</div>
+			<div class="case-main">
+				<div class="detail-box">
+					<h3>Proof Statement</h3>
+					<p>${escapeHtml(project.proof)}</p>
+				</div>
+				<div class="authority-flow">
+					${project.authority.map(step => html`
+						<div class="authority-step">
+							<strong>${escapeHtml(step.title)}</strong>
+							<span>${escapeHtml(step.text)}</span>
+						</div>
+					`).join("")}
 				</div>
 				<div class="case-grid-2">
 					${bulletBox("My Contributions", project.contributions)}
@@ -607,8 +791,11 @@ function mediaGrid(project) {
 			${project.media.slice(0, 2).map(item => html`
 				<div class="media-box">
 					<h3>${escapeHtml(item.title)}</h3>
-					<img src="${item.image}" alt="${escapeHtml(item.title)}" loading="lazy" />
+					${item.video
+						? `<video src="${item.video}" controls preload="metadata" playsinline></video>`
+						: `<img src="${item.image}" alt="${escapeHtml(item.title)}" loading="lazy" />`}
 					<p>${escapeHtml(item.caption)}</p>
+					${item.video ? `<a class="small-action" href="${item.video}" target="_blank" rel="noopener noreferrer">Open clip</a>` : ""}
 				</div>
 			`).join("")}
 		</div>
