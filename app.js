@@ -509,7 +509,7 @@ const sectionMediaSlots = Object.freeze({
 		],
 		"Exploit Security": [
 			{ kind: "diagram", label: "Client eagerness/server authority boundary" },
-			{ kind: "code", label: "Typed remote interface excerpt" }
+			{ kind: "code", label: "Typed remote interface excerpt", language: "luau" }
 		]
 	},
 	"squash": {
@@ -517,13 +517,13 @@ const sectionMediaSlots = Object.freeze({
 			{ kind: "image", label: "Supported Roblox types table" }
 		],
 		"Innovative API": [
-			{ kind: "code", label: "Declarative schema example" },
+			{ kind: "code", label: "Declarative schema example", language: "luau" },
 			{ kind: "diagram", label: "Composition tree diagram" }
 		],
 		"Optimizations": [
 			{ kind: "image", label: "Benchmark table" },
 			{ kind: "diagram", label: "Bitpacking layout diagram" },
-			{ kind: "code", label: "Generated runtime layout excerpt" }
+			{ kind: "code", label: "Generated runtime layout excerpt", language: "luau" }
 		],
 		"Educational Resource": [
 			{ kind: "diagram", label: "RemoteEvent RakNet layout" },
@@ -540,7 +540,7 @@ const sectionMediaSlots = Object.freeze({
 		],
 		"Server Authority": [
 			{ kind: "diagram", label: "Client-eager rocket ownership flow" },
-			{ kind: "code", label: "Server validation excerpt" }
+			{ kind: "code", label: "Server validation excerpt", language: "luau" }
 		],
 		"Crates": [
 			{ kind: "image", label: "Crate progression UI" },
@@ -561,7 +561,7 @@ const sectionMediaSlots = Object.freeze({
 	},
 	"offset-camera": {
 		"Native Integration": [
-			{ kind: "code", label: "Native camera integration excerpt" }
+			{ kind: "code", label: "Native camera integration excerpt", language: "luau" }
 		],
 		"Drop-In Replacement": [
 			{ kind: "video", label: "Default camera parity clip" },
@@ -744,7 +744,9 @@ function registerPanelMedia(project, section, groupTitle, groupText, slot, secti
 		kind: slot.kind || "media",
 		label: slot.label || "Media placeholder",
 		src: slot.src || "",
-		fallbackSrc: project.asset || ""
+		fallbackSrc: project.asset || "",
+		language: slot.language || (slot.kind === "code" ? "luau" : ""),
+		code: slot.code || ""
 	});
 	return id;
 }
@@ -765,7 +767,7 @@ function renderEvidenceCard(project, section, group, sectionIndex, groupIndex) {
 	return `
 		<div class="evidence-card has-media"${mediaBackgroundStyle(project, slot)}>
 			<button class="evidence-media-button" type="button" data-media-id="${escapeHtml(mediaId)}" aria-label="Open ${escapeHtml(slot.label)} media notes">
-				<span class="media-corner-icon" aria-hidden="true">⌄</span>
+				<span class="media-corner-icon" aria-hidden="true"></span>
 			</button>
 			<div class="evidence-content">
 				<span class="attached-media-kind">${escapeHtml(mediaKindLabel(slot))}</span>
@@ -792,18 +794,21 @@ function renderLanding() {
 	app.innerHTML = `
 		<section class="landing route-view">
 			<section class="hero" aria-labelledby="hero-title">
-				<div class="hero-copy">
-					<p class="eyebrow">Roblox · gameplay · systems · production</p>
-					<h1 id="hero-title">Senior Roblox Gameplay Engineer</h1>
-					<p class="hero-lede">I build player-facing Roblox features, stabilize legacy systems, and keep UX responsive while the server owns the truth.</p>
-				</div>
-				<aside class="hero-panel" aria-label="Role fit summary">
-					<div class="role-line"><span>01</span><strong>Feature ownership</strong></div>
-					<div class="role-line"><span>02</span><strong>Game feel and UX</strong></div>
-					<div class="role-line"><span>03</span><strong>Server authority</strong></div>
-					<div class="role-line"><span>04</span><strong>Production coordination</strong></div>
-				</aside>
-			</section>
+			<div class="hero-copy">
+				<p class="eyebrow">Roblox · gameplay · systems · production</p>
+				<h1 id="hero-title">Senior Gameplay & Systems Engineer</h1>
+				<p class="hero-lede">I ship player-facing features, modernize legacy systems, and keep UX responsive with security baked in.</p>
+			</div>
+			<aside class="hero-panel" aria-label="Role fit summary">
+				<div class="role-line"><span>01</span><strong>Technical Communication</strong></div>
+				<div class="role-line"><span>02</span><strong>Mentorship</strong></div>
+				<div class="role-line"><span>03</span><strong>Instinctive Security</strong></div>
+				<div class="role-line"><span>04</span><strong>Game Feel & UX</strong></div>
+				<div class="role-line"><span>05</span><strong>Production Coordination</strong></div>
+				<div class="role-line"><span>07</span><strong>Performance Programming</strong></div>
+				<div class="role-line"><span>08</span><strong>Legacy Codebases</strong></div>
+			</aside>
+		</section>
 
 			<section class="section-block" aria-labelledby="highlights-title">
 				<div class="section-heading">
@@ -832,11 +837,6 @@ function renderLanding() {
 			</section>
 
 			<section class="section-block proof-index" aria-labelledby="proof-title">
-				<div class="section-heading compact">
-					<p class="eyebrow">Role-matched index</p>
-					<h2 id="proof-title">Find proof by requirement</h2>
-					<p>The categories below are arranged around the Senior Gameplay Engineer work: collaboration, technical judgment, gameplay, UX, and mentorship.</p>
-				</div>
 				<div class="proof-map">
 					${proofMap.map((bucket) => `
 						<section class="proof-bucket" aria-labelledby="bucket-${bucket.title.toLowerCase()}">
@@ -927,6 +927,48 @@ function renderProject(id) {
 }
 
 
+function defaultCodeFor(record) {
+	const label = record.label || "Code excerpt";
+	const safeLabel = label.replaceAll("\\", "\\\\").replaceAll('"', '\\"');
+	return [
+		"-- " + label,
+		"-- Replace this placeholder with a compact, representative excerpt.",
+		"-- Keep surrounding prose in the modal responsible for context.",
+		"",
+		"export type Evidence = {",
+		"\tclaim: string,",
+		"\tdecision: string,",
+		"\tresult: string,",
+		"}",
+		"",
+		"return {",
+		`\tclaim = "${safeLabel}",`,
+		"\tdecision = \"show the smallest code path that proves the system boundary\",",
+		"\tresult = \"make the engineering judgment reviewable without a full codebase\",",
+		"}"
+	].join("\n");
+}
+
+function modalCodeEmbed(record) {
+	if (record.kind !== "code" && !record.code) {
+		return "";
+	}
+
+	const language = record.language || "text";
+	const code = record.code || defaultCodeFor(record);
+	const lines = code.split("\n");
+	return `
+		<figure class="code-embed">
+			<figcaption>
+				<span>code excerpt</span>
+				<strong>${escapeHtml(record.label)}</strong>
+				<em>${escapeHtml(language)}</em>
+			</figcaption>
+			<pre aria-label="${escapeHtml(record.label)} code excerpt"><code>${lines.map((line, index) => `<span class="code-line"><span class="line-number">${String(index + 1).padStart(2, "0")}</span><span class="line-text">${escapeHtml(line) || " "}</span></span>`).join("")}</code></pre>
+		</figure>
+	`;
+}
+
 function modalMediaFigure(record) {
 	if (record.src) {
 		return `
@@ -935,6 +977,10 @@ function modalMediaFigure(record) {
 				<figcaption>${escapeHtml(record.label)}</figcaption>
 			</figure>
 		`;
+	}
+
+	if (record.kind === "code") {
+		return "";
 	}
 
 	const fallbackStyle = record.fallbackSrc ? ` style="--media-bg: url('${escapeHtml(record.fallbackSrc)}')"` : "";
@@ -964,6 +1010,7 @@ function showMediaModal(mediaId) {
 					<h2 id="modal-title">${escapeHtml(record.groupTitle)}</h2>
 					<p class="modal-lede">${escapeHtml(record.groupText)}</p>
 					${modalMediaFigure(record)}
+					${modalCodeEmbed(record)}
 					<div class="modal-copy">
 						<section>
 							<h3>What this media should prove</h3>
