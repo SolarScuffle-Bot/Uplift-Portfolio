@@ -1,32 +1,45 @@
-# Sona Portfolio Draft v9
+# Sona Portfolio Draft v2
 
-Raw HTML/CSS/JavaScript single-page portfolio draft.
+Raw JavaScript single-page portfolio draft.
 
-## v9 changes
+## What is included
 
-- Roblox header icon is now the same visual scale as the GitHub icons.
-- Roblox header icon links only to Sona's Roblox profile.
-- Removed the Roblox account popover.
-- Bolded the `Sona` title text in the header.
-- Centered the main header navigation in the topbar.
-- Added `Senior Gameplay Engineer` to the top-right header area.
-- Reduced header height and top padding.
-- Restored the small rotation hover on the Sona logo.
-- Moved the long home thesis line out of the top of the home layout so the main three-column content appears immediately.
-- Added a lower proof strip under the home columns so scrolling reveals supporting information rather than hiding the primary content.
-- Added a complementary body-text stack: `Inter`, then `Aptos`, `Segoe UI`, `Helvetica Neue`, and `Arial`.
-- Cascadia Code ExtraLight remains the display/navigation/card font target.
+- `index.html`: shell, header, preload hints, external profile links.
+- `styles.css`: responsive dark outlined visual system, hover behavior, transitions, cards, project layouts.
+- `app.js`: hash-routed single-page app, project data, draft final-product copy, missing-proof tracker.
+- `assets/`: WEBP assets provided for Sona, GitHub, Roblox, NPA, Asylum Life, Eclipsis, Squash, Rocket Spleef, Offset Camera, Reflector, and Depths of Industry.
 
-## Notes
+## Routes
 
-The site does not bundle Cascadia Code or Inter font files. It targets them locally and falls back to system fonts.
+- `#home`
+- `#work`
+- `#leadership`
+- `#about`
+- `#gaps`
+- `#asylum-life`
+- `#eclipsis`
+- `#squash`
+- `#rocket-spleef`
+- `#offset-camera`
+- `#reflector`
+- `#depths-of-industry`
+- `#voxel-destruction`
 
-Open `index.html` directly or serve the folder with any static server.
+## Still needed before final publication
 
+- Resume PDF and contact method.
+- Short gameplay/tool videos for Asylum Life, Offset Camera, Rocket Spleef, Reflector, and Voxel Destruction.
+- Eclipsis charts/diagrams proving the load-time and draw-call metrics.
+- Squash adoption and benchmark evidence.
+- Sanitized QA/style-guide/release-risk artifacts.
+- Exact contribution details for Depths of Industry and older archived projects.
 
-## v11 Changes
+## Local preview
 
-- Removed the visible white outline around project/media images.
-- Kept subtle hover lighting so cards still feel interactive without boxed image borders.
-- Repositioned the home proof strip above the home columns with larger bottom spacing.
-- Tuned the home route height so the proof rail and main cards sit more comfortably within the first viewport.
+Open `index.html` directly, or serve the folder with any static server.
+
+```sh
+python -m http.server 8000
+```
+
+Then open `http://localhost:8000`.

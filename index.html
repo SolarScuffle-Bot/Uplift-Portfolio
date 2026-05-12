@@ -3,47 +3,44 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Sona | Senior Roblox Gameplay & Systems Engineer</title>
-	<meta name="description" content="Portfolio for Sona, a Senior Roblox Gameplay & Systems Engineer focused on gameplay feel, systems optimization, Luau infrastructure, production tooling, and release-safe engineering." />
-	<link rel="preload" href="assets/Sona.webp" as="image" />
-	<link rel="preload" href="assets/Github.webp" as="image" />
-	<link rel="preload" href="assets/Roblox.webp" as="image" />
+	<meta name="description" content="Sona — Senior Roblox Gameplay & Systems Engineer portfolio." />
+	<meta name="theme-color" content="#0d0e1d" />
+	<title>Sona — Roblox Gameplay & Systems Engineer</title>
+	<link rel="preload" href="assets/Sona.webp" as="image" type="image/webp" />
+	<link rel="preload" href="assets/Github.webp" as="image" type="image/webp" />
+	<link rel="preload" href="assets/Roblox.webp" as="image" type="image/webp" />
+	<link rel="preload" href="assets/AsylumLife.webp" as="image" type="image/webp" />
 	<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-	<header class="site-header" aria-label="Site header">
-		<div class="identity-cluster" aria-label="Profile and account links">
-			<button class="mark-button nav-trigger" data-route="home" aria-label="Return home">
-				<img src="assets/Sona.webp" alt="Sona mark" />
+	<a class="skip-link" href="#main">Skip to content</a>
+	<div class="site-shell">
+		<header class="topbar" aria-label="Site header">
+			<button class="brand nav-trigger" data-route="home" aria-label="Go home">
+				<span class="brand-mark frame"><img src="assets/Sona.webp" alt="Sona logo" /></span>
+				<span class="brand-name">Sona</span>
 			</button>
-			<div class="site-name" aria-hidden="true">Sona</div>
-			<a class="account-link github-link" href="https://github.com/SolarScuffle-Bot" target="_blank" rel="noreferrer" aria-label="Open Sona GitHub">
-				<img src="assets/Github.webp" alt="" />
-				<span>Sona</span>
-			</a>
-			<a class="account-link github-link" href="https://github.com/3065325" target="_blank" rel="noreferrer" aria-label="Open NPA GitHub">
-				<img src="assets/Github.webp" alt="" />
-				<span>NPA</span>
-			</a>
-			<a class="account-link roblox-link" href="https://www.roblox.com/users/2722909519/profile" target="_blank" rel="noreferrer" aria-label="Open Sona Roblox profile">
-				<img src="assets/Roblox.webp" alt="" />
-			</a>
-		</div>
 
-		<nav class="route-nav" aria-label="Portfolio views">
-			<button class="nav-pill nav-trigger" data-route="home">Home</button>
-			<button class="nav-pill nav-trigger" data-route="work">Work</button>
-			<button class="nav-pill nav-trigger" data-route="technical">Technical</button>
-			<button class="nav-pill nav-trigger" data-route="leadership">Leadership</button>
-			<button class="nav-pill nav-trigger" data-route="about">About</button>
-			<button class="nav-pill nav-trigger" data-route="gaps">Gaps</button>
-		</nav>
+			<nav class="topnav" aria-label="Primary navigation">
+				<button class="nav-pill nav-trigger" data-route="home">Home</button>
+				<button class="nav-pill nav-trigger" data-route="work">Work</button>
+				<button class="nav-pill nav-trigger" data-route="leadership">Leadership</button>
+				<button class="nav-pill nav-trigger" data-route="about">About</button>
+				<button class="nav-pill nav-trigger" data-route="gaps">Gaps</button>
+			</nav>
 
-		<div class="header-role" aria-hidden="true">Senior Gameplay Engineer</div>
-	</header>
+			<div class="icon-links" aria-label="External links">
+				<a class="icon-link" href="https://github.com/SolarScuffle-Bot" target="_blank" rel="noreferrer" aria-label="Sona GitHub"><img src="assets/Github.webp" alt="GitHub" /></a>
+				<a class="icon-link tilted" href="https://www.roblox.com/users/2722909519/profile" target="_blank" rel="noreferrer" aria-label="Sona Roblox"><img src="assets/Roblox.webp" alt="Roblox" /></a>
+				<a class="icon-link small-hide" href="https://github.com/3065325" target="_blank" rel="noreferrer" aria-label="NPA GitHub"><img src="assets/Github.webp" alt="GitHub" /></a>
+				<a class="word-link" href="https://www.roblox.com/users/86032838/profile" target="_blank" rel="noreferrer" aria-label="NPA Roblox profile">NPA</a>
+				<a class="icon-link frame small-hide" href="https://www.roblox.com/users/86032838/profile" target="_blank" rel="noreferrer" aria-label="NPA Roblox image"><img src="assets/NPA.webp" alt="NPA" /></a>
+			</div>
+		</header>
 
-	<main id="main" class="view" tabindex="-1" aria-live="polite"></main>
+		<main id="main" class="view" tabindex="-1" aria-live="polite"></main>
+	</div>
 
-	<script src="app.js"></script>
+	<script src="app.js" defer></script>
 </body>
 </html>

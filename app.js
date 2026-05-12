@@ -1,17 +1,15 @@
-"use strict";
-
 const ASSETS = {
 	sona: "assets/Sona.webp",
-	npa: "assets/NPA.webp",
 	github: "assets/Github.webp",
 	roblox: "assets/Roblox.webp",
-	asylumLife: "assets/AsylumLife.webp",
+	npa: "assets/NPA.webp",
+	asylum: "assets/AsylumLife.webp",
 	eclipsis: "assets/Eclipsis.webp",
 	squash: "assets/Squash.webp",
 	rocketSpleef: "assets/RocketSpleef.webp",
-	depthsOfIndustry: "assets/DepthsOfIndustry.webp",
 	offsetCamera: "assets/OffsetCamera.webp",
 	reflector: "assets/Reflector.webp",
+	depths: "assets/DepthsOfIndustry.webp",
 };
 
 const LINKS = {
@@ -25,763 +23,680 @@ const LINKS = {
 	rocketSpleef: "https://www.roblox.com/games/106404336773666/Rocket-Spleef",
 	offsetCamera: "https://devforum.roblox.com/t/offset-camera-classic-camera-extension-for-fps-shiftlock-over-the-shoulder-for-all-platforms/3177209",
 	reflector: "https://devforum.roblox.com/t/reflector-plugin-to-mirror-just-about-anything-in-studio/4617810",
-	depthsOfIndustry: "https://www.roblox.com/games/119768530425232/Depths-of-Industry",
+	depths: "https://www.roblox.com/games/119768530425232/Depths-of-Industry",
 };
 
 const projects = {
 	"asylum-life": {
 		category: "Gameplay",
-		proofPath: "Production credibility",
 		title: "Asylum Life",
-		cardTitle: "Asylum\nLife webp",
+		shortTitle: "Asylum Life",
+		pageTitle: "Asylum Life: Live Roblox Gameplay Engineering & Operations Support",
 		role: "Gameplay Engineer & Acting Operations Lead",
 		status: "Past production work",
+		image: ASSETS.asylum,
+		imageMode: "cover",
 		linkLabel: "Roblox Link",
 		link: LINKS.asylumLife,
-		image: ASSETS.asylumLife,
-		imageClass: "cover",
-		summary: "Front-page Roblox production work across gameplay systems, GUI-driven features, QA support, live debugging, and temporary operations coordination.",
-		thesis: "Asylum Life proves that I can enter a live Roblox production environment, ship player-facing systems, reduce release risk, and improve engineering communication under weekly update pressure.",
-		roleText: "I contributed as a gameplay engineer while temporarily helping stabilize operations during a staffing gap. My work sat between implementation, debugging, QA communication, technical guidance, and release coordination.",
+		oneLine: "Front-page Roblox production experience across gameplay systems, UI-driven tasks, release support, and temporary operations coordination.",
+		overview: "Joined during a high-pressure production period with weekly update expectations and inherited reliability risks. I helped stabilize delivery through player-facing gameplay implementation, live debugging, QA and process improvements, engineering documentation, and temporary operations coordination.",
+		problem: "The project needed regular player-facing updates while maintaining live reliability. New content, bug fixes, contributor coordination, and QA all had to move without turning every release into a risky rewrite.",
 		contributions: [
-			"Built and supported GUI-driven chores, popup-style minigames, leaderboards, doors, elevators, and live-service gameplay tasks.",
-			"Used ScriptProfiler, MicroProfiler, runtime diagnostics, and creator analytics to investigate reliability and performance issues.",
-			"Improved release safety through QA notes, testing instructions, style guidance, and clearer cross-disciplinary communication.",
-			"Helped allocate work, mentor contributors, and reduce production ambiguity while still contributing directly as an engineer."
+			"Implemented and maintained chore, popup, GUI, door, elevator, leaderboard, and interaction systems used by live players.",
+			"Used ScriptProfiler, MicroProfiler, runtime diagnostics, and creator analytics to isolate production risks and regressions.",
+			"Created QA notes, release-risk documentation, style guidance, and engineering references for safer team contribution.",
+			"Supported task allocation, cross-disciplinary communication, and operations coordination during a staffing gap.",
+			"Refactored targeted parts of the codebase where localized improvements could reduce risk without destabilizing weekly releases."
 		],
 		constraints: [
-			"Weekly live-update expectations with player-facing regression risk.",
-			"Inherited systems that required cautious debugging rather than broad rewrites.",
-			"Gameplay, GUI, QA, and operations needs competing for limited engineering time."
+			"Live players and weekly update expectations limited the room for broad rewrites.",
+			"Changes had to be understandable to QA, designers, artists, and programmers, not just technically correct.",
+			"Inherited reliability risks required instrumentation and targeted fixes rather than abstract cleanup."
 		],
 		decisions: [
-			"Prioritized targeted fixes, release clarity, and testable behavior over speculative cleanups.",
-			"Documented intent and testing steps so changes could be evaluated by testers and non-programmers.",
-			"Used profiling and diagnostics to turn vague live issues into concrete engineering tasks."
+			"Favored localized refactors and diagnostic tooling over large rewrite attempts.",
+			"Wrote testing instructions around intended player behavior, not only implementation details.",
+			"Treated release safety as a combined engineering, QA, and communication problem."
 		],
 		results: [
-			"Supported weekly delivery across live gameplay and GUI-facing features.",
-			"Improved release safety through clearer QA/process artifacts.",
-			"Provided temporary operations support without dropping engineering ownership."
+			"Improved delivery reliability during a difficult production period.",
+			"Reduced avoidable release risk by making feature intent and testing expectations explicit.",
+			"Converted undocumented implementation knowledge into reusable team process and standards."
+		],
+		metrics: [
+			{ value: "Front-page", label: "Roblox production experience" },
+			{ value: "Weekly", label: "live update pressure" },
+			{ value: "QA + docs", label: "release-risk support" },
 		],
 		media: [
-			{ title: "Minigames", kind: "video", caption: "Add a 30–60 second clip showing GUI-driven chores, task flow, and player-facing polish." },
-			{ title: "Emotes", kind: "video", caption: "Add a clip or screenshots showing emote selection, UI behavior, and release-ready feature polish." }
+			{ title: "Minigames / Chores", kind: "play", caption: "Add a 30–60 second gameplay clip showing GUI-driven chores, popup minigames, or other player-facing task loops." },
+			{ title: "Release Support", kind: "play", caption: "Add a sanitized QA checklist, style-guide excerpt, profiler capture, or before/after debugging timeline." },
 		],
-		tags: ["Live production", "Gameplay/UI", "QA", "Profiler diagnostics", "Operations"],
-		demonstrates: ["Live Roblox production experience", "Release-safe engineering", "Player-facing feature work", "Leadership under pressure"],
-		gaps: ["Minigame/chore clip", "Feature screenshots", "Sanitized QA checklist", "Style guide excerpt"]
+		proves: ["Live production", "Gameplay implementation", "Debugging", "QA discipline", "Operations support"],
+		missing: [
+			"30–60 second clip of minigames, chores, doors, elevators, leaderboards, or GUI systems.",
+			"Sanitized QA checklist, style-guide excerpt, or release-risk template.",
+			"One concrete debugging example: symptom, diagnostic tool, root cause, fix, shipped result."
+		]
 	},
 	"eclipsis": {
 		category: "Systems",
-		proofPath: "Systems depth",
 		title: "Eclipsis",
-		cardTitle: "Eclipsis\nwebp",
+		shortTitle: "Eclipsis",
+		pageTitle: "Eclipsis: Legacy Systems Optimization & Game Design",
 		role: "Active Systems Engineer & Game Designer",
-		status: "Active",
+		status: "Active work",
+		image: ASSETS.eclipsis,
+		imageMode: "cover",
 		linkLabel: "Roblox Link",
 		link: LINKS.eclipsis,
-		image: ASSETS.eclipsis,
-		imageClass: "cover",
-		summary: "Legacy systems optimization and game-design support for a long-running Roblox strategy game.",
-		thesis: "Eclipsis is the strongest systems-engineering pillar: inherited-system modernization, measurable optimization, technical-debt reduction, and design-aware engineering.",
-		roleText: "I work on Eclipsis as an active systems engineer and game designer, focusing on performance-critical inherited systems, architecture modernization, and changes that respect the game’s existing strategic identity.",
+		oneLine: "Inherited-system modernization, measurable performance gains, and design-aware engineering on an active Roblox strategy game.",
+		overview: "Eclipsis is the strongest systems case study here. It shows inherited-codebase judgment, optimization, performance profiling, and engineering changes guided by game design rather than cleanup for its own sake.",
+		problem: "Legacy simulation and terrain systems had become too expensive to reason about comfortably. The work needed to improve performance while preserving the strategic shape and player-facing behavior of the original game.",
 		contributions: [
-			"Refactored legacy pipe-networking behavior from effectively explosive update scaling toward near constant-time behavior under normal gameplay conditions.",
-			"Reworked terrain generation and rendering, reducing load time from roughly 24 seconds to roughly 9 seconds.",
-			"Reduced draw calls from roughly 3000 to roughly 900 through rendering and generation changes.",
-			"Modernized Rojo usage, repository organization, coding expectations, and GitHub QA standards."
+			"Refactored legacy pipe-networking behavior from effectively explosive scaling toward near constant-time updates under normal gameplay conditions.",
+			"Reworked terrain generation and rendering paths to reduce load time from roughly 24 seconds to roughly 9 seconds.",
+			"Reduced draw calls from roughly 3000 to roughly 900 by changing how generated terrain and rendering work were structured.",
+			"Modernized Rojo usage, repository organization, GitHub QA standards, and team-facing code expectations.",
+			"Balanced technical-debt reduction against production risk, player expectations, and design intent."
 		],
 		constraints: [
-			"Long-running strategy game with inherited architecture and production risk.",
-			"Optimization work had to preserve design intent and player expectations.",
-			"Performance wins needed to come from removing redundant work, not hiding cost behind heuristics."
+			"The inherited systems could not simply be discarded without changing the game.",
+			"Optimization needed to preserve strategic readability and existing player expectations.",
+			"Improvements had to fit active development rather than a clean-room rewrite."
 		],
 		decisions: [
-			"Focused on the highest-leverage repeated work first: pipe updates, terrain generation, rendering, and repository workflow.",
-			"Used diagrams and profiling-style reasoning to make complexity visible before refactoring.",
-			"Modernized engineering process alongside code so future changes are easier to review and ship."
+			"Used profiling and asymptotic reasoning to identify systems that were structurally expensive, not merely locally inefficient.",
+			"Moved update behavior toward invalidation boundaries and data flow that scale with meaningful changes.",
+			"Kept design goals visible so optimization did not erase the gameplay identity of the project."
 		],
 		results: [
 			"Load time reduced from ~24s to ~9s.",
 			"Draw calls reduced from ~3000 to ~900.",
-			"Pipe-network updates moved away from runaway scaling toward localized, practical behavior."
+			"Pipe-networking behavior became easier to reason about, profile, and safely extend."
+		],
+		metrics: [
+			{ value: "~24s → ~9s", label: "load-time reduction" },
+			{ value: "~3000 → ~900", label: "draw-call reduction" },
+			{ value: "near O(1)", label: "normal pipe update behavior" },
 		],
 		media: [
-			{ title: "Pipe Scaling", kind: "diagram", caption: "Add old-vs-new pipe-networking diagram showing what repeated work was removed." },
-			{ title: "Rendering", kind: "chart", caption: "Add before/after profiler captures for load time and draw-call reduction." }
+			{ title: "Pipe Network Diagram", kind: "diagram", caption: "Add old vs new update diagrams showing where repeated work was removed and what now bounds the update cost." },
+			{ title: "Terrain / Rendering Chart", kind: "diagram", caption: "Add before/after profiler capture or chart supporting load-time and draw-call improvements." },
 		],
-		tags: ["~24s → ~9s", "~3000 → ~900", "Legacy systems", "Rojo", "Optimization"],
-		demonstrates: ["Senior systems optimization", "Technical-debt reduction", "Design-aware refactoring", "Measurable impact"],
-		gaps: ["Before/after chart", "Pipe system diagram", "Terrain/rendering notes", "QA modernization example"]
-	},
-	"offset-camera": {
-		category: "Tooling",
-		proofPath: "Gameplay feel",
-		title: "Offset Camera",
-		cardTitle: "Offset\nCamera\nwebp",
-		role: "Creator & Maintainer",
-		status: "Public developer resource",
-		linkLabel: "DevForum Link",
-		link: LINKS.offsetCamera,
-		image: ASSETS.offsetCamera,
-		imageClass: "icon",
-		summary: "A modular Roblox camera extension for FPS, shift-lock, over-the-shoulder behavior, and cross-platform comfort.",
-		thesis: "Offset Camera is the direct game-feel proof point: camera behavior, input responsiveness, player comfort, and reusable developer integration.",
-		roleText: "I created and maintain the resource, with emphasis on preserving familiar Roblox camera behavior while making offset camera modes practical for real games.",
-		contributions: [
-			"Created a drop-in camera extension that integrates with default Roblox camera expectations.",
-			"Supported FPS, shift-lock, over-the-shoulder, vehicle, and focus-offset use cases.",
-			"Designed the API for practical developer adoption rather than a one-off demo scene.",
-			"Considered player comfort, responsiveness, avatar behavior, and cross-platform use."
-		],
-		constraints: [
-			"Camera systems are felt immediately when they are wrong.",
-			"The implementation must coexist with Roblox’s default camera stack instead of fighting it.",
-			"PC, mobile, console, avatar type, and shift-lock behavior create edge cases."
-		],
-		decisions: [
-			"Treat comfort and readability as engineering requirements, not only UX polish.",
-			"Keep integration minimal so developers can adopt it without rewriting camera code.",
-			"Prefer predictable behavior over clever camera effects that only work in narrow cases."
-		],
-		results: [
-			"Public DevForum resource with clear use cases.",
-			"Reusable camera behavior for FPS, shift-lock, over-the-shoulder, and focus offsets.",
-			"Supports the portfolio’s gameplay-feel and developer-usability story."
-		],
-		media: [
-			{ title: "Camera Feel", kind: "video", caption: "Add clips for FPS, shift-lock, over-the-shoulder, and focus-offset behavior." },
-			{ title: "Integration", kind: "code", caption: "Add a small setup snippet or developer integration diagram." }
-		],
-		tags: ["Camera systems", "Game feel", "Input", "Cross-platform", "DevForum"],
-		demonstrates: ["Player comfort", "Responsive controls", "Reusable gameplay tooling", "Developer empathy"],
-		gaps: ["FPS clip", "Shift-lock clip", "Over-the-shoulder clip", "Integration snippet"]
+		proves: ["Systems optimization", "Profiling", "Architecture", "Technical-debt reduction", "Design-aware engineering"],
+		missing: [
+			"Before/after chart or profiler capture for the load-time reduction.",
+			"Before/after chart or capture for draw calls.",
+			"Sanitized pipe-network update diagram.",
+			"Short explanation of what player-facing behavior was preserved."
+		]
 	},
 	"squash": {
 		category: "Tooling",
-		proofPath: "Open-source credibility",
 		title: "Squash",
-		cardTitle: "Squash\nwebp",
+		shortTitle: "Squash",
+		pageTitle: "Squash: Luau Serialization Infrastructure for Roblox Developers",
 		role: "Creator & Roblox Open Source Software Maintainer",
-		status: "Public documentation site",
+		status: "Open-source library",
+		image: ASSETS.squash,
+		imageMode: "icon",
 		linkLabel: "Docs Link",
 		link: LINKS.squash,
-		image: ASSETS.squash,
-		imageClass: "icon",
-		summary: "A recognized Luau serialization/deserialization library for compact Roblox data workflows.",
-		thesis: "Squash proves infrastructure-level Luau work: compact data encoding, API design, documentation, benchmarks, and maintainership.",
-		roleText: "I created and maintain Squash as a practical SerDes library for Roblox developers working with networking, persistence, and compact data representation.",
+		oneLine: "A recognized Luau serialization/deserialization library for compact data encoding, networking, and persistence workflows.",
+		overview: "Squash demonstrates infrastructure-level Luau work: API design, compact data layout, documentation, examples, benchmarks, and maintainer judgment. It helps Roblox developers encode structured data predictably for networking, persistence, and low-level data workflows.",
+		problem: "Roblox developers often need compact, predictable data encodings, but serialization tools can become either too magical to trust or too low-level to use comfortably.",
 		contributions: [
-			"Created and maintain a Luau SerDes library focused on compact, practical data encoding.",
-			"Designed APIs for binary/data-layout work while keeping constraints visible and inspectable.",
-			"Wrote documentation and examples so developers can adopt the library without direct support.",
-			"Treat benchmarks, edge cases, and tradeoffs as part of the library’s public API story."
+			"Designed and maintained a Luau SerDes library focused on compact, practical data encoding.",
+			"Built developer-facing APIs that make binary/data-layout work approachable without hiding important constraints.",
+			"Wrote documentation and examples so developers could adopt the library without direct support.",
+			"Treated benchmarks, tradeoffs, and edge cases as part of the API story rather than marketing numbers.",
+			"Maintained the project as part of a broader Roblox open-source infrastructure ecosystem."
 		],
 		constraints: [
-			"Serialization failures are correctness bugs, not cosmetic issues.",
-			"Roblox developers need practical APIs that do not hide important data-layout constraints.",
-			"Networking and persistence contexts reward compactness, but not at the cost of readability or correctness."
+			"Serialization libraries must be predictable and boring in correctness-critical places.",
+			"Compact data workflows are useful only when the API remains inspectable and documented.",
+			"Public infrastructure needs examples, versioning discipline, and clear maintainer expectations."
 		],
 		decisions: [
-			"Expose data-layout intent clearly instead of making the library feel magical.",
-			"Make examples and documentation part of the product, not an afterthought.",
-			"Use recognition evidence conservatively unless adoption metrics support stronger claims."
+			"Use clear public documentation instead of relying on direct support or hidden project context.",
+			"Keep adoption language at 'recognized' until stronger public proof supports a stronger claim.",
+			"Present benchmarks with methodology and tradeoffs so readers understand what the numbers mean."
 		],
 		results: [
-			"Public documentation site for a reusable Luau infrastructure library.",
-			"Supports compact encoding workflows for networking and persistence.",
-			"Strengthens open-source credibility beyond game-specific work."
+			"Provides reusable serialization infrastructure for Roblox developers.",
+			"Supports compact data workflows for networking and persistence use cases.",
+			"Strengthens open-source Luau credibility with documentation and maintainership evidence."
+		],
+		metrics: [
+			{ value: "SerDes", label: "core infrastructure" },
+			{ value: "Luau", label: "Roblox-focused API" },
+			{ value: "Docs", label: "developer adoption support" },
 		],
 		media: [
-			{ title: "API Example", kind: "code", caption: "Add a current docs snippet showing compact serialization in a practical workflow." },
-			{ title: "Adoption", kind: "chart", caption: "Add stars, community references, package usage, benchmarks, or projects using Squash." }
+			{ title: "API Example", kind: "code", caption: "Add an exact current docs snippet showing a compact, understandable serialization workflow." },
+			{ title: "Benchmark / Adoption", kind: "diagram", caption: "Add stars, downloads, community references, benchmarks, or projects using Squash." },
 		],
-		tags: ["Luau", "Serialization", "Buffers", "Docs", "Open source"],
-		demonstrates: ["Infrastructure design", "API design", "Documentation quality", "Maintainership"],
-		gaps: ["GitHub stars", "Package downloads", "Benchmark comparison", "Community references"]
+		proves: ["Luau infrastructure", "API design", "Serialization", "Documentation", "Open source"],
+		missing: [
+			"GitHub stars, package downloads, projects using Squash, or community references.",
+			"A real API snippet from the current docs.",
+			"Benchmark chart with methodology and comparison targets."
+		]
 	},
 	"rocket-spleef": {
 		category: "Gameplay",
-		proofPath: "Original game ownership",
 		title: "Rocket Spleef",
-		cardTitle: "Rocket\nSpleef\nwebp",
+		shortTitle: "Rocket Spleef",
+		pageTitle: "Rocket Spleef: Server-Authoritative Casual Competitive Gameplay",
 		role: "Creator / Lead Developer",
-		status: "Public Roblox experience",
+		status: "Original Roblox game",
+		image: ASSETS.rocketSpleef,
+		imageMode: "cover",
 		linkLabel: "Roblox Link",
 		link: LINKS.rocketSpleef,
-		image: ASSETS.rocketSpleef,
-		imageClass: "cover",
-		summary: "Original Roblox game built around readable high-chaos arena play and server-authoritative rockets.",
-		thesis: "Rocket Spleef proves original game ownership, product instinct, server-authoritative design, and readable casual-competitive chaos.",
-		roleText: "I created the game around a simple sticky loop: enter quickly, understand the threat, make explosive decisions, recover fast, and keep the central mechanic server-owned.",
+		oneLine: "An original Roblox game built around readable high-chaos arena play, server-authoritative rockets, and a sticky casual competitive loop.",
+		overview: "Rocket Spleef is the portfolio’s original-game ownership proof. It shows product judgment, server-authoritative gameplay, readable chaos, player expression, and progression thinking in a compact Roblox experience.",
+		problem: "The game needed to validate a simple competitive loop quickly while avoiding the common failure mode of chaotic mechanics becoming unreadable or exploitable.",
 		contributions: [
-			"Designed a casual competitive loop around fast entry, clear pressure, and rapid round recovery.",
-			"Built rocket outcomes around server authority so the central mechanic remains exploit-aware.",
-			"Tuned high-chaos interactions so players can understand wins, losses, escapes, and mistakes.",
-			"Planned expression, retention, monetization, and progression around a casual competitive audience."
+			"Designed the core arena loop around low-friction entry, readable destruction pressure, and fast round-to-round recovery.",
+			"Built rocket interactions around server authority so the most important gameplay outcomes are not client-trusted.",
+			"Tuned high-chaos interactions so players can understand why they won, lost, or narrowly escaped.",
+			"Planned engagement, expression, monetization, and long-term progression systems around a casual competitive audience."
 		],
 		constraints: [
-			"The game needs to be readable even when many players are creating chaos at once.",
-			"Rockets must feel responsive without trusting critical outcomes to the client.",
-			"A casual competitive loop needs low UI friction and quick recovery from losses."
+			"Casual competitive games need immediate clarity, not long onboarding.",
+			"Rockets and destruction are naturally chaotic, so readability had to be designed intentionally.",
+			"Server authority matters because the core mechanic directly determines competitive outcomes."
 		],
 		decisions: [
-			"Keep the core loop simple enough to understand in seconds.",
-			"Make server authority part of the mechanic’s foundation, not an anti-cheat patch later.",
-			"Prioritize readable consequences over visual noise for its own sake."
+			"Prioritized low UI friction and fast comprehension over feature breadth.",
+			"Used server-authoritative outcomes for the central competitive mechanic.",
+			"Kept monetization framing secondary to expression, retention, and progression."
 		],
 		results: [
-			"Public original Roblox game with a clear central mechanic.",
-			"Supports server-authoritative gameplay and product-thinking proof.",
-			"Adds independent game ownership to the portfolio’s production/system/tooling pillars."
+			"Created a clear original-game case study separate from production support and infrastructure work.",
+			"Demonstrates gameplay-product instincts alongside engineering implementation.",
+			"Provides a place to show video proof of combat readability, round pacing, and server authority."
+		],
+		metrics: [
+			{ value: "Server", label: "authoritative rocket outcomes" },
+			{ value: "Low UI", label: "friction-first loop" },
+			{ value: "Readable", label: "high-chaos design target" },
 		],
 		media: [
-			{ title: "Gameplay Loop", kind: "video", caption: "Add a 30-second clip showing round pacing, arena pressure, and readable chaos." },
-			{ title: "Authority", kind: "diagram", caption: "Add a client-input → server-validation → replicated outcome diagram." }
+			{ title: "Gameplay Clip", kind: "image", image: ASSETS.rocketSpleef, caption: "Replace with a 30-second clip showing the round loop, rocket pressure, and readable high-chaos interactions." },
+			{ title: "Authority Diagram", kind: "diagram", caption: "Add a client-input → server-validation → replicated outcome diagram for rocket behavior." },
 		],
-		tags: ["Original game", "Server authority", "Competitive loop", "Game feel", "Product"],
-		demonstrates: ["Original game direction", "Exploit-aware mechanics", "Casual competitive design", "Player motivation"],
-		gaps: ["Gameplay clip", "Arena clip", "Server authority diagram", "Progression/monetization notes"]
+		proves: ["Original game ownership", "Server authority", "Game feel", "Product thinking", "Competitive readability"],
+		missing: [
+			"30-second gameplay clip.",
+			"Simple client/server authority diagram.",
+			"Current roadmap or progression-status note."
+		]
+	},
+	"offset-camera": {
+		category: "Gameplay / Tooling",
+		title: "Offset Camera",
+		shortTitle: "Offset Camera",
+		pageTitle: "Offset Camera: Responsive Roblox Camera Systems",
+		role: "Creator & Maintainer",
+		status: "Developer-facing camera tool",
+		image: ASSETS.offsetCamera,
+		imageMode: "icon",
+		linkLabel: "DevForum Link",
+		link: LINKS.offsetCamera,
+		oneLine: "A modular camera extension focused on FPS, shift-lock, over-the-shoulder behavior, cross-platform input, and player comfort.",
+		overview: "Offset Camera is the direct game-feel case study. It demonstrates camera behavior, input responsiveness, player comfort, cross-platform UX, and reusable developer integration within Roblox’s existing camera expectations.",
+		problem: "Roblox camera extensions need to feel native, responsive, and predictable across PC, mobile, console, avatar types, shift-lock, FPS, and over-the-shoulder use cases.",
+		contributions: [
+			"Created a drop-in camera extension that integrates with Roblox default camera behavior instead of fighting it.",
+			"Supported FPS, shift-lock, over-the-shoulder, vehicle, and focus-offset use cases.",
+			"Designed the API for developer usability while keeping player comfort and responsiveness visible.",
+			"Considered cross-platform input behavior so the tool remains practical outside a narrow PC-only demo."
+		],
+		constraints: [
+			"Camera systems fail quickly when they make players uncomfortable or disoriented.",
+			"Roblox default camera behavior creates expectations developers and players already understand.",
+			"A public developer tool needs simple integration and clear examples."
+		],
+		decisions: [
+			"Treat camera feel as gameplay engineering, not cosmetic polish.",
+			"Preserve compatibility with common Roblox control modes and avatar expectations.",
+			"Show the final page through video, because camera quality is difficult to prove with text."
+		],
+		results: [
+			"Provides reusable camera infrastructure for Roblox developers.",
+			"Demonstrates practical game-feel engineering through input, view framing, and comfort.",
+			"Gives the portfolio a strong player-experience example outside combat or UI systems."
+		],
+		metrics: [
+			{ value: "FPS", label: "supported view mode" },
+			{ value: "Shift-lock", label: "supported Roblox workflow" },
+			{ value: "All platforms", label: "design target" },
+		],
+		media: [
+			{ title: "FPS / Shift-lock", kind: "image", image: ASSETS.offsetCamera, caption: "Replace with short clips showing FPS, shift-lock, and over-the-shoulder behavior in motion." },
+			{ title: "Integration Example", kind: "code", caption: "Add a real minimal integration snippet from the public DevForum/docs post." },
+		],
+		proves: ["Game feel", "Camera systems", "Input responsiveness", "Developer tooling", "Cross-platform UX"],
+		missing: [
+			"FPS behavior video.",
+			"Over-the-shoulder and shift-lock behavior videos.",
+			"Mobile/console clip if available.",
+			"Exact minimal integration code snippet."
+		]
 	},
 	"reflector": {
 		category: "Tooling",
-		proofPath: "Supporting technical breadth",
 		title: "Reflector",
-		cardTitle: "Reflector\nwebp",
+		shortTitle: "Reflector",
+		pageTitle: "Reflector: AI-Assisted Roblox Studio Transform Tooling",
 		role: "Creator & Maintainer, AI-Assisted Implementation",
-		status: "Public Studio plugin",
+		status: "Studio plugin / tooling project",
+		image: ASSETS.reflector,
+		imageMode: "icon",
 		linkLabel: "DevForum Link",
 		link: LINKS.reflector,
-		image: ASSETS.reflector,
-		imageClass: "icon",
-		summary: "AI-assisted Roblox Studio plugin for reflection and transform workflows.",
-		thesis: "Reflector is presented honestly as AI-assisted tooling: I owned problem definition, transform behavior, algorithmic direction, edge-case resolution, validation, and product behavior.",
-		roleText: "The implementation was AI-assisted. My ownership was in directing the tool, defining correct behavior, resolving edge cases, validating output, and making the plugin useful for creator workflows.",
+		oneLine: "AI-assisted Roblox Studio tooling for reflection and transform workflows, directed and validated through algorithmic requirements and edge-case testing.",
+		overview: "Reflector is a Roblox Studio plugin developed with AI-assisted implementation. I owned the problem definition, algorithmic direction, transform logic requirements, edge-case resolution, testing, validation, and final product behavior.",
+		problem: "Reflection tooling seems simple until it meets real Studio content: meshes, rigs, pivots, accessories, decals, animations, unions, undo/redo, long operations, and creator expectations all expose edge cases.",
 		contributions: [
-			"Directed reflection behavior for objects, rigs, meshes, accessories, pivots, decals, and animation data.",
-			"Specified transform/math requirements and diagnosed edge cases from real Studio test scenes.",
-			"Validated final behavior against creator workflow expectations rather than treating implementation as sufficient by itself.",
-			"Maintained honest public framing around AI-assisted implementation."
+			"Defined reflection workflows for parts, meshes, rigs, accessories, pivots, decals, and animation data.",
+			"Directed transform-math requirements and validated edge cases against real Roblox Studio behavior.",
+			"Diagnosed issues around mesh orientation, decal tangents, rigs, accessories, undo/redo, long-running operations, and creator workflow expectations.",
+			"Maintained final product behavior while keeping the public description honest about AI-assisted implementation."
 		],
 		constraints: [
-			"Reflection is deceptively hard across pivots, rigs, meshes, accessories, decals, animations, and Studio selection behavior.",
-			"The portfolio must not imply that every line was hand-written.",
-			"Correctness depends on creator-visible behavior, not only code structure."
+			"The implementation must be framed honestly as AI-assisted.",
+			"Studio tools must avoid destructive surprises and preserve creator trust.",
+			"Transform correctness has to be tested against real content, not only idealized math examples."
 		],
 		decisions: [
-			"Frame the project as technical direction and validation, not hand-written implementation proof.",
-			"Treat edge-case diagnosis as the main evidence of engineering judgment.",
-			"Use public wording that says AI-assisted rather than informal terms like vibecoded."
+			"Position Reflector as tooling direction, validation, and algorithmic ownership rather than hand-written coding proof.",
+			"Use a support role in the portfolio, below the main production and systems case studies.",
+			"Show a supported-object matrix and demo clip instead of relying on claims."
 		],
 		results: [
-			"Public Studio plugin with a clear creator workflow.",
-			"Demonstrates transform reasoning, tooling direction, and validation discipline.",
-			"Supports the technical breadth story without replacing stronger proof pillars."
+			"Demonstrates AI-assisted development judgment, tooling direction, and validation discipline.",
+			"Shows transform/math reasoning and creator empathy across awkward Studio edge cases.",
+			"Supports technical breadth without overstating implementation authorship."
+		],
+		metrics: [
+			{ value: "AI-assisted", label: "implementation framing" },
+			{ value: "Studio", label: "creator workflow tooling" },
+			{ value: "Edge cases", label: "validation focus" },
 		],
 		media: [
-			{ title: "Workflow", kind: "video", caption: "Add a clip showing selection, plane movement, reflection, and final result." },
-			{ title: "Edge Cases", kind: "diagram", caption: "Add a concise visual sequence of rigs, decals, accessories, and mesh cases handled." }
+			{ title: "Plugin Demo", kind: "image", image: ASSETS.reflector, caption: "Replace with a short Studio clip showing preview plane, reflection workflow, and final result." },
+			{ title: "Support Matrix", kind: "diagram", caption: "Add a compact matrix for parts, meshes, rigs, accessories, decals, animation data, and current caveats." },
 		],
-		tags: ["AI-assisted", "Studio plugin", "Transform math", "Validation", "Creator workflow"],
-		demonstrates: ["Tooling direction", "AI-assisted development judgment", "Edge-case diagnosis", "Creator empathy"],
-		gaps: ["Workflow clip", "Edge-case gallery", "Public wording review", "Known-limitations note"]
+		proves: ["Tooling direction", "Transform reasoning", "AI-assisted workflow", "Validation", "Creator empathy"],
+		missing: [
+			"Plugin demo clip.",
+			"Supported-object matrix.",
+			"Concise before/after reflection example.",
+			"Final public note on AI-assisted implementation."
+		]
 	},
 	"depths-of-industry": {
 		category: "Gameplay",
-		proofPath: "Supporting game breadth",
 		title: "Depths of Industry",
-		cardTitle: "Depths of\nIndustry\nwebp",
-		role: "Creator / Systems Designer",
-		status: "Public Roblox experience",
+		shortTitle: "Depths of Industry",
+		pageTitle: "Depths of Industry: Supporting Game Work",
+		role: "Role details needed",
+		status: "Supporting project",
+		image: ASSETS.depths,
+		imageMode: "cover",
 		linkLabel: "Roblox Link",
-		link: LINKS.depthsOfIndustry,
-		image: ASSETS.depthsOfIndustry,
-		imageClass: "cover",
-		summary: "Supporting game-work example for systems design, resource loops, industrial mood, and Roblox project ownership.",
-		thesis: "Depths of Industry belongs as supporting game history rather than a main proof pillar, but it broadens the portfolio through systems framing, resource loops, and atmosphere.",
-		roleText: "I use this project as a compact example of independent game direction: turning an industrial premise into playable systems, goals, and mood.",
+		link: LINKS.depths,
+		oneLine: "Supporting Roblox game work. This page is intentionally conservative until contribution details, media, and current status are supplied.",
+		overview: "Depths of Industry belongs in the supporting archive unless it has stronger evidence than the current draft provides. It can become a useful gameplay or systems example once the exact ownership, difficult constraints, and shipped outcomes are documented.",
+		problem: "The public link and icon exist, but the portfolio still needs the project’s actual engineering story before it should be used as hiring proof.",
 		contributions: [
-			"Explored industrial progression, resource loops, and readable player goals.",
-			"Built the project as a compact proof of independent Roblox development and systems framing.",
-			"Used the project to support the broader portfolio by showing range beyond one genre or production context."
+			"Add exact ownership: systems implemented, gameplay features shipped, tools built, or production support provided.",
+			"Add the hardest constraint: performance, networking, content pipeline, game feel, QA, design, or team execution.",
+			"Add one concrete before/after result or shipped player-facing outcome."
 		],
-		constraints: [
-			"This is a supporting proof point and should not compete with Asylum Life, Eclipsis, Squash, Offset Camera, or Rocket Spleef.",
-			"The strongest public value is systems framing and visual/gameplay breadth."
-		],
-		decisions: [
-			"Keep the page compact and honest about its role in the portfolio.",
-			"Use it to show breadth, not inflate it into a primary case study."
-		],
-		results: [
-			"Adds visible game-work range beyond the featured pillars.",
-			"Supports resource-loop and systems-design discussion.",
-			"Provides a public Roblox link for additional context."
+		constraints: ["Contribution details are not yet documented.", "Media and metrics are not yet available.", "The card should remain secondary until it proves a specific senior signal."],
+		decisions: ["Keep this as compact supporting work for now.", "Promote only if the project demonstrates a distinct proof category not already covered by the featured five."],
+		results: ["Current result: public archive card with a live Roblox link.", "Needed result: contribution-specific case study copy."],
+		metrics: [
+			{ value: "TBD", label: "role" },
+			{ value: "TBD", label: "technical proof" },
+			{ value: "TBD", label: "media" },
 		],
 		media: [
-			{ title: "Game Loop", kind: "video", caption: "Add a short clip showing the central industrial loop and player objective." },
-			{ title: "Systems", kind: "diagram", caption: "Add a small resource-loop or progression diagram." }
+			{ title: "Project Image", kind: "image", image: ASSETS.depths, caption: "Current icon. Add gameplay footage if this becomes more than an archive card." },
+			{ title: "Contribution Proof", kind: "diagram", caption: "Add a short diagram, code sample, or feature clip after clarifying ownership." },
 		],
-		tags: ["Original work", "Resource loops", "Systems", "Atmosphere", "Breadth"],
-		demonstrates: ["Independent game ownership", "Systems framing", "Genre range", "Concept-to-prototype execution"],
-		gaps: ["Loop clip", "Resource diagram", "Current status note"]
+		proves: ["Supporting breadth", "Needs details"],
+		missing: ["Exact role and dates.", "3 concrete contribution bullets.", "Media or metric showing why this belongs in the portfolio."]
+	},
+	"voxel-destruction": {
+		category: "Systems",
+		title: "Voxel Destruction",
+		shortTitle: "Voxel Destruction",
+		pageTitle: "High-Performance Roblox Voxel Destruction Framework",
+		role: "Systems Designer / Programmer",
+		status: "Technical prototype / framework",
+		image: null,
+		imageMode: "icon",
+		linkLabel: "Internal / Demo Link Needed",
+		link: "",
+		oneLine: "A data-oriented Roblox destruction framework using hierarchical chunking, occupancy bitsets, localized regeneration, and greedy meshing.",
+		overview: "The voxel destruction framework demonstrates advanced systems design under Roblox engine constraints. It focuses on carving volumes from parts, maintaining compact occupancy state, and rebuilding visible geometry with low recomputation.",
+		problem: "Naive destruction systems rebuild too much geometry and create too many instances. The challenge is to localize updates, preserve performance, and keep state small enough to reason about.",
+		contributions: [
+			"Designed hierarchical chunking and occupancy data structures for localized destructive updates.",
+			"Used bitsets and summary state to avoid storing redundant per-voxel information.",
+			"Built toward incremental greedy meshing so visible geometry can be regenerated in affected regions instead of globally.",
+			"Separated box and wedge pipelines where abstraction would make the hot path slower or less clear."
+		],
+		constraints: ["Roblox part count, rendering cost, and physics behavior constrain the design.", "Geometry updates must be local and predictable.", "The implementation must stay data-oriented and type-safe enough to debug."],
+		decisions: ["Use derived truth and minimal state over duplicated bookkeeping.", "Favor chunk-local recomputation and explicit dirty propagation.", "Avoid cross-shape abstractions that slow the common box pipeline."],
+		results: ["Current milestone: octree-only hierarchical chunk renderer works well and is performant.", "Next milestone: lightweight incremental greedy-meshed octant layer on top of the working version."],
+		metrics: [
+			{ value: "Bitsets", label: "compact occupancy" },
+			{ value: "Chunks", label: "localized updates" },
+			{ value: "Greedy", label: "render coalescing target" },
+		],
+		media: [
+			{ title: "Destruction Demo", kind: "play", caption: "Add a short destruction clip showing carve behavior and regenerated render geometry." },
+			{ title: "Chunking Diagram", kind: "diagram", caption: "Add a diagram for root → chunks → occupancy → greedy-meshed render children." },
+		],
+		proves: ["Data-oriented design", "Spatial partitioning", "Greedy meshing", "Roblox performance", "Systems architecture"],
+		missing: ["Demo clip.", "Chunking diagram.", "Update-bound explanation.", "Code snippet showing data layout and invariants."]
 	}
 };
 
-const homeColumns = [
-	{
-		title: "Gameplay",
-		main: "asylum-life",
-		summary: "Live Roblox production, player-facing systems, readable game loops, and release-safe implementation.",
-		mini: ["rocket-spleef", "depths-of-industry"]
-	},
-	{
-		title: "Systems",
-		main: "eclipsis",
-		summary: "Inherited-system optimization, technical-debt reduction, data-oriented reasoning, and measurable performance wins.",
-		centerLink: { route: "technical", label: "Technical Expertise" }
-	},
-	{
-		title: "Tooling",
-		main: "squash",
-		summary: "Luau infrastructure, open-source libraries, Studio tools, camera systems, and developer workflow design.",
-		mini: ["offset-camera", "reflector"]
-	}
-];
-
-const proofPath = ["asylum-life", "eclipsis", "offset-camera", "squash", "rocket-spleef"];
-const supportingWork = ["reflector", "depths-of-industry"];
-
-const technicalGroups = [
-	{
-		title: "Performance & Legacy Systems",
-		description: "Profiling-led optimization, redundant-work removal, legacy refactors, and production-safe modernization.",
-		projects: ["eclipsis", "asylum-life"],
-		evidence: ["~24s → ~9s load time", "~3000 → ~900 draw calls", "Runtime diagnostics", "Production constraints"]
-	},
-	{
-		title: "Gameplay Feel & Player Readability",
-		description: "Camera behavior, readable chaos, cross-platform comfort, and player-facing implementation.",
-		projects: ["offset-camera", "rocket-spleef", "asylum-life"],
-		evidence: ["Camera feel", "Shift-lock/FPS support", "Round readability", "GUI-driven tasks"]
-	},
-	{
-		title: "Server Authority & Data Workflows",
-		description: "Exploit-aware mechanics, compact serialization, networking/persistence workflows, and correctness-first data design.",
-		projects: ["rocket-spleef", "squash"],
-		evidence: ["Server-authoritative rockets", "Luau SerDes", "Compact encoding", "Persistence/networking use cases"]
-	},
-	{
-		title: "Developer Tools & Creator Workflow",
-		description: "Reusable libraries, Studio plugins, public resources, documentation, and workflow-focused UX.",
-		projects: ["squash", "offset-camera", "reflector"],
-		evidence: ["Public docs", "DevForum resources", "Studio workflow", "API design"]
-	},
-	{
-		title: "Production Reliability",
-		description: "QA clarity, release-risk management, engineering notes, mentorship, and cross-disciplinary communication.",
-		projects: ["asylum-life", "eclipsis"],
-		evidence: ["QA checklists", "Style guidance", "GitHub standards", "Operations support"]
-	}
-];
-
-const routes = new Map([
-	["home", renderHome],
-	["work", renderWork],
-	["technical", renderTechnical],
-	["leadership", renderLeadership],
-	["about", renderAbout],
-	["gaps", renderGaps],
-]);
-
-for (const id of Object.keys(projects)) {
-	routes.set(id, () => renderProject(projects[id]));
-}
-
-const main = document.querySelector("#main");
-let currentRoute = "";
+const featuredIds = ["asylum-life", "eclipsis", "offset-camera", "squash", "rocket-spleef"];
+const supportIds = ["reflector", "voxel-destruction", "depths-of-industry"];
+const routes = new Set(["home", "work", "leadership", "about", "gaps", ...Object.keys(projects)]);
+const view = document.getElementById("main");
+let activeRoute = null;
 
 function escapeHtml(value) {
-	return String(value)
-		.replaceAll("&", "&amp;")
-		.replaceAll("<", "&lt;")
-		.replaceAll(">", "&gt;")
-		.replaceAll('"', "&quot;")
-		.replaceAll("'", "&#039;");
+	return String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
 }
-
-function routeFromHash() {
-	const raw = location.hash.replace(/^#\/?/, "").trim();
-	return raw || "home";
+function list(items) {
+	return `<ul class="bullet-list">${items.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
 }
-
-function go(route) {
-	if (!routes.has(route)) route = "home";
-	if (routeFromHash() === route) {
-		render(route);
-		return;
-	}
-	location.hash = route;
+function tags(items, mode = "") {
+	return `<div class="tag-row">${items.map(item => `<span class="tag ${mode}">${escapeHtml(item)}</span>`).join("")}</div>`;
 }
-
-function render(route) {
-	if (!routes.has(route)) route = "home";
-	if (route === currentRoute && main.innerHTML.length > 0) return;
-	currentRoute = route;
-	document.body.dataset.route = route;
-	setNav(route);
-
-	main.classList.add("is-exiting");
-	window.setTimeout(() => {
-		main.innerHTML = routes.get(route)();
-		bindRouteTriggers(main);
-		bindPointerGlow(main);
-		main.classList.remove("is-exiting");
-		main.classList.add("is-entering");
-		window.setTimeout(() => main.classList.remove("is-entering"), 380);
-		main.focus({ preventScroll: true });
-	}, 150);
+function externalIcon(label) {
+	const lower = label.toLowerCase();
+	if (lower.includes("roblox")) return ASSETS.roblox;
+	if (lower.includes("github") || lower.includes("docs")) return ASSETS.github;
+	if (lower.includes("devforum")) return ASSETS.roblox;
+	return ASSETS.roblox;
 }
-
-function setNav(route) {
-	document.querySelectorAll(".nav-pill[data-route]").forEach((pill) => {
-		pill.removeAttribute("aria-current");
-		const pillRoute = pill.dataset.route;
-		if (pillRoute === route || (projects[route] && pillRoute === "work")) {
-			pill.setAttribute("aria-current", "page");
-		}
-	});
-}
-
-function bindRouteTriggers(root = document) {
-	root.querySelectorAll(".nav-trigger[data-route]").forEach((element) => {
-		element.addEventListener("click", () => go(element.dataset.route));
-	});
-}
-
-function bindPointerGlow(root = document) {
-	root.querySelectorAll(".hoverable").forEach((element) => {
-		element.addEventListener("pointermove", (event) => {
-			const rect = element.getBoundingClientRect();
-			element.style.setProperty("--mx", `${event.clientX - rect.left}px`);
-			element.style.setProperty("--my", `${event.clientY - rect.top}px`);
-		});
-	});
-}
-
-function tagList(items, limit = items.length) {
-	return `<div class="tag-list">${items.slice(0, limit).map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</div>`;
-}
-
-function projectCard(id, variant = "large") {
-	const project = projects[id];
-	const isSmall = variant === "small";
+function card(id, size = "large") {
+	const p = projects[id];
+	const mode = p.imageMode === "icon" ? "icon-thumb" : "";
+	const img = p.image ? `<img src="${p.image}" alt="${escapeHtml(p.title)}" loading="lazy" />` : `<span class="play-triangle" aria-hidden="true"></span>`;
 	return `
-		<button class="project-card ${isSmall ? "project-card-small" : "project-card-large"} hoverable nav-trigger" data-route="${escapeHtml(id)}" aria-label="Open ${escapeHtml(project.title)} case study">
-			<span class="project-image-wrap ${escapeHtml(project.imageClass)}">
-				<img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" loading="lazy" />
-			</span>
-			<span class="project-card-overlay">
-				<span>${escapeHtml(project.proofPath)}</span>
-				<small>open case</small>
-			</span>
+		<button class="project-card ${size} nav-trigger" data-route="${id}" aria-label="Open ${escapeHtml(p.title)} case study">
+			<div class="project-thumb ${mode}">${img}</div>
+			<div class="project-body">
+				<h3>${escapeHtml(p.shortTitle)}</h3>
+				${size !== "small" ? `<p>${escapeHtml(p.oneLine)}</p>` : `<p>webp</p>`}
+			</div>
 		</button>
-		<div class="project-label ${isSmall ? "project-label-small" : ""}">${escapeHtml(project.title)}</div>
 	`;
 }
-
-function statRail() {
-	const stats = ["6+ years Roblox", "Front-page production", "~24s → ~9s load", "~3000 → ~900 draw calls", "Creator of Squash", "Live QA + tooling"];
-	return `<div class="stat-rail" aria-label="Portfolio proof strip">${stats.map((stat) => `<span>${escapeHtml(stat)}</span>`).join("")}</div>`;
+function mediaBox(item) {
+	let body = `<span class="play-triangle" aria-hidden="true"></span>`;
+	if (item.kind === "image" && item.image) {
+		body = `<img src="${item.image}" alt="${escapeHtml(item.title)}" loading="lazy" />`;
+	} else if (item.kind === "code") {
+		body = `<code>code sample<br/>goes here</code>`;
+	} else if (item.kind === "diagram") {
+		body = `<code>diagram<br/>goes here</code>`;
+	}
+	return `
+		<div class="media-box">
+			<div class="media-header"><h3>${escapeHtml(item.title)}</h3></div>
+			<div class="media-placeholder">${body}</div>
+			<div class="media-caption">${escapeHtml(item.caption)}</div>
+		</div>
+	`;
+}
+function metricRow(metrics) {
+	return `<div class="metric-row">${metrics.map(m => `<div class="metric"><strong>${escapeHtml(m.value)}</strong><span>${escapeHtml(m.label)}</span></div>`).join("")}</div>`;
 }
 
 function renderHome() {
 	return `
-		<section class="home-page" aria-label="Portfolio home">
-			<section class="home-proof-strip hoverable" aria-label="Condensed portfolio proof">
-				<p>Gameplay feel · systems optimization · Luau tooling · live production reliability</p>
-				${statRail()}
-			</section>
+		<section class="hero reveal">
+			<h1 class="hero-title">Senior Roblox<br><span class="thin">Gameplay & Systems Engineer</span></h1>
+			<p class="hero-thesis">I build Roblox gameplay systems, Luau infrastructure, and production tools with a focus on game feel, performance, maintainability, and live-service reliability.</p>
+			<div class="action-row">
+				<button class="solid-button nav-trigger" data-route="work">View Featured Work</button>
+				<button class="ghost-button nav-trigger" data-route="leadership">Production & Leadership</button>
+				<a class="ghost-button" href="${LINKS.sonaGithub}" target="_blank" rel="noreferrer">GitHub</a>
+			</div>
+		</section>
 
-			<div class="home-columns">
-				${homeColumns.map((column) => `
-					<section class="home-column home-column-${escapeHtml(column.title.toLowerCase())}">
-						<h2 class="section-title">${escapeHtml(column.title)}</h2>
-						<div class="main-project">${projectCard(column.main, "large")}</div>
-						<button class="summary-copy hoverable nav-trigger" data-route="${escapeHtml(column.main)}">${escapeHtml(column.summary)}</button>
-						${column.mini ? `
-							<div class="mini-project-row">
-								${column.mini.map((id) => `<div class="mini-project">${projectCard(id, "small")}</div>`).join("")}
-							</div>
-						` : ""}
-						${column.centerLink ? `
-							<button class="technical-link nav-trigger hoverable" data-route="${escapeHtml(column.centerLink.route)}">${escapeHtml(column.centerLink.label)}</button>
-						` : ""}
-					</section>
-				`).join("")}
+		<section class="proof-strip reveal" aria-label="Portfolio proof strip">
+			<div class="proof-item"><strong>6+ years</strong><span>Roblox game development experience.</span></div>
+			<div class="proof-item"><strong>Front-page</strong><span>live Roblox production experience.</span></div>
+			<div class="proof-item"><strong>~24s → ~9s</strong><span>Eclipsis load-time improvement.</span></div>
+			<div class="proof-item"><strong>~3000 → ~900</strong><span>Eclipsis draw-call reduction.</span></div>
+			<div class="proof-item"><strong>Squash</strong><span>Luau SerDes infrastructure.</span></div>
+			<div class="proof-item"><strong>QA + docs</strong><span>release safety and team support.</span></div>
+		</section>
+
+		<section class="triad reveal" aria-label="Featured proof pillars">
+			<div class="column-stack">
+				<h2 class="column-title">Gameplay</h2>
+				${card("asylum-life", "large")}
+				<div class="card-caption">Asylum Life</div>
+				<button class="summary-card nav-trigger" data-route="work"><strong>summary</strong><span>Live production, original games, camera feel, and player-facing Roblox systems.</span></button>
+				<div class="small-row">${card("rocket-spleef", "small")}${card("depths-of-industry", "small")}</div>
+			</div>
+			<div class="column-stack">
+				<h2 class="column-title">Systems</h2>
+				${card("eclipsis", "large")}
+				<div class="card-caption">Eclipsis</div>
+				<button class="summary-card nav-trigger" data-route="work"><strong>summary</strong><span>Inherited-system optimization, data-oriented architecture, and performance-sensitive Luau work.</span></button>
+				<button class="summary-card nav-trigger" data-route="voxel-destruction"><strong>Technical Expertise</strong><span>Profiling, spatial partitioning, serialization, greedy meshing, and QA-aware refactors.</span></button>
+			</div>
+			<div class="column-stack">
+				<h2 class="column-title">Tooling</h2>
+				${card("squash", "large")}
+				<div class="card-caption">Squash</div>
+				<button class="summary-card nav-trigger" data-route="work"><strong>summary</strong><span>Reusable Luau libraries, developer-facing APIs, camera tooling, and Studio workflow support.</span></button>
+				<div class="small-row">${card("offset-camera", "small")}${card("reflector", "small")}</div>
 			</div>
 		</section>
 	`;
 }
 
-function renderProject(project) {
+function renderCaseStudy(id) {
+	const p = projects[id];
+	const linkPanel = p.link
+		? `<a class="link-panel" href="${p.link}" target="_blank" rel="noreferrer"><div class="link-panel-title"><img src="${externalIcon(p.linkLabel)}" alt="" />${escapeHtml(p.linkLabel)}</div><p>Open the public project page in a new tab.</p></a>`
+		: `<div class="link-panel"><div class="link-panel-title">Link Needed</div><p>Add a public demo, repository, DevForum post, video, or sanitized artifact link.</p></div>`;
 	return `
-		<article class="project-page">
-			<header class="project-top-wire">
-				<div class="project-description-card hoverable">
-					<p>${escapeHtml(project.summary)}</p>
-					${tagList([project.category, project.status, project.proofPath], 3)}
-				</div>
+		<section class="case-top reveal">
+			<div class="case-card">${card(id, "large")}</div>
+			${linkPanel}
+			<div class="case-description"><p>${escapeHtml(p.oneLine)}</p>${tags([p.category, p.status], "ok")}</div>
+		</section>
 
-				<div class="top-project-card">
-					<a class="tiny-card linked-project-card hoverable" href="${escapeHtml(project.link)}" target="_blank" rel="noreferrer" aria-label="Open ${escapeHtml(project.title)} external link">
-						<span class="card-link-hint">${escapeHtml(project.linkLabel)}</span>
-						<span class="project-image-wrap ${escapeHtml(project.imageClass)}">
-							<img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" />
-						</span>
-					</a>
-					<div class="project-label project-label-tiny">${escapeHtml(project.title)}</div>
-				</div>
-			</header>
+		<section class="case-heading reveal">
+			<h1>${escapeHtml(p.role)}</h1>
+			<p>${escapeHtml(p.overview)}</p>
+		</section>
 
-			<h1 class="project-role-title">${escapeHtml(project.role)}</h1>
+		<section class="case-layout reveal">
+			<div class="panel">
+				<h2>My Contributions</h2>
+				${list(p.contributions)}
+				${metricRow(p.metrics)}
+				${tags(p.proves)}
+			</div>
+			<div class="media-grid">
+				${p.media.map(mediaBox).join("")}
+			</div>
+		</section>
 
-			<section class="case-layout">
-				<section class="case-primary hoverable">
-					<p class="eyebrow">${escapeHtml(project.proofPath)}</p>
-					<h2>${escapeHtml(project.title)}</h2>
-					<p class="case-thesis">${escapeHtml(project.thesis)}</p>
-					<p>${escapeHtml(project.roleText)}</p>
-					<h3>My Contributions</h3>
-					<ul>${project.contributions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
-				</section>
-
-				<section class="case-media-stack">
-					${project.media.map((media) => `
-						<section class="media-card hoverable">
-							<div class="media-heading-row">
-								<h2>${escapeHtml(media.title)}</h2>
-								<span>${escapeHtml(media.kind)}</span>
-							</div>
-							<div class="video-placeholder" aria-label="Media placeholder for ${escapeHtml(media.title)}">
-								<div class="play-triangle"></div>
-							</div>
-							<p class="media-caption">${escapeHtml(media.caption)}</p>
-						</section>
-					`).join("")}
-				</section>
-
-				<aside class="case-sidebar">
-					<section class="proof-module hoverable">
-						<h2>Results / Impact</h2>
-						<ul>${project.results.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
-					</section>
-					<section class="proof-module hoverable">
-						<h2>What This Demonstrates</h2>
-						${tagList(project.demonstrates)}
-					</section>
-				</aside>
-			</section>
-
-			<section class="case-detail-grid">
-				<section class="detail-module hoverable">
-					<h2>Constraints</h2>
-					<ul>${project.constraints.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
-				</section>
-				<section class="detail-module hoverable">
-					<h2>Technical Decisions</h2>
-					<ul>${project.decisions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
-				</section>
-				<section class="detail-module hoverable">
-					<h2>Need To Add</h2>
-					<ul>${project.gaps.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
-				</section>
-			</section>
-		</article>
+		<section class="two-col reveal" style="margin-top:24px">
+			<div class="panel"><h2>Problem</h2><p>${escapeHtml(p.problem)}</p></div>
+			<div class="panel"><h2>Constraints</h2>${list(p.constraints)}</div>
+			<div class="panel"><h2>Technical Decisions</h2>${list(p.decisions)}</div>
+			<div class="panel"><h2>Result / Impact</h2>${list(p.results)}</div>
+		</section>
 	`;
 }
 
 function renderWork() {
 	return `
-		<section class="work-page">
-			<header class="route-heading">
-				<p class="eyebrow">Curated proof path</p>
-				<h1 class="project-role-title">Featured Work</h1>
-				<p class="center-copy">The same portfolio reorganized for fast hiring review: production credibility first, then systems depth, gameplay feel, open-source infrastructure, original game ownership, and supporting breadth.</p>
-			</header>
-
-			<section class="proof-path" aria-label="Featured proof path">
-				${proofPath.map((id, index) => {
-					const p = projects[id];
-					return `
-						<button class="proof-card hoverable nav-trigger" data-route="${escapeHtml(id)}">
-							<span class="proof-number">${String(index + 1).padStart(2, "0")}</span>
-							<img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)}" />
-							<span class="proof-copy">
-								<small>${escapeHtml(p.proofPath)}</small>
-								<strong>${escapeHtml(p.title)}</strong>
-								<span>${escapeHtml(p.summary)}</span>
-								${tagList(p.tags, 4)}
-							</span>
-						</button>
-					`;
-				}).join("")}
-			</section>
-
-			<section class="route-heading route-heading-small">
-				<h2>Supporting Work</h2>
-				<p>Projects that broaden the portfolio without replacing the strongest proof pillars.</p>
-			</section>
-			<section class="support-grid">
-				${supportingWork.map((id) => {
-					const p = projects[id];
-					return `
-						<button class="support-card hoverable nav-trigger" data-route="${escapeHtml(id)}">
-							<img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)}" />
-							<h2>${escapeHtml(p.title)}</h2>
-							<p>${escapeHtml(p.summary)}</p>
-						</button>
-					`;
-				}).join("")}
-			</section>
+		<section class="hero reveal">
+			<h1 class="hero-title">Featured<br><span class="thin">Work</span></h1>
+			<p class="hero-thesis">The portfolio is a curated proof path: production credibility, systems depth, gameplay feel, open-source infrastructure, original game ownership, and supporting technical breadth.</p>
 		</section>
-	`;
-}
-
-function renderTechnical() {
-	return `
-		<section class="technical-page">
-			<header class="route-heading">
-				<p class="eyebrow">Different view of the same evidence</p>
-				<h1 class="project-role-title">Technical Expertise</h1>
-				<p class="center-copy">Systems optimization, gameplay feel, Luau infrastructure, Studio tooling, server-authoritative gameplay, data layout, and production-safe engineering.</p>
-			</header>
-			<section class="technical-map">
-				${technicalGroups.map((group) => `
-					<section class="technical-node hoverable">
-						<h2>${escapeHtml(group.title)}</h2>
-						<p>${escapeHtml(group.description)}</p>
-						<div class="project-chip-row">
-							${group.projects.map((id) => `<button class="project-chip nav-trigger" data-route="${escapeHtml(id)}">${escapeHtml(projects[id].title)}</button>`).join("")}
-						</div>
-						${tagList(group.evidence)}
-					</section>
-				`).join("")}
-			</section>
+		<section class="section-heading reveal"><h2>Primary Case Studies</h2><p>These should remain the first five proof pillars unless new media or metrics change the hiring signal.</p></section>
+		<section class="work-grid reveal">
+			${featuredIds.map(id => {
+				const p = projects[id];
+				return `<div class="work-tile"><h3>${escapeHtml(p.title)}</h3><p>${escapeHtml(p.oneLine)}</p>${tags(p.proves.slice(0, 4))}<button class="ghost-button nav-trigger" data-route="${id}">Open</button></div>`;
+			}).join("")}
+		</section>
+		<section class="section-heading reveal"><h2>Supporting Technical Work</h2><p>These support breadth without competing with the strongest production and systems examples.</p></section>
+		<section class="work-grid reveal">
+			${supportIds.map(id => {
+				const p = projects[id];
+				return `<div class="work-tile"><h3>${escapeHtml(p.title)}</h3><p>${escapeHtml(p.oneLine)}</p>${tags(p.proves.slice(0, 4), id === "depths-of-industry" ? "needs" : "") }<button class="ghost-button nav-trigger" data-route="${id}">Open</button></div>`;
+			}).join("")}
+			<div class="work-tile"><h3>Cursor</h3><p>Procedural buffer library supporting push/pop data formats, compact encoding workflows, and practical low-level Luau serialization infrastructure.</p>${tags(["Buffers", "Data layout", "Serialization"], "needs")}<button class="ghost-button nav-trigger" data-route="gaps">Needs details</button></div>
+		</section>
+		<section class="section-heading reveal"><h2>Additional Game Archive</h2><p>Older or supporting games should use compact cards unless they have specific contribution proof, media, and constraints.</p></section>
+		<section class="work-grid reveal">
+			${["NDA Fighting Game", "Silent Limbo: Reignited", "Stalking", "Solar Escapade", "Puzzled With Friends", "Project Exodus", "Cargo Run", "The Backrooms", "Labyrinth", "Pro Border RP"].map(title => `<div class="work-tile"><h3>${title}</h3><p>Archive placeholder. Add role, dates, one-sentence project description, three contribution bullets, tags, and media only if publicly safe.</p>${tags(["Archive", "Needs proof"], "needs")}</div>`).join("")}
 		</section>
 	`;
 }
 
 function renderLeadership() {
-	const panels = [
-		{
-			title: "Release Risk Management",
-			body: "I write QA notes that explain the feature, intended behavior, risky edges, and exact testing instructions so testers and non-programmers can evaluate changes before they become live regressions.",
-			items: ["QA checklists", "Testing instructions", "Profiler-backed diagnosis", "Risk-first communication"]
-		},
-		{
-			title: "Mentorship & Standards",
-			body: "I make contribution safer by turning implicit expectations into engineering notes, style guidance, architecture explanations, and review principles.",
-			items: ["Style guides", "Architecture notes", "Code review principles", "Onboarding help"]
-		},
-		{
-			title: "Cross-Disciplinary Translation",
-			body: "I connect game design, engineering, art, QA, and production by explaining tradeoffs through player outcomes, constraints, invariants, and release risk.",
-			items: ["Design intent", "Engineering plans", "Artist support", "Async clarity"]
-		},
-		{
-			title: "Simple Systems Bias",
-			body: "My default preference is simple, inspectable, data-oriented systems that are easier to ship, debug, profile, teach, and extend under live production constraints.",
-			items: ["Data-oriented design", "Minimal state", "Observable behavior", "Maintainability"]
-		}
-	];
 	return `
-		<section class="text-page leadership-page">
-			<header class="route-heading">
-				<p class="eyebrow">Why senior means more than coding</p>
-				<h1 class="project-role-title">Production & Leadership</h1>
-				<p class="center-copy">I help teams ship safely by clarifying architecture, reducing release risk, improving communication, documenting standards, and mentoring contributors.</p>
-			</header>
-			<div class="leadership-grid">
-				${panels.map((panel) => `
-					<section class="leadership-panel hoverable">
-						<h2>${escapeHtml(panel.title)}</h2>
-						<p>${escapeHtml(panel.body)}</p>
-						${tagList(panel.items)}
-					</section>
-				`).join("")}
-			</div>
-			<section class="artifact-strip hoverable">
-				<h2>Artifacts to make this page stronger</h2>
-				<p>Sanitized QA checklist, release-risk template, style guide excerpt, architecture note, bug triage example, code review principles, debugging timeline, and onboarding note.</p>
-			</section>
+		<section class="hero reveal">
+			<h1 class="hero-title">Production &<br><span class="thin">Leadership</span></h1>
+			<p class="hero-thesis">Senior engineering is not only implementation speed. I help teams ship safely by clarifying architecture, reducing release risk, improving communication, documenting standards, and mentoring contributors.</p>
+		</section>
+		<section class="two-col reveal" style="margin-top:48px">
+			<div class="panel"><h2>Release Risk Management</h2>${list(["Write QA notes that explain the feature, intended behavior, risky edges, and exact testing instructions.", "Prefer explicit ownership and communication channels so changes do not disappear into vague responsibility.", "Treat production bugs as process feedback: what invariant failed, who needed to know, and how should future work catch it earlier?"])}</div>
+			<div class="panel"><h2>Mentorship & Standards</h2>${list(["Create codebase documentation and style guides that make safe contribution easier for newer engineers.", "Explain architectural decisions through constraints and tradeoffs instead of preference alone.", "Favor simple, inspectable systems that are easier to profile, teach, debug, and extend."])}</div>
+			<div class="panel"><h2>Cross-Disciplinary Work</h2>${list(["Translate game-design intent into implementation plans that programmers, artists, QA, and leadership can reason about.", "Use sanitized artifacts such as release-risk templates, bug triage examples, and onboarding notes to show process without exposing private team history.", "Keep player-facing outcomes visible while discussing technical debt and architecture."])}</div>
+			<div class="panel"><h2>Artifacts to Add</h2><div class="missing-list"><div class="missing-item"><strong>Needed</strong><span>Sanitized QA checklist.</span></div><div class="missing-item"><strong>Needed</strong><span>Style-guide excerpt or architecture note.</span></div><div class="missing-item"><strong>Needed</strong><span>Bug triage example showing diagnosis, ownership, and release outcome.</span></div></div></div>
 		</section>
 	`;
 }
 
 function renderAbout() {
 	return `
-		<section class="text-page about-page">
-			<div class="about-layout">
-				<img class="about-mark" src="${escapeHtml(ASSETS.sona)}" alt="Sona mark" />
-				<section class="about-copy hoverable">
-					<p class="eyebrow">About</p>
-					<h1 class="project-role-title">Senior Roblox Gameplay & Systems Engineer</h1>
-					<p>I am Sona, a Roblox gameplay and systems engineer focused on building practical, maintainable, and performant game systems in Luau.</p>
-					<p>My work sits between gameplay engineering, systems optimization, developer tooling, and production support. I enjoy turning messy constraints into simple, shippable solutions: improving inherited codebases, building reusable tools, tuning player-facing systems, and helping teams move faster without sacrificing reliability.</p>
-					<p>My engineering style is influenced by data-oriented design and the belief that simpler systems are easier to ship, debug, teach, and extend.</p>
-					<p>Outside of programming, I compose music for games and experimental media, which shapes how I think about atmosphere, pacing, and player experience.</p>
-					<div class="about-actions">
-						<a href="${escapeHtml(LINKS.sonaGithub)}" target="_blank" rel="noreferrer">GitHub</a>
-						<a href="${escapeHtml(LINKS.sonaRoblox)}" target="_blank" rel="noreferrer">Roblox</a>
-						<button class="nav-trigger" data-route="work">Featured Work</button>
-					</div>
-				</section>
-			</div>
+		<section class="hero reveal">
+			<h1 class="hero-title">About<br><span class="thin">Sona</span></h1>
+			<p class="hero-thesis">I am a Roblox gameplay and systems engineer focused on building practical, maintainable, and performant game systems in Luau.</p>
+		</section>
+		<section class="two-col reveal" style="margin-top:48px">
+			<div class="panel"><h2>Engineering Thesis</h2><p>My work sits between gameplay engineering, systems optimization, developer tooling, and production support. I enjoy turning messy constraints into simple, shippable solutions: improving inherited codebases, building reusable tools, tuning player-facing systems, and helping teams move faster without sacrificing reliability.</p><p>My engineering style is influenced by data-oriented design and the belief that simpler systems are easier to ship, debug, teach, and extend.</p></div>
+			<div class="panel"><h2>Creative Context</h2><p>Outside of programming, I compose music for games and experimental media. That has shaped how I think about atmosphere, pacing, readability, and player experience.</p>${tags(["Roblox", "Luau", "Gameplay", "Systems", "Tooling", "Performance", "QA"])}</div>
+			<div class="panel"><h2>Public Links</h2>${list(["GitHub: SolarScuffle-Bot", "Roblox profile: Sona", "NPA GitHub and Roblox links are included in the header as supporting links."])}<div class="action-row"><a class="ghost-button" href="${LINKS.sonaGithub}" target="_blank" rel="noreferrer">GitHub</a><a class="ghost-button" href="${LINKS.sonaRoblox}" target="_blank" rel="noreferrer">Roblox</a></div></div>
+			<div class="panel"><h2>Resume / Contact</h2><p>The public site still needs a downloadable resume PDF and a portfolio-safe contact method. Until those are added, this section should stay visibly marked as unfinished.</p><button class="ghost-button nav-trigger" data-route="gaps">View Missing Items</button></div>
 		</section>
 	`;
 }
 
 function renderGaps() {
-	const globalGaps = [
-		{ title: "Eclipsis Case Study", body: "Add before/after charts, pipe-networking diagrams, terrain/rendering notes, and exact screenshots supporting the strongest performance metrics." },
-		{ title: "Game Feel Video", body: "Offset Camera and Rocket Spleef need short clips. These should be visible because game feel is hard to prove with text alone." },
-		{ title: "Squash Proof", body: "Add GitHub stars, package usage, community references, benchmark comparisons, or real adoption evidence before using stronger wording than recognized." },
-		{ title: "Asylum Life Artifacts", body: "Add a minigame/chore clip, feature screenshots, sanitized QA checklist, and style-guide excerpt." },
-		{ title: "Reflector Honesty", body: "Keep AI-assisted framing. Add a workflow clip, edge-case gallery, and known-limitations note." },
-		{ title: "Testimonials", body: "Keep only professional quotes about reliability, systems skill, low-bug output, polish, mentorship, and calm problem-solving." }
-	];
+	const rows = Object.values(projects).flatMap(p => p.missing.map(item => ({ project: p.title, item })));
 	return `
-		<section class="gaps-page">
-			<header class="route-heading">
-				<p class="eyebrow">Draft review</p>
-				<h1 class="project-role-title">What Still Needs Proof</h1>
-				<p class="center-copy">The site is structured as a full portfolio draft, but these artifacts decide how strong the final hiring-manager version becomes.</p>
-			</header>
-			<section class="gap-grid">
-				${globalGaps.map((gap) => `
-					<section class="gap-card hoverable">
-						<h2>${escapeHtml(gap.title)}</h2>
-						<p>${escapeHtml(gap.body)}</p>
-					</section>
-				`).join("")}
-			</section>
-			<section class="gap-matrix hoverable">
-				<h2>Per-project missing media</h2>
-				<div class="gap-matrix-list">
-					${Object.values(projects).map((project) => `
-						<div>
-							<strong>${escapeHtml(project.title)}</strong>
-							<span>${escapeHtml(project.gaps.join(" / "))}</span>
-						</div>
-					`).join("")}
-				</div>
-			</section>
+		<section class="hero reveal">
+			<h1 class="hero-title">Draft Gaps<br><span class="thin">Before Final</span></h1>
+			<p class="hero-thesis">This page collects what the current draft exposes: missing proof, media, metrics, contribution details, and public-safe artifacts.</p>
 		</section>
+		<section class="two-col reveal" style="margin-top:48px">
+			<div class="panel"><h2>Now Filled</h2>${list(["Sona GitHub and Roblox links.", "NPA GitHub and Roblox links.", "Public links for Asylum Life, Eclipsis, Squash, Rocket Spleef, Offset Camera, Reflector, and Depths of Industry.", "WEBP images for main cards and supporting project cards."])}</div>
+			<div class="panel"><h2>Highest Priority</h2>${list(["Create the Eclipsis diagrams/charts first because they support the strongest metrics.", "Record Offset Camera and Rocket Spleef videos because game feel is not proven by text.", "Collect Squash adoption or benchmark evidence before using stronger language than 'recognized'.", "Prepare sanitized QA/style-guide artifacts for Asylum Life and Production Leadership.", "Keep Reflector honest as AI-assisted implementation."])}</div>
+		</section>
+		<section class="section-heading reveal"><h2>Project-Specific Gaps</h2><p>Each item below corresponds to proof that would make the draft safer, more concrete, or more hiring-manager-readable.</p></section>
+		<section class="panel reveal"><div class="missing-list">${rows.map(row => `<div class="missing-item"><strong>${escapeHtml(row.project)}</strong><span>${escapeHtml(row.item)}</span></div>`).join("")}</div></section>
 	`;
 }
 
-bindRouteTriggers(document);
-window.addEventListener("hashchange", () => render(routeFromHash()));
-render(routeFromHash());
+function getTemplate(route) {
+	if (projects[route]) return renderCaseStudy(route);
+	if (route === "work") return renderWork();
+	if (route === "leadership") return renderLeadership();
+	if (route === "about") return renderAbout();
+	if (route === "gaps") return renderGaps();
+	return renderHome();
+}
+function setupReveals() {
+	const revealEls = [...document.querySelectorAll(".reveal")];
+	if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+		revealEls.forEach(el => el.classList.add("in"));
+		return;
+	}
+	const observer = new IntersectionObserver(entries => {
+		for (const entry of entries) {
+			if (entry.isIntersecting) {
+				entry.target.classList.add("in");
+				observer.unobserve(entry.target);
+			}
+		}
+	}, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
+	revealEls.forEach(el => observer.observe(el));
+}
+function setupInteractiveElements() {
+	for (const cardEl of view.querySelectorAll(".project-card, .work-tile, .panel, .media-box, .mini-card")) {
+		cardEl.addEventListener("pointermove", event => {
+			const rect = cardEl.getBoundingClientRect();
+			cardEl.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+			cardEl.style.setProperty("--my", `${event.clientY - rect.top}px`);
+		});
+	}
+	for (const trigger of view.querySelectorAll(".nav-trigger")) {
+		trigger.addEventListener("click", () => navigate(trigger.dataset.route));
+	}
+}
+function setNav(route) {
+	for (const pill of document.querySelectorAll(".nav-pill")) {
+		pill.removeAttribute("aria-current");
+		if (pill.dataset.route === route || (projects[route] && pill.dataset.route === "work")) {
+			pill.setAttribute("aria-current", "page");
+		}
+	}
+}
+function normalizeRoute(raw) {
+	const value = (raw || "home").replace(/^#/, "").trim();
+	return routes.has(value) ? value : "home";
+}
+function render(route, replace = false) {
+	route = normalizeRoute(route);
+	if (activeRoute === route && !replace) return;
+	activeRoute = route;
+	setNav(route);
+	view.classList.add("is-exiting");
+	window.setTimeout(() => {
+		view.innerHTML = getTemplate(route);
+		view.classList.remove("is-exiting");
+		view.classList.add("is-entering");
+		window.setTimeout(() => view.classList.remove("is-entering"), 380);
+		setupReveals();
+		setupInteractiveElements();
+		window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+		view.focus({ preventScroll: true });
+	}, 210);
+}
+function navigate(route) {
+	route = normalizeRoute(route);
+	if (normalizeRoute(location.hash) !== route) history.pushState({ route }, "", `#${route}`);
+	render(route);
+}
+window.addEventListener("popstate", () => render(location.hash, true));
+window.addEventListener("hashchange", () => render(location.hash));
+for (const trigger of document.querySelectorAll(".nav-trigger")) trigger.addEventListener("click", () => navigate(trigger.dataset.route));
+render(location.hash || "home", true);
