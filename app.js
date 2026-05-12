@@ -264,7 +264,7 @@ const supportProjectIds = ["reflector", "voxel-destruction", "cursor", "depths-o
 const signals = [
 	{ title: "Production", projects: ["asylum-life", "eclipsis"], text: "Feature delivery, live debugging, QA expectations, and release risk under real production pressure." },
 	{ title: "Gameplay Feel", projects: ["offset-camera", "rocket-spleef", "asylum-life"], text: "Camera comfort, readable interactions, GUI systems, and player-facing iteration." },
-	{ title: "Systems Optimization", projects: ["eclipsis", "voxel-destruction"], text: "Legacy refactors, update bounds, rendering cost, load time, and data-oriented structure." },
+	{ title: "Systems Optimization", projects: ["eclipsis", "voxel-destruction", "squash"], text: "Legacy refactors, update bounds, compact data shape, rendering cost, and load-time work." },
 	{ title: "Luau Infrastructure", projects: ["squash", "cursor"], text: "Reusable APIs, compact encoding, documentation, and library maintainership." },
 	{ title: "Project Ownership", projects: ["squash", "rocket-spleef", "offset-camera"], text: "Projects carried from problem definition into public release, documentation, or iteration." },
 	{ title: "Team Coordination", projects: ["asylum-life", "eclipsis"], text: "Cross-team communication, priority shaping, QA handoffs, and workload balancing." },
@@ -308,7 +308,7 @@ function escapeHtml(value) {
 
 function projectLink(id, label = null) {
 	const project = projects[id];
-	return `<a href="#project/${project.id}">${escapeHtml(label ?? project.title)}</a>`;
+	return `<a class="skill-project-tag" href="#project/${project.id}"><span>${escapeHtml(label ?? project.title)}</span><small>${escapeHtml(project.tags[0])}</small></a>`;
 }
 
 function tags(project, limit = 3) {
@@ -354,7 +354,7 @@ function renderHome() {
 				<div>
 					<div class="hero-actions">
 						<a class="link-pill" href="#work">Work</a>
-						<a class="link-pill" href="#signals">Signals</a>
+						<a class="link-pill" href="#skills">Skills</a>
 						<a class="link-pill" href="${links.resume}" target="_blank" rel="noopener noreferrer">Resume</a>
 					</div>
 					<div class="metric-strip">
@@ -374,7 +374,7 @@ function renderHome() {
 						<div class="project-list">
 							${pillar.projects.map(id => {
 								const project = projects[id];
-								return `<a class="project-line" href="#project/${id}"><span>${escapeHtml(project.title)}</span><span>${escapeHtml(project.tags[0])}</span></a>`;
+								return `<a class="project-line" href="#project/${id}" style="--line-img:url('${project.image}')"><span>${escapeHtml(project.title)}</span><span>${escapeHtml(project.tags[0])}</span></a>`;
 							}).join("")}
 						</div>
 					</article>
@@ -394,9 +394,9 @@ function renderWork() {
 	`;
 }
 
-function renderSignals() {
+function renderSkills() {
 	return html`
-		${pageTitle("Interviewer Map", "Signals", "The same projects sorted by the questions an interviewer is likely trying to answer.")}
+		${pageTitle("Skill Map", "Skills", "The same work sorted by what it proves: production, feel, systems, tooling, ownership, and communication.")}
 		<section class="matrix-grid">
 			${signals.map(signal => html`
 				<article class="signal-card">
@@ -482,7 +482,6 @@ function renderProject(id) {
 					<p>${escapeHtml(project.role)}</p>
 					<p>${escapeHtml(project.status)}</p>
 					${tags(project, 5)}
-					<div class="hero-actions"><a class="small-action" href="${project.link}" target="_blank" rel="noopener noreferrer">Open Link</a></div>
 				</div>
 			</div>
 			<div class="case-main">
@@ -534,7 +533,7 @@ function caseNav(project) {
 			</div>
 			<div class="hero-actions">
 				<a class="link-pill" href="#work">Work</a>
-				<a class="link-pill" href="#signals">Signals</a>
+				<a class="link-pill" href="#skills">Skills</a>
 			</div>
 		</div>
 	`;
@@ -542,13 +541,13 @@ function caseNav(project) {
 
 function caseHero(project) {
 	return html`
-		<div class="case-hero">
+		<a class="case-hero" href="${project.link}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(project.title)} link">
 			<img src="${project.image}" alt="${escapeHtml(project.title)}" loading="lazy" />
 			<div class="case-hero-text">
 				<h1>${escapeHtml(project.title)}</h1>
 				<p>${escapeHtml(project.role)}</p>
 			</div>
-		</div>
+		</a>
 	`;
 }
 
@@ -597,7 +596,8 @@ function renderMissing() {
 const routes = {
 	home: renderHome,
 	work: renderWork,
-	signals: renderSignals,
+	skills: renderSkills,
+	signals: renderSkills,
 	technical: renderTechnical,
 	leadership: renderLeadership,
 	about: renderAbout
@@ -605,7 +605,8 @@ const routes = {
 
 function parseRoute() {
 	const hash = window.location.hash.replace(/^#/, "") || "home";
-	const [name, id] = hash.split("/");
+	const [rawName, id] = hash.split("/");
+	const name = rawName === "signals" ? "skills" : rawName;
 	return { name, id };
 }
 

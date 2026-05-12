@@ -6,7 +6,7 @@ This is a raw HTML/CSS/JavaScript single-page portfolio draft built around the f
 
 - Home: résumé mirror and three experience pillars.
 - Work: project cabinet.
-- Signals: interviewer-oriented skill map.
+- Skills: skill map organized around the proof each project provides.
 - Technical: engineering-domain board.
 - Leadership: production and team-reliability board.
 - About: short bio and links.
@@ -30,3 +30,10 @@ The portfolio is intentionally data-driven in `app.js`. Page structure and proje
 ## Font note
 
 The CSS prefers `Cascadia Code ExtraLight` for display/UI text and uses a clean sans-serif fallback stack for content text. No font files are bundled.
+
+## Current iteration
+
+- Primary background updated to `#111122`.
+- Header height increased.
+- Home pillar project buttons and Skills project tags now use image-backed rounded blocks.
+- Project hero panels are clickable external links and scaled down so quick facts stay visible.
