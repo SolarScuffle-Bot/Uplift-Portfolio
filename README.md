@@ -1,4 +1,4 @@
-# Sona Portfolio Prototype v4
+# Sona Portfolio Prototype v6
 
 Static hash-routed portfolio prototype for a Senior Roblox Gameplay Engineer application.
 
@@ -20,10 +20,18 @@ The site uses hash routes so it can be hosted without rewrite rules:
 - `#/reflector`
 - `#/ocean-demo`
 
-## Media system
+## Release media policy
 
-Case-study panels may have media attached. Panels with media show a small corner marker and a blurred/faded background image. Clicking the panel opens a centered scrollable modal with media placement notes. Replace placeholder slots by editing `sectionMediaSlots` in `app.js` and adding `src` paths to assets.
+The media list has been pruned for a same-day release. Only panel-attached slots listed in each case study's "Minimal media to fill manually" section are considered first-release evidence. The rest of the case-study panels are intentionally text-only.
 
-The Eclipsis pipe network graph is stored at:
+Current release-critical media slots:
 
-- `assets/PipeNetworkGraphs.webp`
+- Asylum Life feature reel
+- Pipe network graph diagram, already filled at `assets/PipeNetworkGraphs.webp`
+- Terrain optimization before/after
+- Declarative schema example
+- Rocket feel and authority clip
+
+## Email and favicon
+
+The header email button uses `mailto:` and also attempts to copy `synapsescuffle@gmail.com` as a fallback. The site favicon is included as `favicon.ico`, with a duplicate at `assets/favicon.ico`.

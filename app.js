@@ -2,7 +2,7 @@ const links = Object.freeze({
 	sonaGithub: "https://github.com/SolarScuffle-Bot",
 	npaGithub: "https://github.com/3065325",
 	sonaRoblox: "https://www.roblox.com/users/2722909519/profile",
-	email: "mailto:synapsescuffle@gmail.com",
+	email: "mailto:synapsescuffle@gmail.com?subject=Portfolio%20Inquiry",
 	discord: "https://discord.com/users/864793728879558667",
 	resume: "assets/Sona_Resume.pdf",
 	asylum: "https://www.roblox.com/games/132352755769957/Asylum-Life",
@@ -404,217 +404,30 @@ const proofMap = Object.freeze([
 ]);
 
 
-const projectIntroMedia = Object.freeze({
-	"asylum-life": [
-		{ kind: "video", label: "30-second gameplay/production reel" },
-		{ kind: "image", label: "Clickable 1:1 experience thumbnail" },
-		{ kind: "doc", label: "Sanitized QA handoff example" }
-	],
-	"eclipsis": [
-		{ kind: "diagram", label: "Pipe network graph diagram", src: "assets/PipeNetworkGraphs.webp" },
-		{ kind: "image", label: "Before/after terrain screenshots" },
-		{ kind: "image", label: "Profiler or draw-call evidence" }
-	],
-	"squash": [
-		{ kind: "image", label: "API example screenshot" },
-		{ kind: "diagram", label: "Schema composition diagram" },
-		{ kind: "image", label: "Benchmark table" }
-	],
-	"rocket-spleef": [
-		{ kind: "video", label: "Rocket feel gameplay clip" },
-		{ kind: "diagram", label: "Client-eager/server-authoritative flow" },
-		{ kind: "video", label: "Round event montage" }
-	],
-	"offset-camera": [
-		{ kind: "video", label: "FPS camera clip" },
-		{ kind: "video", label: "Shift-lock clip" },
-		{ kind: "video", label: "Over-the-shoulder clip" }
-	],
-	"depths-of-industry": [
-		{ kind: "video", label: "Placement system clip" },
-		{ kind: "video", label: "Cross-platform input clip" },
-		{ kind: "image", label: "Grid/rotation explanation" }
-	],
-	"reflector": [
-		{ kind: "video", label: "Reflection workflow clip" },
-		{ kind: "video", label: "Before/after reflection clip" },
-		{ kind: "image", label: "Rollback/safety proof" }
-	],
-	"ocean-demo": [
-		{ kind: "video", label: "Gerstner wave clip" },
-		{ kind: "video", label: "Buoy physics clip" },
-		{ kind: "diagram", label: "Weather-state wave composition" }
-	]
-});
+const projectIntroMedia = Object.freeze({});
 
 const sectionMediaSlots = Object.freeze({
 	"asylum-life": {
-		"Collaboration": [
-			{ kind: "doc", label: "Sanitized production handoff" },
-			{ kind: "image", label: "Update planning board or release outline" }
-		],
 		"Minigames": [
-			{ kind: "video", label: "Washing Clothes clip" },
-			{ kind: "video", label: "Painting clip" },
-			{ kind: "video", label: "Plunging/Tightening clips" }
-		],
-		"Emotes": [
-			{ kind: "video", label: "Radial selection UX clip" },
-			{ kind: "image", label: "Cross-platform input states" }
-		],
-		"Settings & Cosmetics": [
-			{ kind: "video", label: "Settings immediate feedback" },
-			{ kind: "video", label: "Cosmetics equip flow" }
-		],
-		"Doors & Elevators": [
-			{ kind: "image", label: "Before/after bug explanation" },
-			{ kind: "doc", label: "Scoped fix notes" }
-		],
-		"Operations Lead": [
-			{ kind: "doc", label: "Delegation/QA workflow excerpt" },
-			{ kind: "image", label: "Release checklist visual" }
-		],
-		"Mentorship": [
-			{ kind: "doc", label: "Styleguide excerpt" },
-			{ kind: "doc", label: "Architecture principles excerpt" }
-		],
-		"Exploit Security": [
-			{ kind: "diagram", label: "Remote authority model" },
-			{ kind: "doc", label: "Sanitized exploit postmortem" }
+			{ kind: "video", label: "Asylum Life feature reel" }
 		]
 	},
 	"eclipsis": {
 		"Pipe Networks": [
-			{ kind: "diagram", label: "Pipe network graph diagram", src: "assets/PipeNetworkGraphs.webp" },
-			{ kind: "diagram", label: "Replication/source-of-truth flow" },
-			{ kind: "image", label: "Before/after network debug view" }
+			{ kind: "diagram", label: "Pipe network graph diagram", src: "assets/PipeNetworkGraphs.webp" }
 		],
 		"Terrain Generation": [
-			{ kind: "image", label: "Before/after terrain screenshots" },
-			{ kind: "image", label: "Draw-call/profile proof" },
-			{ kind: "diagram", label: "Asset pipeline migration diagram" }
-		],
-		"Education": [
-			{ kind: "doc", label: "Data-oriented design teaching note" },
-			{ kind: "image", label: "Folder-per-feature structure screenshot" }
-		],
-		"Game Design": [
-			{ kind: "image", label: "Structure/balance comparison" },
-			{ kind: "doc", label: "Roadmap excerpt" },
-			{ kind: "image", label: "Community feedback summary" }
-		],
-		"Team Formation & Delegation": [
-			{ kind: "doc", label: "Team responsibility map" },
-			{ kind: "doc", label: "Tournament rules modernization" }
-		],
-		"Exploit Security": [
-			{ kind: "diagram", label: "Client eagerness/server authority boundary" },
-			{ kind: "code", label: "Typed remote interface excerpt", language: "luau" }
+			{ kind: "image", label: "Terrain optimization before/after" }
 		]
 	},
 	"squash": {
-		"Comprehensiveness": [
-			{ kind: "image", label: "Supported Roblox types table" }
-		],
 		"Innovative API": [
-			{ kind: "code", label: "Declarative schema example", language: "luau" },
-			{ kind: "diagram", label: "Composition tree diagram" }
-		],
-		"Optimizations": [
-			{ kind: "image", label: "Benchmark table" },
-			{ kind: "diagram", label: "Bitpacking layout diagram" },
-			{ kind: "code", label: "Generated runtime layout excerpt", language: "luau" }
-		],
-		"Educational Resource": [
-			{ kind: "diagram", label: "RemoteEvent RakNet layout" },
-			{ kind: "doc", label: "Best-practices documentation excerpt" }
-		],
-		"Documentation": [
-			{ kind: "image", label: "Docs navigation screenshot" }
+			{ kind: "code", label: "Declarative schema example", language: "luau" }
 		]
 	},
 	"rocket-spleef": {
 		"Rocket Launchers": [
-			{ kind: "video", label: "Launcher responsiveness clip" },
-			{ kind: "video", label: "Rocket jumping/knockback clip" }
-		],
-		"Server Authority": [
-			{ kind: "diagram", label: "Client-eager rocket ownership flow" },
-			{ kind: "code", label: "Server validation excerpt", language: "luau" }
-		],
-		"Crates": [
-			{ kind: "image", label: "Crate progression UI" },
-			{ kind: "diagram", label: "5-minute to 12-day unlock curve" }
-		],
-		"Events & Tools": [
-			{ kind: "video", label: "Events montage" },
-			{ kind: "video", label: "Tool variety montage" }
-		],
-		"Game Design": [
-			{ kind: "doc", label: "Round loop design note" },
-			{ kind: "diagram", label: "Reward loop diagram" }
-		],
-		"Monetization & Progression": [
-			{ kind: "diagram", label: "Monetization/progression map" },
-			{ kind: "image", label: "Planned cosmetics/crafting mockup" }
-		]
-	},
-	"offset-camera": {
-		"Native Integration": [
-			{ kind: "code", label: "Native camera integration excerpt", language: "luau" }
-		],
-		"Drop-In Replacement": [
-			{ kind: "video", label: "Default camera parity clip" },
-			{ kind: "video", label: "Over-the-shoulder comparison" }
-		],
-		"Torso Replication": [
-			{ kind: "diagram", label: "Torso replication boundary" }
-		],
-		"Customization & Docs": [
-			{ kind: "image", label: "Settings/API screenshot" },
-			{ kind: "image", label: "Documentation screenshot" }
-		]
-	},
-	"depths-of-industry": {
-		"Placement System": [
-			{ kind: "video", label: "Grid placement clip" },
-			{ kind: "diagram", label: "Cubic rotation states" }
-		],
-		"Cross-Platform": [
-			{ kind: "video", label: "Mobile placement clip" },
-			{ kind: "video", label: "Controller placement clip" }
-		],
-		"Excellent UX": [
-			{ kind: "video", label: "Springs/sound feedback clip" },
-			{ kind: "image", label: "UX state annotations" }
-		]
-	},
-	"reflector": {
-		"Comprehensiveness": [
-			{ kind: "video", label: "Mixed selection reflection clip" },
-			{ kind: "image", label: "Supported instance matrix" }
-		],
-		"GUI UX": [
-			{ kind: "video", label: "Minimal plugin workflow clip" },
-			{ kind: "image", label: "Header/control layout screenshot" }
-		],
-		"Safety": [
-			{ kind: "video", label: "Rollback/cancel demonstration" },
-			{ kind: "doc", label: "Validation error examples" }
-		],
-		"AI Assisted": [
-			{ kind: "doc", label: "Human-directed problem log" },
-			{ kind: "diagram", label: "AI-assisted workflow boundary" }
-		]
-	},
-	"ocean-demo": {
-		"Efficient Gerstner Waves": [
-			{ kind: "video", label: "Wave field clip" },
-			{ kind: "diagram", label: "Composable wave parameters" }
-		],
-		"Physically-Simulated Buoys & Boats": [
-			{ kind: "video", label: "Buoy response clip" },
-			{ kind: "video", label: "Boat response clip" }
+			{ kind: "video", label: "Rocket feel and authority clip" }
 		]
 	}
 });
@@ -692,11 +505,27 @@ function sectionsFor(project) {
 }
 
 const mediaPanelAssignments = Object.freeze({
+	"asylum-life": {
+		"Minigames": {
+			"Washing Clothes": "Asylum Life feature reel"
+		}
+	},
 	"eclipsis": {
 		"Pipe Networks": {
-			"Hierarchical Graphs": "Pipe network graph diagram",
-			"Existential Processing": "Before/after network debug view",
-			"Centralized Replication": "Replication/source-of-truth flow"
+			"Hierarchical Graphs": "Pipe network graph diagram"
+		},
+		"Terrain Generation": {
+			"Reduced Part Count": "Terrain optimization before/after"
+		}
+	},
+	"squash": {
+		"Innovative API": {
+			"Declarative Schemas": "Declarative schema example"
+		}
+	},
+	"rocket-spleef": {
+		"Rocket Launchers": {
+			"Zero-Latency Feel": "Rocket feel and authority clip"
 		}
 	}
 });
@@ -780,10 +609,8 @@ function renderEvidenceCard(project, section, group, sectionIndex, groupIndex) {
 
 function mediaChecklist(project) {
 	const byProject = sectionMediaSlots[project.id] || {};
-	const intro = (projectIntroMedia[project.id] || []).map((slot) => slot.label);
 	const specific = Object.values(byProject).flat().map((slot) => slot.label);
-	const legacy = project.mediaSlots || [];
-	const unique = [...new Set([...intro, ...specific, ...legacy])];
+	const unique = [...new Set(specific)];
 	return unique;
 }
 
@@ -912,16 +739,18 @@ function renderProject(id) {
 				`).join("")}
 			</div>
 
+			${checklist.length > 0 ? `
 			<section class="media-needed" aria-labelledby="media-needed-title">
 				<div class="section-heading compact">
-					<p class="eyebrow">Evidence checklist</p>
-					<h2 id="media-needed-title">Media to fill manually</h2>
-					<p>Panels with a corner marker already know where their media belongs. This checklist keeps the missing assets visible while the page is still skeletal.</p>
+					<p class="eyebrow">Release checklist</p>
+					<h2 id="media-needed-title">Minimal media to fill manually</h2>
+					<p>Only these panel-attached assets are treated as first-release media. The rest of this case study is intentionally text-only so the portfolio can ship today.</p>
 				</div>
-				<div class="slot-grid">
+				<div class="slot-grid compact-slots">
 					${checklist.map((slot) => `<div class="media-slot"><span>needed</span><strong>${escapeHtml(slot)}</strong></div>`).join("")}
 				</div>
 			</section>
+			` : ""}
 		</article>
 	`;
 }
@@ -1061,8 +890,54 @@ function route() {
 	app.focus({ preventScroll: true });
 }
 
+function showToast(message) {
+	const oldToast = document.querySelector("[data-site-toast]");
+	if (oldToast) {
+		oldToast.remove();
+	}
+
+	const toast = document.createElement("div");
+	toast.className = "site-toast";
+	toast.setAttribute("data-site-toast", "");
+	toast.textContent = message;
+	document.body.appendChild(toast);
+
+	window.setTimeout(() => {
+		toast.classList.add("is-hiding");
+		window.setTimeout(() => toast.remove(), 180);
+	}, 2100);
+}
+
+function copyEmailAndOpenClient(anchor) {
+	const email = anchor.getAttribute("data-email-link") || "synapsescuffle@gmail.com";
+	const href = anchor.getAttribute("href") || `mailto:${email}`;
+	let copied = false;
+
+	if (navigator.clipboard && window.isSecureContext) {
+		navigator.clipboard.writeText(email)
+			.then(() => showToast("Email copied. Opening mail client…"))
+			.catch(() => showToast(email));
+		copied = true;
+	}
+
+	if (!copied) {
+		showToast(email);
+	}
+
+	window.setTimeout(() => {
+		window.location.href = href;
+	}, 140);
+}
+
 
 document.addEventListener("click", (event) => {
+	const emailAnchor = event.target.closest("[data-email-link]");
+	if (emailAnchor) {
+		event.preventDefault();
+		copyEmailAndOpenClient(emailAnchor);
+		return;
+	}
+
 	const mediaButton = event.target.closest("[data-media-id]");
 	if (mediaButton) {
 		event.preventDefault();
