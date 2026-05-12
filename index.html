@@ -3,46 +3,48 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Sona · Senior Gameplay & Systems Engineer</title>
-	<meta name="description" content="Sona's Roblox gameplay, systems, tooling, production, and leadership portfolio." />
+	<title>Sona · Senior Roblox Gameplay Engineer</title>
+	<meta name="description" content="Sona's Roblox gameplay engineering portfolio for live-service gameplay, systems, UX, tooling, coordination, and mentorship." />
 	<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-	<header class="site-header" aria-label="Primary header">
-		<a class="brand-logo hit" href="#home" aria-label="Return home">
-			<img src="assets/Sona.webp" alt="Sona profile icon" />
+	<header class="site-header" aria-label="Portfolio header">
+		<a class="brand" href="#/" aria-label="Return to landing page">
+			<span class="brand-mark"><img src="assets/Sona.webp" alt="Sona icon" /></span>
+			<span class="brand-name">Sona</span>
 		</a>
-		<div class="brand-name" aria-label="Sona">Sona</div>
 
-		<nav class="account-links" aria-label="External profiles">
-			<a class="account-button" href="https://github.com/SolarScuffle-Bot" target="_blank" rel="noopener noreferrer" aria-label="Open Sona GitHub">
+		<nav class="profile-links" aria-label="External links">
+			<a class="profile-link icon-with-label" href="https://github.com/SolarScuffle-Bot" target="_blank" rel="noopener noreferrer" aria-label="Open Sona GitHub">
 				<img src="assets/Github.webp" alt="" />
-				<span>Sona</span>
+				<span>Sona GitHub</span>
 			</a>
-			<a class="account-button" href="https://github.com/3065325" target="_blank" rel="noopener noreferrer" aria-label="Open NPA GitHub">
+			<a class="profile-link icon-with-label" href="https://github.com/3065325" target="_blank" rel="noopener noreferrer" aria-label="Open NPA GitHub">
 				<img src="assets/Github.webp" alt="" />
-				<span>NPA</span>
+				<span>NPA GitHub</span>
 			</a>
-			<a class="icon-button" href="https://www.roblox.com/users/2722909519/profile" target="_blank" rel="noopener noreferrer" aria-label="Open Sona Roblox profile">
+			<a class="profile-link icon-with-label" href="https://www.roblox.com/users/2722909519/profile" target="_blank" rel="noopener noreferrer" aria-label="Open Sona Roblox profile">
 				<img src="assets/Roblox.webp" alt="" />
+				<span>Roblox</span>
+			</a>
+			<a class="profile-link icon-with-label" href="mailto:synapsescuffle@gmail.com" aria-label="Email Sona">
+				<img src="assets/Email.webp" alt="" />
+				<span>Email</span>
+			</a>
+			<a class="profile-link icon-with-label" href="https://discord.com/users/864793728879558667" target="_blank" rel="noopener noreferrer" aria-label="Open Discord profile">
+				<img src="assets/Discord.webp" alt="" />
+				<span>Discord</span>
+			</a>
+			<a class="profile-link icon-with-label" href="assets/Sona_Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open résumé">
+				<img src="assets/Resume.webp" alt="" />
+				<span>Résumé</span>
 			</a>
 		</nav>
 
-		<nav class="main-nav" aria-label="Portfolio sections">
-			<a href="#home" data-route="home">Home</a>
-			<a href="#work" data-route="work">Work</a>
-			<a href="#skills" data-route="skills">Skills</a>
-			<a href="#technical" data-route="technical">Technical</a>
-			<a href="#leadership" data-route="leadership">Leadership</a>
-			<a href="#about" data-route="about">About</a>
-		</nav>
+		<div class="header-balance" aria-hidden="true"></div>
 	</header>
 
-	<main id="app" class="app-shell" tabindex="-1" aria-live="polite"></main>
-
-	<template id="route-template">
-		<section class="route-view"></section>
-	</template>
+	<main id="app" class="app-shell" tabindex="-1"></main>
 
 	<script src="app.js"></script>
 </body>

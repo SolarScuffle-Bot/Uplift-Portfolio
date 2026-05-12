@@ -1,18 +1,18 @@
-# Sona Portfolio Compact v8
+# Sona Portfolio Prototype
 
-Raw HTML/CSS/JS single-page portfolio draft.
+Static, hash-routed portfolio prototype for a Senior Roblox Gameplay Engineer application.
 
-Current focus:
-- Resume-shaped home page
-- Work cabinet
-- Skills map
-- Technical frame layout for legacy systems, server authority, optimization, and tooling/libraries
-- Leadership roadmap with clickable example panels
-- Compact project case files
+## How to edit
 
-Run locally by opening `index.html` or serving the folder with any static file server.
+- Open `index.html` in a browser, or serve the folder with any static server.
+- Project and case-study content lives in `app.js`.
+- Visual styling lives in `styles.css`.
+- Images, icons, PDFs, and diagrams live in `assets/`.
 
+## Recent implementation notes
 
-## v8 Update
-
-Added Rocket Spleef server-authority proof: client prediction, server validation, reconciliation, rocket pooling, a hand-drawn authority flow diagram, and the external MP4 demo link.
+- Header buttons are center-justified and include GitHub, Roblox, email, Discord, and résumé links.
+- Redundant landing-page buttons were removed. Project images and titles navigate to case studies; case pages keep one external text link when useful.
+- Each case-study page now has inline media slots showing where videos, images, diagrams, code excerpts, and docs should be added.
+- The Eclipsis page now puts Pipe Networks first.
+- The supplied pipe-network graph image was converted to `assets/PipeNetworkGraphs.webp` and placed in the Eclipsis overview and Pipe Networks section.
