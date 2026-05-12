@@ -1,23 +1,32 @@
-# Sona Portfolio Draft — v2 Clean Header
+# Sona Portfolio Compact Draft
 
-Raw HTML/CSS/JavaScript single-page portfolio draft.
+This is a raw HTML/CSS/JavaScript single-page portfolio draft built around the final résumé structure and the newer box-layout plan.
 
-This version starts from the cleaned v2 base and updates the header to the requested order:
+## Public navigation
 
-`LOGO NAME GITHUB1 GITHUB2 ROBLOX MENU_BUTTONS`
+- Home: résumé mirror and three experience pillars.
+- Work: project cabinet.
+- Signals: interviewer-oriented skill map.
+- Technical: engineering-domain board.
+- Leadership: production and team-reliability board.
+- About: short bio and links.
 
-It also removes visible white borders around header images and buttons while preserving the v2 element scale, hover behavior, route transitions, and content structure.
+## Project detail views
 
-Open `index.html` directly or serve the folder with any static server.
+Project cards open hash routes such as `#project/eclipsis`. These use reusable case-file blocks:
 
+- Hero / quick facts
+- Proof statement
+- My Contributions
+- Result / Impact
+- Media
 
-## v2 clean header no-summary
+Eclipsis has a specialized metric/diagram layout because the pipe-network asset is currently the strongest technical proof artifact.
 
-- Removed the three home-page `summary` cards.
-- Kept the Technical Expertise card.
-- Added explicit focus suppression for the routed main view to prevent the transient white outline around the page content.
+## Structure note
 
+The portfolio is intentionally data-driven in `app.js`. Page structure and project content can change as more proof arrives, especially clips, diagrams, metrics, screenshots, and adoption data.
 
-## Latest change
+## Font note
 
-Added Eclipsis pipe-network case-study images: a clean optimization diagram and annotated engineering sketch. These are used on the Eclipsis case-study page.
+The CSS prefers `Cascadia Code ExtraLight` for display/UI text and uses a clean sans-serif fallback stack for content text. No font files are bundled.

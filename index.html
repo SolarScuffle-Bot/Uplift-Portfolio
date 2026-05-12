@@ -3,53 +3,47 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="Sona — Senior Roblox Gameplay & Systems Engineer portfolio." />
-	<meta name="theme-color" content="#0d0e1d" />
-	<title>Sona — Roblox Gameplay & Systems Engineer</title>
-	<link rel="preload" href="assets/Sona.webp" as="image" type="image/webp" />
-	<link rel="preload" href="assets/Github.webp" as="image" type="image/webp" />
-	<link rel="preload" href="assets/Roblox.webp" as="image" type="image/webp" />
-	<link rel="preload" href="assets/AsylumLife.webp" as="image" type="image/webp" />
+	<title>Sona · Senior Gameplay & Systems Engineer</title>
+	<meta name="description" content="Sona's Roblox gameplay, systems, tooling, production, and leadership portfolio." />
 	<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-	<a class="skip-link" href="#main">Skip to content</a>
-	<div class="site-shell">
-		<header class="topbar" aria-label="Site header">
-			<div class="topbar-cluster" aria-label="Profile links">
-				<button class="profile-home nav-trigger" data-route="home" aria-label="Go home">
-					<img src="assets/Sona.webp" alt="Sona logo" />
-				</button>
+	<header class="site-header" aria-label="Primary header">
+		<a class="brand-logo hit" href="#home" aria-label="Return home">
+			<img src="assets/Sona.webp" alt="Sona profile icon" />
+		</a>
+		<div class="brand-name" aria-label="Sona">Sona</div>
 
-				<span class="brand-name header-name" aria-label="Sona">Sona</span>
+		<nav class="account-links" aria-label="External profiles">
+			<a class="account-button" href="https://github.com/SolarScuffle-Bot" target="_blank" rel="noopener noreferrer" aria-label="Open Sona GitHub">
+				<img src="assets/Github.webp" alt="" />
+				<span>Sona</span>
+			</a>
+			<a class="account-button" href="https://github.com/3065325" target="_blank" rel="noopener noreferrer" aria-label="Open NPA GitHub">
+				<img src="assets/Github.webp" alt="" />
+				<span>NPA</span>
+			</a>
+			<a class="icon-button" href="https://www.roblox.com/users/2722909519/profile" target="_blank" rel="noopener noreferrer" aria-label="Open Sona Roblox profile">
+				<img src="assets/Roblox.webp" alt="" />
+			</a>
+		</nav>
 
-				<a class="account-stack" href="https://github.com/SolarScuffle-Bot" target="_blank" rel="noreferrer" aria-label="Sona GitHub">
-					<img src="assets/Github.webp" alt="" />
-					<span>Sona</span>
-				</a>
+		<nav class="main-nav" aria-label="Portfolio sections">
+			<a href="#home" data-route="home">Home</a>
+			<a href="#work" data-route="work">Work</a>
+			<a href="#signals" data-route="signals">Signals</a>
+			<a href="#technical" data-route="technical">Technical</a>
+			<a href="#leadership" data-route="leadership">Leadership</a>
+			<a href="#about" data-route="about">About</a>
+		</nav>
+	</header>
 
-				<a class="account-stack" href="https://github.com/3065325" target="_blank" rel="noreferrer" aria-label="NPA GitHub">
-					<img src="assets/Github.webp" alt="" />
-					<span>NPA</span>
-				</a>
+	<main id="app" class="app-shell" tabindex="-1" aria-live="polite"></main>
 
-				<a class="roblox-profile-link" href="https://www.roblox.com/users/2722909519/profile" target="_blank" rel="noreferrer" aria-label="Sona Roblox profile">
-					<img src="assets/Roblox.webp" alt="Roblox" />
-				</a>
-			</div>
+	<template id="route-template">
+		<section class="route-view"></section>
+	</template>
 
-			<nav class="topnav" aria-label="Primary navigation">
-				<button class="nav-pill nav-trigger" data-route="home">Home</button>
-				<button class="nav-pill nav-trigger" data-route="work">Work</button>
-				<button class="nav-pill nav-trigger" data-route="leadership">Leadership</button>
-				<button class="nav-pill nav-trigger" data-route="about">About</button>
-				<button class="nav-pill nav-trigger" data-route="gaps">Gaps</button>
-			</nav>
-		</header>
-
-		<main id="main" class="view" tabindex="-1" aria-live="polite"></main>
-	</div>
-
-	<script src="app.js" defer></script>
+	<script src="app.js"></script>
 </body>
 </html>
