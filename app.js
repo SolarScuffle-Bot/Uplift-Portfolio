@@ -119,10 +119,10 @@ const projects = Object.freeze({
 		pitch: "Pipe-network graph modernization, terrain/rendering optimization, game design, team formation, and education.",
 		proof: ["Performance", "Legacy systems", "Game design", "Delegation", "Security"],
 		stats: [
-			["1 Month", "pipe network push"],
+			["1 month", "pipe network push"],
 			["Graph", "network representation"],
 			["~24s → ~9s", "terrain load time"],
-			["~3000 → ~140", "draw calls"]
+			["~3000 → ~900", "draw calls"]
 		],
 		sections: [
 			{
@@ -691,52 +691,102 @@ function sectionsFor(project) {
 	return pipeNetworks ? [pipeNetworks, ...rest] : project.sections;
 }
 
-function mediaCard(slot) {
-	const kind = escapeHtml(slot.kind || "media");
-	const label = escapeHtml(slot.label || "Media placeholder");
-	if (slot.src) {
+const mediaPanelAssignments = Object.freeze({
+	"eclipsis": {
+		"Pipe Networks": {
+			"Hierarchical Graphs": "Pipe network graph diagram",
+			"Existential Processing": "Before/after network debug view",
+			"Centralized Replication": "Replication/source-of-truth flow"
+		}
+	}
+});
+
+const activeMedia = new Map();
+
+function mediaSlotsForSection(project, section) {
+	const byProject = sectionMediaSlots[project.id];
+	return byProject && byProject[section.title] ? byProject[section.title] : [];
+}
+
+function mediaForEvidence(project, section, groupTitle, groupIndex) {
+	const slots = mediaSlotsForSection(project, section);
+	if (slots.length === 0) {
+		return null;
+	}
+
+	const projectAssignments = mediaPanelAssignments[project.id];
+	const sectionAssignments = projectAssignments ? projectAssignments[section.title] : null;
+	const assignedLabel = sectionAssignments ? sectionAssignments[groupTitle] : null;
+	if (assignedLabel) {
+		return slots.find((slot) => slot.label === assignedLabel) || null;
+	}
+
+	return slots[groupIndex] || null;
+}
+
+function mediaBackgroundStyle(project, slot) {
+	const image = slot && slot.src ? slot.src : project.asset;
+	return image ? ` style="--media-bg: url('${escapeHtml(image)}')"` : "";
+}
+
+function mediaKindLabel(slot) {
+	return String(slot && slot.kind ? slot.kind : "media").toUpperCase();
+}
+
+function registerPanelMedia(project, section, groupTitle, groupText, slot, sectionIndex, groupIndex) {
+	const id = `media-${project.id}-${sectionIndex}-${groupIndex}`;
+	activeMedia.set(id, {
+		id,
+		projectTitle: project.title,
+		sectionTitle: section.title,
+		groupTitle,
+		groupText,
+		kind: slot.kind || "media",
+		label: slot.label || "Media placeholder",
+		src: slot.src || "",
+		fallbackSrc: project.asset || ""
+	});
+	return id;
+}
+
+function renderEvidenceCard(project, section, group, sectionIndex, groupIndex) {
+	const [title, text] = group;
+	const slot = mediaForEvidence(project, section, title, groupIndex);
+	if (!slot) {
 		return `
-			<figure class="media-card filled ${kind}">
-				<img src="${escapeHtml(slot.src)}" alt="${label}" loading="lazy" />
-				<figcaption><span>${kind}</span><strong>${label}</strong></figcaption>
-			</figure>
+			<div class="evidence-card">
+				<h3>${escapeHtml(title)}</h3>
+				<p>${escapeHtml(text)}</p>
+			</div>
 		`;
 	}
 
+	const mediaId = registerPanelMedia(project, section, title, text, slot, sectionIndex, groupIndex);
 	return `
-		<div class="media-card placeholder ${kind}">
-			<span>${kind} slot</span>
-			<strong>${label}</strong>
+		<div class="evidence-card has-media"${mediaBackgroundStyle(project, slot)}>
+			<button class="evidence-media-button" type="button" data-media-id="${escapeHtml(mediaId)}" aria-label="Open ${escapeHtml(slot.label)} media notes">
+				<span class="media-corner-icon" aria-hidden="true">⌄</span>
+			</button>
+			<div class="evidence-content">
+				<span class="attached-media-kind">${escapeHtml(mediaKindLabel(slot))}</span>
+				<h3>${escapeHtml(title)}</h3>
+				<p>${escapeHtml(text)}</p>
+			</div>
 		</div>
 	`;
-}
-
-function mediaStrip(slots, label = "Media placement") {
-	if (!slots || slots.length === 0) {
-		return "";
-	}
-
-	return `
-		<div class="media-strip" aria-label="${escapeHtml(label)}">
-			${slots.map(mediaCard).join("")}
-		</div>
-	`;
-}
-
-function sectionMedia(project, section) {
-	const byProject = sectionMediaSlots[project.id];
-	return byProject ? mediaStrip(byProject[section.title], `${project.title} ${section.title} media`) : "";
 }
 
 function mediaChecklist(project) {
 	const byProject = sectionMediaSlots[project.id] || {};
+	const intro = (projectIntroMedia[project.id] || []).map((slot) => slot.label);
 	const specific = Object.values(byProject).flat().map((slot) => slot.label);
 	const legacy = project.mediaSlots || [];
-	const unique = [...new Set([...specific, ...legacy])];
+	const unique = [...new Set([...intro, ...specific, ...legacy])];
 	return unique;
 }
 
 function renderLanding() {
+	activeMedia.clear();
 	const highlights = highlightIds.map((id) => projects[id]);
 
 	app.innerHTML = `
@@ -744,17 +794,14 @@ function renderLanding() {
 			<section class="hero" aria-labelledby="hero-title">
 				<div class="hero-copy">
 					<p class="eyebrow">Roblox · gameplay · systems · production</p>
-					<h1 id="hero-title">Senior Gameplay & Systems Engineer</h1>
-					<p class="hero-lede">I ship player-facing features, modernize legacy systems, and keep UX responsive with security baked in.</p>
+					<h1 id="hero-title">Senior Roblox Gameplay Engineer</h1>
+					<p class="hero-lede">I build player-facing Roblox features, stabilize legacy systems, and keep UX responsive while the server owns the truth.</p>
 				</div>
 				<aside class="hero-panel" aria-label="Role fit summary">
-					<div class="role-line"><span>01</span><strong>Technical Communication</strong></div>
-					<div class="role-line"><span>02</span><strong>Mentorship</strong></div>
-					<div class="role-line"><span>03</span><strong>Instinctive Security</strong></div>
-					<div class="role-line"><span>04</span><strong>Game Feel & UX</strong></div>
-					<div class="role-line"><span>05</span><strong>Production Coordination</strong></div>
-					<div class="role-line"><span>07</span><strong>Performance Programming</strong></div>
-					<div class="role-line"><span>08</span><strong>Legacy Codebases</strong></div>
+					<div class="role-line"><span>01</span><strong>Feature ownership</strong></div>
+					<div class="role-line"><span>02</span><strong>Game feel and UX</strong></div>
+					<div class="role-line"><span>03</span><strong>Server authority</strong></div>
+					<div class="role-line"><span>04</span><strong>Production coordination</strong></div>
 				</aside>
 			</section>
 
@@ -762,6 +809,7 @@ function renderLanding() {
 				<div class="section-heading">
 					<p class="eyebrow">Primary proof</p>
 					<h2 id="highlights-title">Project Highlights</h2>
+					<p>These are the first three things a hiring manager should inspect. Each proves a different part of the role.</p>
 				</div>
 				<div class="highlight-grid">
 					${highlights.map((project, index) => `
@@ -784,6 +832,11 @@ function renderLanding() {
 			</section>
 
 			<section class="section-block proof-index" aria-labelledby="proof-title">
+				<div class="section-heading compact">
+					<p class="eyebrow">Role-matched index</p>
+					<h2 id="proof-title">Find proof by requirement</h2>
+					<p>The categories below are arranged around the Senior Gameplay Engineer work: collaboration, technical judgment, gameplay, UX, and mentorship.</p>
+				</div>
 				<div class="proof-map">
 					${proofMap.map((bucket) => `
 						<section class="proof-bucket" aria-labelledby="bucket-${bucket.title.toLowerCase()}">
@@ -808,6 +861,7 @@ function renderLanding() {
 }
 
 function renderProject(id) {
+	activeMedia.clear();
 	const project = projects[id];
 	if (!project) {
 		renderLanding();
@@ -835,7 +889,6 @@ function renderProject(id) {
 				</a>
 			</header>
 
-			${mediaStrip(projectIntroMedia[project.id], `${project.title} overview media`)}
 			${statGrid(project)}
 
 			<nav class="case-jump" aria-label="Case study sections">
@@ -852,14 +905,8 @@ function renderProject(id) {
 						</div>
 						<div class="case-section-body">
 							<div class="evidence-grid">
-								${section.groups.map(([title, text]) => `
-									<div class="evidence-card">
-										<h3>${escapeHtml(title)}</h3>
-										<p>${escapeHtml(text)}</p>
-									</div>
-								`).join("")}
+								${section.groups.map((group, groupIndex) => renderEvidenceCard(project, section, group, index, groupIndex)).join("")}
 							</div>
-							${sectionMedia(project, section)}
 						</div>
 					</section>
 				`).join("")}
@@ -869,7 +916,7 @@ function renderProject(id) {
 				<div class="section-heading compact">
 					<p class="eyebrow">Evidence checklist</p>
 					<h2 id="media-needed-title">Media to fill manually</h2>
-					<p>Each section has an inline slot where the media belongs. This checklist keeps the remaining assets visible while the page is still skeletal.</p>
+					<p>Panels with a corner marker already know where their media belongs. This checklist keeps the missing assets visible while the page is still skeletal.</p>
 				</div>
 				<div class="slot-grid">
 					${checklist.map((slot) => `<div class="media-slot"><span>needed</span><strong>${escapeHtml(slot)}</strong></div>`).join("")}
@@ -877,6 +924,77 @@ function renderProject(id) {
 			</section>
 		</article>
 	`;
+}
+
+
+function modalMediaFigure(record) {
+	if (record.src) {
+		return `
+			<figure class="modal-media filled ${escapeHtml(record.kind)}">
+				<img src="${escapeHtml(record.src)}" alt="${escapeHtml(record.label)}" />
+				<figcaption>${escapeHtml(record.label)}</figcaption>
+			</figure>
+		`;
+	}
+
+	const fallbackStyle = record.fallbackSrc ? ` style="--media-bg: url('${escapeHtml(record.fallbackSrc)}')"` : "";
+	return `
+		<div class="modal-media placeholder ${escapeHtml(record.kind)}"${fallbackStyle}>
+			<span>${escapeHtml(record.kind)} slot</span>
+			<strong>${escapeHtml(record.label)}</strong>
+			<p>Replace this panel with the actual ${escapeHtml(record.kind)} when the asset is ready.</p>
+		</div>
+	`;
+}
+
+function showMediaModal(mediaId) {
+	const record = activeMedia.get(mediaId);
+	if (!record) {
+		return;
+	}
+
+	closeMediaModal();
+	document.body.classList.add("modal-open");
+	document.body.insertAdjacentHTML("beforeend", `
+		<div class="media-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" data-modal-overlay>
+			<section class="media-modal-panel">
+				<button class="modal-close" type="button" data-modal-close aria-label="Close media panel">×</button>
+				<div class="modal-scroll">
+					<p class="modal-kicker">${escapeHtml(record.projectTitle)} · ${escapeHtml(record.sectionTitle)}</p>
+					<h2 id="modal-title">${escapeHtml(record.groupTitle)}</h2>
+					<p class="modal-lede">${escapeHtml(record.groupText)}</p>
+					${modalMediaFigure(record)}
+					<div class="modal-copy">
+						<section>
+							<h3>What this media should prove</h3>
+							<p>This asset belongs directly to the <strong>${escapeHtml(record.groupTitle)}</strong> panel. It should make the claim concrete instead of adding a detached gallery image elsewhere on the page.</p>
+						</section>
+						<section>
+							<h3>What to include</h3>
+							<p>Use the strongest available ${escapeHtml(record.kind)}: a short clip, annotated screenshot, diagram, profiler capture, code excerpt, or sanitized document that demonstrates the claim without forcing the reader to infer the connection.</p>
+						</section>
+						<section>
+							<h3>Caption direction</h3>
+							<p>Explain the before-state, the decision made, and the observable result. Keep it specific enough that a hiring manager can understand the engineering or production judgment in one pass.</p>
+						</section>
+					</div>
+				</div>
+			</section>
+		</div>
+	`);
+
+	const closeButton = document.querySelector("[data-modal-close]");
+	if (closeButton) {
+		closeButton.focus({ preventScroll: true });
+	}
+}
+
+function closeMediaModal() {
+	const modal = document.querySelector("[data-modal-overlay]");
+	if (modal) {
+		modal.remove();
+	}
+	document.body.classList.remove("modal-open");
 }
 
 function getRoute() {
@@ -898,6 +1016,25 @@ function route() {
 
 
 document.addEventListener("click", (event) => {
+	const mediaButton = event.target.closest("[data-media-id]");
+	if (mediaButton) {
+		event.preventDefault();
+		showMediaModal(mediaButton.getAttribute("data-media-id"));
+		return;
+	}
+
+	if (event.target.closest("[data-modal-close]")) {
+		event.preventDefault();
+		closeMediaModal();
+		return;
+	}
+
+	const overlay = event.target.closest("[data-modal-overlay]");
+	if (overlay && event.target === overlay) {
+		closeMediaModal();
+		return;
+	}
+
 	const target = event.target.closest("[data-jump]");
 	if (!target) {
 		return;
@@ -908,6 +1045,12 @@ document.addEventListener("click", (event) => {
 	const element = id ? document.getElementById(id) : null;
 	if (element) {
 		element.scrollIntoView({ behavior: "smooth", block: "start" });
+	}
+});
+
+document.addEventListener("keydown", (event) => {
+	if (event.key === "Escape") {
+		closeMediaModal();
 	}
 });
 

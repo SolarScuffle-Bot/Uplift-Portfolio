@@ -1,18 +1,29 @@
-# Sona Portfolio Prototype
+# Sona Portfolio Prototype v4
 
-Static, hash-routed portfolio prototype for a Senior Roblox Gameplay Engineer application.
+Static hash-routed portfolio prototype for a Senior Roblox Gameplay Engineer application.
 
-## How to edit
+## Run locally
 
-- Open `index.html` in a browser, or serve the folder with any static server.
-- Project and case-study content lives in `app.js`.
-- Visual styling lives in `styles.css`.
-- Images, icons, PDFs, and diagrams live in `assets/`.
+Open `index.html` directly, or serve the folder with any static server.
 
-## Recent implementation notes
+## Routing
 
-- Header buttons are center-justified and include GitHub, Roblox, email, Discord, and résumé links.
-- Redundant landing-page buttons were removed. Project images and titles navigate to case studies; case pages keep one external text link when useful.
-- Each case-study page now has inline media slots showing where videos, images, diagrams, code excerpts, and docs should be added.
-- The Eclipsis page now puts Pipe Networks first.
-- The supplied pipe-network graph image was converted to `assets/PipeNetworkGraphs.webp` and placed in the Eclipsis overview and Pipe Networks section.
+The site uses hash routes so it can be hosted without rewrite rules:
+
+- `#/`
+- `#/asylum-life`
+- `#/eclipsis`
+- `#/squash`
+- `#/rocket-spleef`
+- `#/offset-camera`
+- `#/depths-of-industry`
+- `#/reflector`
+- `#/ocean-demo`
+
+## Media system
+
+Case-study panels may have media attached. Panels with media show a small corner marker and a blurred/faded background image. Clicking the panel opens a centered scrollable modal with media placement notes. Replace placeholder slots by editing `sectionMediaSlots` in `app.js` and adding `src` paths to assets.
+
+The Eclipsis pipe network graph is stored at:
+
+- `assets/PipeNetworkGraphs.webp`
