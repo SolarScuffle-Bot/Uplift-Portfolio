@@ -1,21 +1,37 @@
-# Sona Portfolio Draft v6
+# Sona Portfolio Prototype v6
 
-Raw HTML/CSS/JavaScript single-page portfolio draft.
+Static hash-routed portfolio prototype for a Senior Roblox Gameplay Engineer application.
 
-## v6 changes
+## Run locally
 
-- Reworked the header into the compact top-left cluster from the latest reference.
-- Kept the profile icon returning home.
-- Kept the Sona name non-clickable and non-selectable.
-- Kept both GitHub buttons with their text labels treated as part of each button.
-- Kept the tilted Roblox icon in the compact header cluster.
-- Restored the top navigation buttons from the earlier draft: Home, Work, Leadership, About, and Gaps.
-- Restored the alternate organizational pages so viewers can review the same data by project, technical area, leadership signal, or missing proof.
-- Adjusted project pages toward the newer mockup: top-centered description block plus clickable external project card above the role heading.
-- Preserved hover responsiveness, route fade transitions, and local Cascadia Code ExtraLight font targeting.
+Open `index.html` directly, or serve the folder with any static server.
 
-## Running locally
+## Routing
 
-Open `index.html` directly in a browser, or serve the folder with any static server.
+The site uses hash routes so it can be hosted without rewrite rules:
 
-The CSS uses local font detection for Cascadia Code ExtraLight and falls back to standard monospace fonts if it is not installed.
+- `#/`
+- `#/asylum-life`
+- `#/eclipsis`
+- `#/squash`
+- `#/rocket-spleef`
+- `#/offset-camera`
+- `#/depths-of-industry`
+- `#/reflector`
+- `#/ocean-demo`
+
+## Release media policy
+
+The media list has been pruned for a same-day release. Only panel-attached slots listed in each case study's "Minimal media to fill manually" section are considered first-release evidence. The rest of the case-study panels are intentionally text-only.
+
+Current release-critical media slots:
+
+- Asylum Life feature reel
+- Pipe network graph diagram, already filled at `assets/PipeNetworkGraphs.webp`
+- Terrain optimization before/after
+- Declarative schema example
+- Rocket feel and authority clip
+
+## Email and favicon
+
+The header email button uses `mailto:` and also attempts to copy `synapsescuffle@gmail.com` as a fallback. The site favicon is included as `favicon.ico`, with a duplicate at `assets/favicon.ico`.
