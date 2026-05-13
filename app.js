@@ -346,29 +346,30 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "Hierarchical Graphs",
-						"text": "Pioneered hierarchical-graph representations that separated physical layout from logical network behaviors, enabling efficient context-aware graph algorithms where the old implementation didn't.",
+						"text": "Pioneered hierarchical-graph representations that separated physical layout from logical network behaviors, enabling efficient context-aware graph algorithms where the old implementation couldn't.",
 						"media": {
 							"kind": "diagram",
 							"label": "Pipe network graph diagram",
 							"src": "assets/EclipsisPipeDiagram.webp",
 							"description": "Annotated graph view showing how the pipe network can be reasoned about as connected logical structure instead of only as physical parts in the world. Green circle nodes are Flanges. Blue diamond nodes are Network Nodes. Yellow triangles are Networks. Network Node information is formatted as +Production|-Consumption|Capacity. Network information is formatted as +Production|-Consumption Storage/Capacity.",
 							"context": "The old mental model made too much behavior local to individual pieces. That made reasoning, replication, and debugging harder than necessary. It also eliminated contextual optimization opportunities leveraging existential bulk processing.",
-							"decision": "Separate physical layout from logical network behavior, then treat the network as explicit graph state that can be inspected and updated directly. Have flanges share network-nodes and network nodes share networks.",
+							"decision": "Separate physical layout from logical network behavior, then treat the network as explicit graph state that can be inspected and updated directly. Have Flanges share Network Nodes and Network Nodes share Networks.",
 							"result": "The system became easier to explain, debug, optimize, and extend because the important state was no longer scattered across the map representation.",
 						},
 					},
 					{
-						"title": "Years Of Cleaning",
-						"text": "Resulted in 29,476 lines of code across every structure and network-facing system combined. Was the initial push team needed to release network-related features with confidence after years of hinderance.",
+						"title": "Years-Worth Of Cleaning",
+						"text": "Totaled to 29,476 lines of code across every structure and network-facing system combined. Was the initial push our team needed to release network-related features with confidence after years of hinderance.",
 					},
 					{
 						"title": "Centralized Replication",
-						"text": "When faced with bandwidth explosion of all networks replicating their state to the client, I built a solution to centralize and tame their bandwidth usage.",
+						"text": "When faced with bandwidth explosion of all networks replicating their state to the client, I built a native solution to centralize and tame their bandwidth usage.",
 						media: {
 							kind: "image",
 							src: "assets/EclipsisNetworkConfigurations.webp",
 							label: "Replicated configuration object state",
-							result: "A centralized, reactive, automatically replicated, readonly interface of configuration instances used to transfer network information from the server to the client in a controlled manner. Since the release of buffers and tools like Squash, there exists the opportunity to reduce bandwidth further."
+							decision: "Since the release of buffers and tools like Squash, there exists the opportunity to reduce bandwidth further.",
+							result: "A centralized, reactive, automatically replicated, readonly interface of configuration instances used to transfer network information from the server to the client in a controlled manner."
 						}
 					},
 					{
@@ -382,8 +383,8 @@ const projects = Object.freeze({
 				"intro": "A focused optimization pass that changed asset layout, rendering cost, and migration expectations together over the course of three weeks.",
 				"groups": [
 					{
-						"title": "Eliminated Waste",
-						"text": "Collapsed avoidable instance costs and reduced drawcall pressure across structures and terrain cells. Identified repeated visual data across all assets and consolidated them. Now superseded by a mesh-per-cell approach thanks to a talented coworker.",
+						"title": "Balanced Waste Costs",
+						"text": "Reduced drawcalls from ~3000 to ~140 after collapsing avoidable instance costs across structures and terrain cells. Was a balancing act between streaming cost and rendering cost. Consolidated repeated visual data across all assets. Now superseded by a mesh-per-cell approach thanks to a talented coworker.",
 					},
 					{
 						"title": "Restructured Pipeline",
@@ -393,7 +394,7 @@ const projects = Object.freeze({
 			},
 			{
 				"title": "Education",
-				"intro": "Technical leadership meant teaching the project how to move forward, not just replacing code.",
+				"intro": "Technical leadership meant teaching the project how to move forward, to not fall back into problematic patterns",
 				"groups": [
 					{
 						"title": "Data-Oriented Design",
@@ -407,57 +408,61 @@ const projects = Object.freeze({
 			},
 			{
 				"title": "Game Design",
-				"intro": "Moved balance philosophy away from isolated counters and toward a broader board-state model.",
+				"intro": "Bridging data-driven ideas, balancing changes, and community engagement by turning ideas into concrete plans of action with constructive mindsets.",
 				"groups": [
 					{
 						"title": "Structures",
-						"text": "Designed and scoped new update content.",
+						"text": "Designed and scoped new update content in accordance with balancing roadmap, replacing beloved problematic structures at the heart of our economy problems. A few examples I designed, modelled, and implemented are Pressurizers, Spire Batteries, and Crystal Atomizers.",
 					},
 					{
 						"title": "Balance Changes",
-						"text": "Replaced tanks, added new wellpump mechanics, and simplified economy pressure.",
-					},
-					{
-						"title": "Removed Submersibles",
-						"text": "Removed an infinite-economy pattern that encouraged turtling.",
-					},
-					{
-						"title": "Spire Batteries",
-						"text": "Replaced condensers that encouraged skybasing and infinite economy loops.",
-					},
-					{
-						"title": "Crystal Atomizers",
-						"text": "Replaced resonators with simpler mechanics and better UX.",
+						"text": "Approached balancing with the goals of encouraging land-expansion and eliminating infinite economy sources. Took it upon myself to align game to vision, identifying and designing fun, unique replacements to each problematic structure.",
 					},
 					{
 						"title": "Roadmap",
-						"text": "Planned updates using community feedback and data-driven priorities.",
+						"text": "Planned updates using community feedback and data-driven priorities, such as fixing our economy and optimizing terrain generation, to establish the foundation for pivotal features like PVE that will redefine the game's retention rates.",
 					},
 					{
 						"title": "Mindset Shift",
-						"text": "Moved from rock-paper-scissors thinking toward chess-like positional design.",
+						"text": "Moved team decisions from \"rock-paper-scissors-like\" thinking towards \"chess-like\" positional design to better match the context of our desired outcomes and gameplay situation. This enabled new insights in round lifetimes and overarching gameplay chains.",
 					},
 				],
 			},
 			{
 				"title": "Team Formation & Delegation",
-				"intro": "Created specialized groups so work could continue without every responsibility collapsing onto one person.",
+				"intro": "Our community plays an impactful role in contributing to the game's livelihood. I created specialized groups so work could continue without every responsibility collapsing onto developers, increasing community participation towards the game's future.",
 				"groups": [
 					{
 						"title": "Balancing Team",
-						"text": "Separated balance work into a focused team.",
+						"text": "Revived the balancing team from its dormant state and regularly filtered qualified community members to populate it. Actively consulted the balancing team for new feature proposals and reviews on updates. Encouraged the development team to utilize this resource when making decisions.",
 					},
 					{
 						"title": "Wikipedia Team",
-						"text": "Delegated knowledge-base maintenance.",
+						"text": "Officiated an unofficial group of self-guided community members focusing on maintaining our game's wiki. Offer developer resources for accurate statistics and delegate all wiki responsibilities to this team.",
+						media: {
+							kind: "image",
+							src: "assets/EclipsisWiki.webp",
+							label: "Screenshot of Eclipsis Wiki page",
+							description: "https://eclipsis.fandom.com/wiki/Eclipsis_Wiki",
+						}
 					},
 					{
 						"title": "Tournament Team",
-						"text": "Hosted for years, modernized with rules, then delegated to staff.",
+						"text": "Hosted and organized tournaments for years before becoming a developer, formalizing with written rules, eventually delegated responsibilities to new host with minimal oversight.",
+						media: {
+							kind: "image",
+							src: "assets/EclipsisTournaments.webp",
+							label: "Screenshot of gold-division singles' tournament"
+						}
 					},
 					{
 						"title": "Bug Hunters",
-						"text": "Created a path for structured issue discovery.",
+						"text": "Newest team formulated, aiming to utilize community members that love to break things and share bugs by putting their natural tendencies to work, catching new and old bugs alike. Least organized team and directly under the supervision of developers as an extra QA layer.",
+						media: {
+							kind: "image",
+							src: "https://i.gyazo.com/35e7cf7aaa1a3fc43464b4e06bf6fa89.gif",
+							label: "Bug hunter identifying comical pipe-placement bug"
+						}
 					},
 				],
 			},
@@ -466,16 +471,12 @@ const projects = Object.freeze({
 				"intro": "Balanced client-eager feel with server-authoritative truth.",
 				"groups": [
 					{
-						"title": "Client Eagerness",
-						"text": "Kept moment-to-moment feedback responsive.",
+						"title": "Tool Overhaul",
+						"text": "Overhaul of critical tools framework to establish immediate feedback, better UX, reduced server communication bandwidth, and secure exploit-proof networking channels. Currently still in development in offshoot branch.",
 					},
 					{
 						"title": "Server Authority",
-						"text": "Kept final results controlled by the server.",
-					},
-					{
-						"title": "Typed Remotes",
-						"text": "Used strictly typed, runtime-safe remote patterns.",
+						"text": "After pipe networking overhaul, structures split responsibilities between the server and client. The client handles rendering and collecting input, while the server handles game-critical logic and processes these inputs in dedicated protected channels per-structure.",
 					},
 				],
 			},
