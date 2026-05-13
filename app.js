@@ -320,6 +320,7 @@ const projects = Object.freeze({
 			"Game Design",
 			"Team Delegation",
 			"Security",
+			"Fully Managed Rojo"
 		],
 		"stats": [
 			{
@@ -449,11 +450,13 @@ const projects = Object.freeze({
 					{
 						"title": "Tournament Team",
 						"text": "Hosted and organized tournaments for years before becoming a developer, formalizing with written rules, eventually delegated responsibilities to new host with minimal oversight.",
-						media: {
-							kind: "image",
-							src: "assets/EclipsisTournaments.webp",
-							label: "Screenshot of gold-division singles' tournament"
-						}
+						media: [
+							{
+								kind: "image",
+								src: "assets/EclipsisTournaments.webp",
+								label: "Screenshot of gold-division singles' tournament"
+							}
+						],
 					},
 					{
 						"title": "Bug Hunters",
@@ -2108,8 +2111,10 @@ function modalMediaFigure(record) {
 
 	if (record.src) {
 		return `
-			<figure class="modal-media filled ${escapeHtml(record.kind)}">
-				<img src="${escapeHtml(record.src)}" alt="${escapeHtml(record.label)}" />
+			<figure class="modal-media filled ${escapeHtml(record.kind)} image-zoomable">
+				<button class="modal-image-zoom-button" type="button" data-modal-image-zoom data-media-label="${escapeHtml(record.label)}" aria-pressed="false" aria-label="Magnify ${escapeHtml(record.label)}">
+					<img src="${escapeHtml(record.src)}" alt="${escapeHtml(record.label)}" />
+				</button>
 				<figcaption>${escapeHtml(record.label)}</figcaption>
 			</figure>
 		`;
@@ -2265,6 +2270,22 @@ document.addEventListener("click", event => {
 	if (mediaButton) {
 		event.preventDefault();
 		showMediaModal(mediaButton.getAttribute("data-media-id"));
+		return;
+	}
+
+	const imageZoomButton = event.target.closest("[data-modal-image-zoom]");
+	if (imageZoomButton) {
+		event.preventDefault();
+
+		const figure = imageZoomButton.closest(".image-zoomable");
+		if (!figure) {
+			return;
+		}
+
+		const isZoomed = figure.classList.toggle("is-zoomed");
+		const label = imageZoomButton.getAttribute("data-media-label") || "image";
+		imageZoomButton.setAttribute("aria-pressed", String(isZoomed));
+		imageZoomButton.setAttribute("aria-label", `${isZoomed ? "Zoom out of" : "Magnify"} ${label}`);
 		return;
 	}
 
