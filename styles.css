@@ -1472,6 +1472,7 @@ body.modal-open .app-shell {
 	border: 0;
 	background: transparent;
 	cursor: zoom-in;
+	scroll-behavior: auto;
 }
 
 .modal-image-zoom-button img {
@@ -1745,4 +1746,20 @@ body.modal-open .app-shell {
 	.code-embed figcaption span {
 		display: none;
 	}
+}
+
+.modal-media-entry + .modal-media-entry {
+	margin-top: clamp(24px, 4vw, 46px);
+	padding-top: clamp(20px, 3vw, 34px);
+	border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.modal-media-index {
+	margin: 0 0 10px;
+	font-family: var(--display);
+	font-size: 10px;
+	font-weight: 900;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--warm);
 }

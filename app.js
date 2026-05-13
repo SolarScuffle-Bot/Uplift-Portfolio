@@ -27,7 +27,7 @@
  * @typedef {Object} EvidenceCard
  * @property {string} title - Short card heading shown in a case-study section.
  * @property {string} text - Compact proof sentence shown beneath the heading.
- * @property {MediaSlot=} media - Optional media and modal content attached to this exact card.
+ * @property {MediaSlot | ReadonlyArray<MediaSlot>=} media - Optional media/modal content attached to this exact card. When an array is provided, the first item is used for the evidence-card preview and all items render sequentially in the modal.
  */
 
 /**
@@ -72,6 +72,22 @@
  */
 
 /**
+ * @typedef {Object} ActiveMediaItem
+ * @property {string} kind - Media category.
+ * @property {string} label - Media label.
+ * @property {string} src - Local or remote media source path.
+ * @property {string} thumbnail - Optional thumbnail path.
+ * @property {string} youtubeId - Optional YouTube video id.
+ * @property {string} embedHtml - Optional trusted raw embed HTML.
+ * @property {string} language - Code language label.
+ * @property {string} code - Code sample text.
+ * @property {string} description - Modal introduction.
+ * @property {string} context - Modal context paragraph.
+ * @property {string} decision - Modal decision paragraph.
+ * @property {string} result - Modal result paragraph.
+ */
+
+/**
  * @typedef {Object} ActiveMediaRecord
  * @property {string} id - Runtime modal id.
  * @property {string} projectTitle - Parent project title.
@@ -91,6 +107,7 @@
  * @property {string} context - Modal context paragraph.
  * @property {string} decision - Modal decision paragraph.
  * @property {string} result - Modal result paragraph.
+ * @property {ReadonlyArray<ActiveMediaItem>} mediaItems - Ordered modal media entries attached to the evidence card.
  */
 
 /** @type {Readonly<Record<string, string>>} */
@@ -348,19 +365,31 @@ const projects = Object.freeze({
 					{
 						"title": "Hierarchical Graphs",
 						"text": "Pioneered hierarchical-graph representations that separated physical layout from logical network behaviors, enabling efficient context-aware graph algorithms where the old implementation couldn't.",
-						"media": {
-							"kind": "diagram",
-							"label": "Pipe network graph diagram",
-							"src": "assets/EclipsisPipeDiagram.webp",
-							"description": "Annotated graph view showing how the pipe network can be reasoned about as connected logical structure instead of only as physical parts in the world. Green circle nodes are Flanges. Blue diamond nodes are Network Nodes. Yellow triangles are Networks. Network Node information is formatted as +Production|-Consumption|Capacity. Network information is formatted as +Production|-Consumption Storage/Capacity.",
-							"context": "The old mental model made too much behavior local to individual pieces. That made reasoning, replication, and debugging harder than necessary. It also eliminated contextual optimization opportunities leveraging existential bulk processing.",
-							"decision": "Separate physical layout from logical network behavior, then treat the network as explicit graph state that can be inspected and updated directly. Have Flanges share Network Nodes and Network Nodes share Networks.",
-							"result": "The system became easier to explain, debug, optimize, and extend because the important state was no longer scattered across the map representation.",
-						},
+						media: [
+							{
+								kind: "diagram",
+								label: "Pipe network graph diagram",
+								src: "assets/EclipsisPipeDiagram.webp",
+								description: "Annotated graph view showing how the pipe network can be reasoned about as connected logical structure instead of only as physical parts in the world. Green circle nodes are Flanges. Blue diamond nodes are Network Nodes. Yellow triangles are Networks. Network Node information is formatted as +Production|-Consumption|Capacity. Network information is formatted as +Production|-Consumption Storage/Capacity.",
+								context: "The old mental model made too much behavior local to individual pieces. That made reasoning, replication, and debugging harder than necessary. It also eliminated contextual optimization opportunities leveraging existential bulk processing.",
+								decision: "Separate physical layout from logical network behavior, then treat the network as explicit graph state that can be inspected and updated directly. Have Flanges share Network Nodes and Network Nodes share Networks.",
+								result: "The system became easier to explain, debug, optimize, and extend because the important state was no longer scattered across the map representation.",
+							},
+							{
+								kind: "video",
+								src: "assets/EclipsisNetworkSplitting.webm",
+								label: "Demonstration of Network Nodes & Networks producing, consuming, and splitting over time",
+							},
+						],
 					},
 					{
 						"title": "Years-Worth Of Cleaning",
 						"text": "Totaled to 29,476 lines of code across every structure and network-facing system combined. Was the initial push our team needed to release network-related features with confidence after years of hinderance.",
+						media: {
+							kind: "image",
+							src: "assets/EclipsisPipeOptimizations.webp",
+							label: "Screenshot of the fateful pull request merging nearly 30k lines of code"
+						}
 					},
 					{
 						"title": "Centralized Replication",
@@ -386,6 +415,11 @@ const projects = Object.freeze({
 					{
 						"title": "Balanced Waste Costs",
 						"text": "Reduced drawcalls from ~3000 to ~140 after collapsing avoidable instance costs across structures and terrain cells. Was a balancing act between streaming cost and rendering cost. Consolidated repeated visual data across all assets. Now superseded by a mesh-per-cell approach thanks to a talented coworker.",
+						media: {
+							kind: "image",
+							src: "assets/EclipsisDrawCounts.webp",
+							label: "Screenshot of live start-of-game drawcalls",
+						}
 					},
 					{
 						"title": "Restructured Pipeline",
@@ -450,13 +484,11 @@ const projects = Object.freeze({
 					{
 						"title": "Tournament Team",
 						"text": "Hosted and organized tournaments for years before becoming a developer, formalizing with written rules, eventually delegated responsibilities to new host with minimal oversight.",
-						media: [
-							{
-								kind: "image",
-								src: "assets/EclipsisTournaments.webp",
-								label: "Screenshot of gold-division singles' tournament"
-							}
-						],
+						media: {
+							kind: "image",
+							src: "assets/EclipsisTournaments.webp",
+							label: "Screenshot of gold-division singles' tournament"
+						}
 					},
 					{
 						"title": "Bug Hunters",
@@ -1729,21 +1761,41 @@ function hasModalContent(slot) {
 }
 
 /**
- * Returns the media slot attached directly to an evidence card.
+ * Normalizes an evidence card's media field into an ordered list of modal media slots.
+ *
+ * @param {MediaSlot | ReadonlyArray<MediaSlot> | null | undefined} media - Raw media field from an evidence card.
+ * @returns {ReadonlyArray<MediaSlot>} Valid modal media slots in display order.
+ */
+function normalizeMediaSlots(media) {
+	const slots = Array.isArray(media) ? media : media ? [media] : [];
+	return slots.filter(hasModalContent);
+}
+
+/**
+ * Returns every media slot attached directly to an evidence card.
  *
  * @param {EvidenceCard} group - Evidence card data.
- * @returns {MediaSlot | null} Attached media slot, or null for text-only cards.
+ * @returns {ReadonlyArray<MediaSlot>} Attached media slots in modal display order.
+ */
+function mediaSlotsForEvidence(group) {
+	return normalizeMediaSlots(group.media);
+}
+
+/**
+ * Returns the first media slot attached directly to an evidence card.
+ *
+ * @param {EvidenceCard} group - Evidence card data.
+ * @returns {MediaSlot | null} First attached media slot, or null for text-only cards.
  */
 function mediaForEvidence(group) {
-	const slot = group.media || null;
-	return hasModalContent(slot) ? slot : null;
+	return mediaSlotsForEvidence(group)[0] || null;
 }
 
 /**
  * Builds an inline CSS variable for blurred evidence-card media backgrounds.
  *
  * @param {Project} project - Parent project used for fallback imagery.
- * @param {MediaSlot} slot - Attached media slot.
+ * @param {ReadonlyArray<MediaSlot>} slots - Attached media slots in modal display order.
  * @returns {string} Inline style attribute or an empty string.
  */
 function mediaBackgroundStyle(project, slot) {
@@ -1757,7 +1809,7 @@ function mediaBackgroundStyle(project, slot) {
 /**
  * Renders a muted looping video layer for video-backed evidence cards.
  *
- * @param {MediaSlot} slot - Attached media slot.
+ * @param {ReadonlyArray<MediaSlot>} slots - Attached media slots in modal display order.
  * @returns {string} Background video HTML, or an empty string for non-video media.
  */
 function evidenceBackgroundVideo(slot) {
@@ -1771,11 +1823,35 @@ function evidenceBackgroundVideo(slot) {
 /**
  * Formats the media kind label shown on attached-media evidence cards.
  *
- * @param {MediaSlot} slot - Attached media slot.
+ * @param {ReadonlyArray<MediaSlot>} slots - Attached media slots in modal display order.
  * @returns {string} Uppercase media kind.
  */
 function mediaKindLabel(slot) {
 	return String(slot && slot.kind ? slot.kind : "media").toUpperCase();
+}
+
+/**
+ * Converts a declared media slot into the normalized shape consumed by modal renderers.
+ *
+ * @param {MediaSlot} slot - Declared media slot.
+ * @param {string} fallbackLabel - Label used when the slot does not provide one.
+ * @returns {ActiveMediaItem} Normalized modal media item.
+ */
+function activeMediaItemFor(slot, fallbackLabel) {
+	return {
+		kind: slot.kind || "media",
+		label: slot.label || fallbackLabel,
+		src: slot.src || "",
+		thumbnail: slot.thumbnail || "",
+		youtubeId: slot.youtubeId || "",
+		embedHtml: slot.embedHtml || "",
+		language: slot.language || (slot.kind === "code" ? "luau" : ""),
+		code: slot.code || "",
+		description: slot.description || "",
+		context: slot.context || "",
+		decision: slot.decision || "",
+		result: slot.result || "",
+	};
 }
 
 /**
@@ -1785,7 +1861,7 @@ function mediaKindLabel(slot) {
  * @param {ProjectSection} section - Parent section.
  * @param {string} groupTitle - Evidence card title.
  * @param {string} groupText - Evidence card text.
- * @param {MediaSlot} slot - Attached media slot.
+ * @param {ReadonlyArray<MediaSlot>} slots - Attached media slots in modal display order.
  * @param {number} sectionIndex - Section index used for stable runtime ids.
  * @param {number} groupIndex - Evidence-card index used for stable runtime ids.
  * @returns {string} Runtime media id.
@@ -1795,34 +1871,28 @@ function registerPanelMedia(
 	section,
 	groupTitle,
 	groupText,
-	slot,
+	slots,
 	sectionIndex,
 	groupIndex,
 ) {
 	const id = `media-${project.id}-${sectionIndex}-${groupIndex}`;
+	const mediaItems = slots.map((slot, index) =>
+		activeMediaItemFor(slot, slots.length === 1 ? groupTitle : `${groupTitle} ${index + 1}`),
+	);
+	const firstItem = mediaItems[0] || activeMediaItemFor({}, groupTitle);
+
 	activeMedia.set(id, {
 		id,
 		projectTitle: project.title,
 		sectionTitle: section.title,
 		groupTitle,
 		groupText,
-		kind: slot.kind || "media",
-		label: slot.label || "Media",
-		src: slot.src || "",
-		thumbnail: slot.thumbnail || "",
-		youtubeId: slot.youtubeId || "",
-		embedHtml: slot.embedHtml || "",
 		fallbackSrc: project.asset || "",
-		language: slot.language || (slot.kind === "code" ? "luau" : ""),
-		code: slot.code || "",
-		description: slot.description || "",
-		context: slot.context || "",
-		decision: slot.decision || "",
-		result: slot.result || "",
+		mediaItems,
+		...firstItem,
 	});
 	return id;
 }
-
 /**
  * Renders a single case-study evidence card, including attached modal media when present.
  *
@@ -1835,7 +1905,8 @@ function registerPanelMedia(
  */
 function renderEvidenceCard(project, section, group, sectionIndex, groupIndex) {
 	const { title, text } = group;
-	const slot = mediaForEvidence(group);
+	const slots = mediaSlotsForEvidence(group);
+	const slot = slots[0] || null;
 
 	if (!slot) {
 		return `
@@ -1851,7 +1922,7 @@ function renderEvidenceCard(project, section, group, sectionIndex, groupIndex) {
 		section,
 		title,
 		text,
-		slot,
+		slots,
 		sectionIndex,
 		groupIndex,
 	);
@@ -2029,7 +2100,7 @@ function renderProject(id) {
 /**
  * Produces a small default code excerpt for code modals without explicit code.
  *
- * @param {ActiveMediaRecord} record - Modal media record.
+ * @param {ActiveMediaItem | ActiveMediaRecord} record - Modal media record or item.
  * @returns {string} Default code sample.
  */
 function defaultCodeFor(record) {
@@ -2057,7 +2128,7 @@ function defaultCodeFor(record) {
 /**
  * Renders a line-numbered code block for code media.
  *
- * @param {ActiveMediaRecord} record - Modal media record.
+ * @param {ActiveMediaItem | ActiveMediaRecord} record - Modal media record or item.
  * @returns {string} HTML string for the code block, or an empty string.
  */
 function modalCodeEmbed(record) {
@@ -2084,7 +2155,7 @@ function modalCodeEmbed(record) {
 /**
  * Renders the primary media element inside a modal.
  *
- * @param {ActiveMediaRecord} record - Modal media record.
+ * @param {ActiveMediaItem | ActiveMediaRecord} record - Modal media record or item.
  * @returns {string} HTML string for image, video, YouTube, or custom embed content.
  */
 function modalMediaFigure(record) {
@@ -2126,7 +2197,7 @@ function modalMediaFigure(record) {
 /**
  * Renders context, decision, and result writing for a modal.
  *
- * @param {ActiveMediaRecord} record - Modal media record.
+ * @param {ActiveMediaItem | ActiveMediaRecord} record - Modal media record or item.
  * @returns {string} HTML string for modal copy.
  */
 function modalDescription(record) {
@@ -2158,6 +2229,36 @@ function modalDescription(record) {
 }
 
 /**
+ * Renders one media entry inside a modal sequence.
+ *
+ * @param {ActiveMediaItem} item - Media item to render.
+ * @param {number} index - Zero-based item index.
+ * @param {number} total - Total number of items in the modal.
+ * @returns {string} HTML string for the modal media entry.
+ */
+function modalMediaEntry(item, index, total) {
+	return `
+		<section class="modal-media-entry">
+			${total > 1 ? `<p class="modal-media-index">Media ${index + 1} / ${total}</p>` : ""}
+			${modalMediaFigure(item)}
+			${modalCodeEmbed(item)}
+			${modalDescription(item)}
+		</section>
+	`;
+}
+
+/**
+ * Renders all media entries attached to a modal record in order.
+ *
+ * @param {ActiveMediaRecord} record - Modal media record.
+ * @returns {string} HTML string for all modal media entries.
+ */
+function modalMediaSequence(record) {
+	const mediaItems = record.mediaItems && record.mediaItems.length > 0 ? record.mediaItems : [record];
+	return mediaItems.map((item, index) => modalMediaEntry(item, index, mediaItems.length)).join("");
+}
+
+/**
  * Opens the modal for a registered media id.
  *
  * @param {string | null} mediaId - Runtime media id from a card button.
@@ -2181,9 +2282,7 @@ function showMediaModal(mediaId) {
 					<p class="modal-kicker">${escapeHtml(record.projectTitle)} · ${escapeHtml(record.sectionTitle)}</p>
 					<h2 id="modal-title">${escapeHtml(record.groupTitle)}</h2>
 					<p class="modal-lede">${escapeHtml(record.groupText)}</p>
-					${modalMediaFigure(record)}
-					${modalCodeEmbed(record)}
-					${modalDescription(record)}
+					${modalMediaSequence(record)}
 				</div>
 			</section>
 		</div>
@@ -2263,6 +2362,54 @@ function copyText(text) {
 }
 
 /**
+ * Clamps a number into a closed range.
+ *
+ * @param {number} value - Number to clamp.
+ * @param {number} min - Minimum allowed value.
+ * @param {number} max - Maximum allowed value.
+ * @returns {number} Clamped number.
+ */
+function clampNumber(value, min, max) {
+	return Math.min(Math.max(value, min), max);
+}
+
+/**
+ * Returns the clicked image position as normalized coordinates.
+ *
+ * @param {MouseEvent} event - Click event from the zoom button.
+ * @param {HTMLImageElement} image - Image being magnified.
+ * @returns {{ x: number, y: number }} Normalized click coordinates within the image bounds.
+ */
+function imageClickRatio(event, image) {
+	const rect = image.getBoundingClientRect();
+	const x = rect.width > 0 ? (event.clientX - rect.left) / rect.width : 0.5;
+	const y = rect.height > 0 ? (event.clientY - rect.top) / rect.height : 0.5;
+
+	return {
+		x: clampNumber(x, 0, 1),
+		y: clampNumber(y, 0, 1),
+	};
+}
+
+/**
+ * Scrolls a newly magnified image so the clicked image position is centered when possible.
+ *
+ * @param {HTMLButtonElement} zoomButton - Scrollable image zoom button.
+ * @param {{ x: number, y: number }} ratio - Normalized image-space point to center.
+ * @returns {void}
+ */
+function centerZoomedImageScroll(zoomButton, ratio) {
+	const maxScrollLeft = Math.max(0, zoomButton.scrollWidth - zoomButton.clientWidth);
+	const maxScrollTop = Math.max(0, zoomButton.scrollHeight - zoomButton.clientHeight);
+
+	zoomButton.scrollTo({
+		left: clampNumber((ratio.x * zoomButton.scrollWidth) - (zoomButton.clientWidth / 2), 0, maxScrollLeft),
+		top: clampNumber((ratio.y * zoomButton.scrollHeight) - (zoomButton.clientHeight / 2), 0, maxScrollTop),
+		behavior: "auto",
+	});
+}
+
+/**
  * Handles modal, email-copy, and in-page jump interactions from delegated clicks.
  */
 document.addEventListener("click", event => {
@@ -2282,10 +2429,19 @@ document.addEventListener("click", event => {
 			return;
 		}
 
+		const image = imageZoomButton.querySelector("img");
+		const clickRatio = image ? imageClickRatio(event, image) : { x: 0.5, y: 0.5 };
 		const isZoomed = figure.classList.toggle("is-zoomed");
 		const label = imageZoomButton.getAttribute("data-media-label") || "image";
 		imageZoomButton.setAttribute("aria-pressed", String(isZoomed));
 		imageZoomButton.setAttribute("aria-label", `${isZoomed ? "Zoom out of" : "Magnify"} ${label}`);
+
+		if (isZoomed) {
+			requestAnimationFrame(() => centerZoomedImageScroll(imageZoomButton, clickRatio));
+		} else {
+			imageZoomButton.scrollTo({ left: 0, top: 0, behavior: "auto" });
+		}
+
 		return;
 	}
 
