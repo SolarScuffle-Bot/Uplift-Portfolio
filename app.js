@@ -2370,6 +2370,68 @@ function copyText(text) {
 	}
 }
 
+
+/**
+ * Shows a temporary site notification in the bottom-right corner.
+ *
+ * @param {string} message - Toast message to display.
+ * @returns {void}
+ */
+function showToast(message) {
+	const oldToast = document.querySelector("[data-site-toast]");
+	if (oldToast) {
+		oldToast.remove();
+	}
+
+	const toast = document.createElement("div");
+	toast.className = "site-toast";
+	toast.setAttribute("data-site-toast", "");
+	toast.textContent = message;
+	document.body.appendChild(toast);
+
+	window.setTimeout(() => {
+		toast.classList.add("is-hiding");
+		window.setTimeout(() => toast.remove(), 180);
+	}, 2100);
+}
+
+/**
+ * Copies the email address first, then attempts to open the user's mail client.
+ *
+ * Browsers do not expose a reliable signal for whether a `mailto:` URL actually
+ * opened an installed mail app, so copying first gives the user a fallback.
+ *
+ * @param {HTMLAnchorElement} anchor - Email header link.
+ * @returns {void}
+ */
+function copyEmailAndOpenClient(anchor) {
+	const email = anchor.getAttribute("data-email-link") || anchor.getAttribute("data-copy-email") || "synapsescuffle@gmail.com";
+	const href = anchor.getAttribute("href") || `mailto:${email}`;
+	const label = anchor.querySelector("span");
+	const originalText = label ? label.textContent : "";
+
+	copyText(email)
+		.then(() => {
+			showToast("Copied!");
+
+			if (label) {
+				label.textContent = "Copied!";
+				anchor.classList.add("email-copied");
+				window.setTimeout(() => {
+					label.textContent = originalText;
+					anchor.classList.remove("email-copied");
+				}, 1400);
+			}
+		})
+		.catch(() => {
+			showToast(email);
+		});
+
+	window.setTimeout(() => {
+		window.location.href = href;
+	}, 140);
+}
+
 /**
  * Clamps a number into a closed range.
  *
@@ -2466,28 +2528,10 @@ document.addEventListener("click", event => {
 		return;
 	}
 
-	const emailLink = event.target.closest("[data-copy-email]");
+	const emailLink = event.target.closest("[data-email-link], [data-copy-email]");
 	if (emailLink) {
 		event.preventDefault();
-		const email = emailLink.getAttribute("data-copy-email");
-		const label = emailLink.querySelector("span");
-		const originalText = label ? label.textContent : "";
-		if (email) {
-			copyText(email)
-				.then(() => {
-					if (label) {
-						label.textContent = "Email Copied!";
-						emailLink.classList.add("email-copied");
-						window.setTimeout(() => {
-							label.textContent = originalText;
-							emailLink.classList.remove("email-copied");
-						}, 1400);
-					}
-				})
-				.catch(() => {
-					window.location.href = emailLink.href;
-				});
-		}
+		copyEmailAndOpenClient(emailLink);
 		return;
 	}
 
