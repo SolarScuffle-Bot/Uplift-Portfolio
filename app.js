@@ -619,34 +619,34 @@ const projects = Object.freeze({
 	"rocket-spleef": {
 		"id": "rocket-spleef",
 		"title": "Rocket Spleef",
-		"role": "Creator / Lead Developer",
+		"role": "Creator / Sole Developer",
 		"asset": "assets/RocketSpleef.webp",
 		"link": "https://www.roblox.com/games/106404336773666/Rocket-Spleef",
 		"linkLabel": "Open Roblox experience",
 		"pitch": "Original Roblox party game built around responsive rocket feel, server-authoritative outcomes, progression, events, and monetization loops.",
 		"proof": [
-			"Game feel",
-			"Server authority",
-			"Original game",
+			"Game Feel",
+			"Server Authority",
+			"Original Game",
 			"Progression",
 			"Monetization",
 		],
 		"stats": [
 			{
-				value: "Zero-Latency",
-				label: "perceived launcher response",
+				value: "Immediate Feedback",
+				label: "Client-eager implementations where possible",
 			},
 			{
-				value: "Server",
-				label: "tiles and events",
+				value: "Server Authority",
+				label: "Important mechanics are owned by the server",
 			},
 			{
-				value: "5m → 12d",
-				label: "crate opening range",
+				value: "Feel-Good Design",
+				label: "Rewarded for winning, for losing, and for staying",
 			},
 			{
-				value: "Party",
-				label: "round design target",
+				value: "Iteration",
+				label: "Test bed for new ideas and growth opportunities",
 			},
 		],
 		"sections": [
@@ -656,20 +656,34 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "Zero-Latency Feel",
-						"text": "Researched and designed client-eager, server-authoritative projectile behavior.",
+						"text": "Researched and designed client-eager, server-authoritative projectile behavior. Handles all possible edge-cases relating to client/server desync to ensure best compromising outcome.",
 						media: {
 							kind: "video",
 							src: "https://i.gyazo.com/62c5a056391249fdae10184a9c62aa1a.mp4",
-							context: "A separate testing environment with an artificial gravity well to demonstrate eager client behavior in a physically-simulated setting.",
+							context: "A separate testing environment with an artificial gravity well to demonstrate eager client behavior in a physically-simulated setting. Try to catch the gap in the particle trail where the client-to-server handoff occurs.",
+							label: "Firing zero-latency server-authoritative projectiles in a gravity well"
 						}
 					},
 					{
 						"title": "Cooldown UX",
 						"text": "Improved feedback so players understand when they can shoot.",
+						media: {
+							kind: "image",
+							src: "https://i.gyazo.com/7c0f115af4bf12ec72cbf3fb0391a498.gif",
+							label: "Color-coded animated rocket cooldown cursor",
+							context: "Experimenting with new ideas, I decided to try a color-coded animated crosshair to count down the remaining seconds until reloaded. The goal was to make it easy to notice at a glance.",
+							decision: "This is likely better achieved or accompanied by changing the tool's icon to reflect the state.",
+						}
 					},
 					{
 						"title": "Knockback",
 						"text": "Stabilized explosions to make rocket jumping intentional and rewarding.",
+						media: {
+							kind: "image",
+							src: "https://i.gyazo.com/bdd94f7432179e45241ba30d969f8ab9.gif",
+							context: "Rocket-jumping is a core mechanic in Rocket Spleef. When hit with an explosion, the humanoid is put into the seated state since that disables Roblox's alignment tendencies and encourages tumbling.",
+							label: "Rocket-jumping without jumping to restabilize, causing quite the tumble",
+						}
 					},
 				],
 			},
@@ -682,21 +696,16 @@ const projects = Object.freeze({
 						"text": "Rockets start immediately and switch to the server as soon as possible.",
 						"media": {
 							"kind": "diagram",
-							"label": "Client-eager/server-authoritative flow",
+							"label": "Client-Eager Server-Authoritative Flowchart",
 							"src": "assets/RocketAuthorityFlow.png",
-							"description": "Authority-flow diagram for responsive projectiles that still resolve through trusted server state.",
 							"context": "Rocket gameplay feels bad if every shot waits on the server, but fully trusting the client creates exploit risk.",
 							"decision": "Let the client start the feeling immediately, then transfer ownership and final outcomes to the server as soon as possible.",
-							"result": "The player gets immediate feedback while tiles, events, products, and round outcomes remain server-owned.",
+							"result": "The player gets immediate feedback while plates, events, and round outcomes remain server-owned.",
 						},
 					},
 					{
-						"title": "Server Tiles",
-						"text": "Tiles and round events are server-owned.",
-					},
-					{
-						"title": "Secure Products",
-						"text": "Monetization and product handling stay server-secure and are protected from client attacks.",
+						"title": "Arena",
+						"text": "The arena's plates and round events are server-owned.",
 					},
 				],
 			},
@@ -706,15 +715,33 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "Earned Flow",
-						"text": "Earned after a number of rounds or after a win.",
+						"text": "Rewards players for participating with random prizes they must spend time unlocking.",
+						media: {
+							kind: "image",
+							src: "https://i.gyazo.com/1a641dc8c38a59b3596be9db642a67a8.gif",
+							context: "In earlier versions of the game, crates were earned more frequently than opened. This leads to a massive tower of crates that takes a looooong time to clear. Each earned crate randomly chooses an owned pedestal and falls onto the queue."
+						}
 					},
 					{
 						"title": "Time Range",
-						"text": "Opening times encode progression from roughly 5 minutes to 12 days.",
+						"text": "Opening times encode progression from 5 minutes to 12 days, occupying the short-mid term progression bar.",
+						media: {
+							kind: "video",
+							src: "assets/RocketSpleefUnlock.webm",
+							label: "Watching Common Crate unlock",
+							context: "After earning a crate, it will sit on the queue of crates until reaching the pedestal at the bottom. There it will count down to unlock for its duration.",
+							result: "This encodes short-term and mid-term progression.",
+						}
 					},
 					{
 						"title": "Content Driver",
 						"text": "Primary unlock path that also feeds monetization.",
+						media: {
+							kind: "video",
+							src: "assets/RocketSpleefOpen.webm",
+							label: "Watching Common Crate open",
+							context: "Players can earn a weighted random set of rewards from different crates, publically displayed in accordance with Roblox's legal policies."
+						}
 					},
 				],
 			},
@@ -724,33 +751,56 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "Events",
-						"text": "Different event types change round texture and add stylized VFX moments.",
+						"text": "Different event types stack together to spice up round gameplay and add stylized VFX moments.",
+						media: {
+							kind: "video",
+							src: "assets/RocketSpleefEvents.webm",
+							label: "Preview of a typical round, highlighting Slip and Imposters event",
+							context: "Rocket Spleef will choose 1-4 random events every other round to flip the game's winning strategy from offense to defense.",
+						}
 					},
 					{
 						"title": "Tools",
 						"text": "Purchasable or crate-earned tools create new play opportunities.",
+						media: {
+							kind: "video",
+							src: "https://i.gyazo.com/abb2fed36314315917bdf0e8ac5f62aa.mp4",
+							label: "Buying quick items during intermission",
+							context: "Players can spend coins on temporary items to experience new gameplay opportunities."
+						}
 					},
 					{
 						"title": "Gameplay Variety",
-						"text": "Each tool or event should encourage a different decision, not just add noise.",
+						"text": "Each tool and event should encourage a different decision, not just add noise or reskin an existing idea.",
 					},
 				],
 			},
 			{
 				"title": "Game Design",
-				"intro": "The target is a casual party game that is easy to play, hard to master, and safe to lose.",
+				"intro": "The target is a casual party game that is easy to play, hard to master, and fun to lose.",
 				"groups": [
 					{
 						"title": "Shorter Rounds",
-						"text": "Content should increase pressure and make rounds resolve.",
+						"text": "Content should increase pressure and accelerate rounds resolving.",
+						media: {
+							kind: "video",
+							src: "https://cdn.medal.tv/ugcc/content-social/jZdiw6EhY7vMNGO-R65Xng.mp4?auth=exp=1778682600~data=MzI3MDU0MzgsbDNCdHJaYkI1NWp6T1FqWXIsMWUyQWQ2RU9hRSwtMQ~hmac=cb8a1731763e0e3345eea48588751858259ab90fcc13225f363a684554347d0a",
+							label: "Round ending in seconds thanks to Mines and the Slingshot",
+							context: "Items, events, and future abilities contribute to rounds ending quickly and reliably, keeping players in the action at all times.",
+							result: "Players are less likely to churn from boredom."
+						}
 					},
 					{
 						"title": "No Fear of Losing",
-						"text": "Progression avoids making loss feel like wasted time.",
+						"text": "Any new additions to the game must never allow players to measure their losses or encourage players to optimize killing.",
 					},
 					{
 						"title": "Repeatable Loop",
 						"text": "Round, reward, crate, tool, and cosmetic planning support repeated play.",
+					},
+					{
+						"title": "Visual Language",
+						"text": "The game should utilize and develop a visual language to communicate both native and foreign concepts to players, establishing a unique identity.",
 					},
 				],
 			},
@@ -760,16 +810,42 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "Crate Purchases",
-						"text": "Buying and unlocking crates support the core loop.",
+						"text": "Buying and unlocking crates act as another economy sink to encourage spending.",
+						media: {
+							kind: "video",
+							src: "https://i.gyazo.com/2a23943db5d36549e6473d44e6f02071.mp4",
+							label: "Buying two Epic crates",
+							context: "To be unconventional and better match value to robux, players buy two crates at a time. Each crate will try to land on a different pedestal if possible as a mercy to the player.",
+							decision: "I plan to better communicate the success of the purchase and draw attention to the falling crates.",
+						}
 					},
 					{
 						"title": "Pedestals",
 						"text": "Additional unlock friction and collection goals.",
+						media: {
+							kind: "video",
+							src: "https://i.gyazo.com/f0a55813686b3d8a783e70a620e88fdc.mp4",
+							label: "Unlocking Uncommon pedestal",
+							context: "Players unlock a series of pedestals to increase the surface area of their crate spawns.",
+							decision: "I wanted to compliment the random nature of crates falling on random pedestals, while also giving the players something to spend their coins on.",
+							result: "Pedestals can be bought for coins and guarantee the first crate is of the same rarity.",
+						}
 					},
 					{
-						"title": "Crafting",
+						"title": "Content & Crafting",
 						"text": "Planned content farming and crafting support longer-term progression.",
+						media: {
+							kind: "image",
+							src: "assets/RocketSpleefCrafting.webp",
+							label: "Work-in-progress crafting pedestals",
+							context: `The crafting system needs crates, duplicates, shards, seasonal materials, and long-term progression without becoming too complicated. Single-material or few-material crates seem stronger than broad material pools because they are easier to understand and balance. Low-rarity filler items can fill crate space, while duplicate rewards convert into shards. Shards act as the universal fallback ingredient and can vary by season, though crate paging still needs to be resolved.`,
+							decision: `Use single/few-material crates with random low-rarity filler rewards rather than many-material crates. Put shards on the center pedestal as the final catch-all ingredient, and let players choose which seasonal shard type they want to earn. Focus craftables on items that justify the system, such as rocket variants, tools, tool upgrades, arenas, win/lose cards, and win/lose sounds. Cosmetics should likely be handled through rarity keys, while abilities should only be added if they create clearly distinct gameplay.`,
+						}
 					},
+					{
+						"title": "Analytics & Balancing",
+						"text": "Analytics and data-driven statistical methods will drive the configuration constants used to balance the game's economy and progression pacing.",
+					}
 				],
 			},
 		],
@@ -2252,3 +2328,15 @@ document.addEventListener("keydown", event => {
  * Re-render the application whenever the hash route changes.
  */
 window.addEventListener("hashchange", route);
+
+/**
+ * Render the initial route after the document is ready.
+ *
+ * Five Server can hot-reload the script without changing the hash, so relying only
+ * on `hashchange` leaves the root app blank until the user navigates manually.
+ */
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", route, { once: true });
+} else {
+	route();
+}
