@@ -1547,6 +1547,58 @@ function installCodeHighlightStyles() {
 }
 
 /**
+ * Installs styles for looping video evidence-card backgrounds.
+ *
+ * Video cards still use the existing blurred image background as a fallback, while
+ * the video sits above it and below the card content. Browser autoplay requires
+ * muted and playsinline, which are set by `evidenceBackgroundVideo`.
+ *
+ * @returns {void}
+ */
+function installMediaBackgroundStyles() {
+	if (document.getElementById("media-background-video-styles")) {
+		return;
+	}
+
+	const style = document.createElement("style");
+	style.id = "media-background-video-styles";
+	style.textContent = `
+        .evidence-card.has-media {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .evidence-card.has-media::before {
+            z-index: 0;
+        }
+
+        .evidence-card.has-media::after {
+            z-index: 1;
+        }
+
+        .evidence-media-bg-video {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.22;
+            filter: blur(10px) saturate(0.85) brightness(0.72);
+            transform: scale(1.08);
+            pointer-events: none;
+        }
+
+        .evidence-card.has-media .evidence-media-button,
+        .evidence-card.has-media .evidence-content {
+            position: relative;
+            z-index: 2;
+        }
+    `;
+	document.head.appendChild(style);
+}
+
+/**
  * Builds the hash route for a project id.
  *
  * @param {string} id - Project route id.
@@ -1721,6 +1773,20 @@ function mediaBackgroundStyle(project, slot) {
 }
 
 /**
+ * Renders a muted looping video layer for video-backed evidence cards.
+ *
+ * @param {MediaSlot} slot - Attached media slot.
+ * @returns {string} Background video HTML, or an empty string for non-video media.
+ */
+function evidenceBackgroundVideo(slot) {
+	if (!slot || slot.kind !== "video" || !slot.src) {
+		return "";
+	}
+
+	return `<video class="evidence-media-bg-video" src="${escapeHtml(slot.src)}" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>`;
+}
+
+/**
  * Formats the media kind label shown on attached-media evidence cards.
  *
  * @param {MediaSlot} slot - Attached media slot.
@@ -1807,9 +1873,11 @@ function renderEvidenceCard(project, section, group, sectionIndex, groupIndex) {
 		sectionIndex,
 		groupIndex,
 	);
+	const mediaLabel = slot.label || title;
 	return `
 		<div class="evidence-card has-media"${mediaBackgroundStyle(project, slot)}>
-			<button class="evidence-media-button" type="button" data-media-id="${escapeHtml(mediaId)}" aria-label="Open ${escapeHtml(slot.label)} media notes">
+			${evidenceBackgroundVideo(slot)}
+			<button class="evidence-media-button" type="button" data-media-id="${escapeHtml(mediaId)}" aria-label="Open ${escapeHtml(mediaLabel)} media notes">
 				<span class="media-corner-icon" aria-hidden="true"></span>
 			</button>
 			<div class="evidence-content">
@@ -2053,7 +2121,7 @@ function modalMediaFigure(record) {
 	if (record.src && record.kind === "video") {
 		return `
 			<figure class="modal-media filled video">
-				<video src="${escapeHtml(record.src)}" controls playsinline preload="metadata"></video>
+				<video src="${escapeHtml(record.src)}" controls playsinline preload="metadata" loop></video>
 				<figcaption>${escapeHtml(record.label)}</figcaption>
 			</figure>
 		`;
@@ -2285,3 +2353,4 @@ document.addEventListener("keydown", event => {
  */
 window.addEventListener("hashchange", route);
 installCodeHighlightStyles();
+installMediaBackgroundStyles();
