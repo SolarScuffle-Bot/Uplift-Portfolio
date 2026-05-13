@@ -555,7 +555,6 @@ const projects = Object.freeze({
 							"label": "Schema Composition",
 							"language": "luau",
 							"code": "local T = Squash.T\nlocal u = Squash.uint\nlocal vlq = Squash.vlq()\nlocal bool = Squash.boolean()\nlocal str = Squash.string()\nlocal float = Squash.number(4)\nlocal vec2 = Squash.Vector2\nlocal arr = Squash.array\nlocal map = Squash.map\nlocal opt = Squash.opt\nlocal record = Squash.record\n\nlocal playerserdes = record {\n\tposition = T(vec2(float)),\n\thealth = T(u(1)),\n\tname = T(str),\n\tpoisoned = T(bool),\n\titems = T(arr(record {\n\t\tcount = T(vlq),\n\t\tname = T(str),\n\t})),\n\tinns = T(map(str, bool)),\n\tequipped = T(opt(str)),\n}\n\nlocal cursor = Squash.cursor()\nplayerserdes.ser(cursor, {\n\tposition = Vector2.new(287.3855, -13486.3),\n\thealth = 9,\n\tname = \"Cedrick\",\n\tpoisoned = true,\n\titems = {\n\t\t{ name = 'Lantern', count = 2 },\n\t\t{ name = 'Waterskin', count = 1 },\n\t\t{ name = 'Map', count = 4 },\n\t},\n\tinns = {\n\t\t['The Copper Cauldron'] = true,\n\t\tInfirmary = true,\n\t\t['His Recess'] = true,\n\t},\n\tequipped = nil,\n})\nSquash.print(cursor)\n-- Pos: 90 / 90\n-- Buf: { 0 9 1 72 105 115 32 82 101 99 101 115 115 138 1 84 104 101 32 67 111 112 112 101 114 32 67 97 117 108 100 114 111 110 147 1 73 110 102 105 114 109 97 114 121 137 131 130 76 97 110 116 101 114 110 135 129 87 97 116 101 114 115 107 105 110 137 132 77 97 112 131 131 67 101 100 114 105 99 107 135 1 51 185 82 198 88 177 143 67   }\n--                                                                                                                                                                                                                                                                                                                                            ^\nlocal buf = Squash.tobuffer(cursor)\n\nlocal cursor = Squash.frombuffer(buf)\nprint(playerserdes.des(cursor))\n-- {\n--     [\"health\"] = 9,\n--     [\"inns\"] =  ▼  {\n--        [\"His Recess\"] = true,\n--        [\"Infirmary\"] = true,\n--        [\"The Copper Cauldron\"] = true\n--     },\n--     [\"items\"] =  ▼  {\n--        [1] =  ▼  {\n--           [\"count\"] = 2,\n--           [\"name\"] = \"Lantern\"\n--        },\n--        [2] =  ▼  {\n--           [\"count\"] = 1,\n--           [\"name\"] = \"Waterskin\"\n--        },\n--        [3] =  ▼  {\n--           [\"count\"] = 4,\n--           [\"name\"] = \"Map\"\n--        }\n--     },\n--     [\"name\"] = \"Cedrick\",\n--     [\"poisoned\"] = true,\n--     [\"position\"] = 287.385498, -13486.2998\n--  }",
-							"description": "",
 							"context": "Combine primitive serializers into complex, highly optimized schemas that can serialize complex structured data into buffers and back again!",
 							"decision": "",
 							"result": "",
@@ -634,7 +633,7 @@ const projects = Object.freeze({
 		],
 		"stats": [
 			{
-				value: "0-latency",
+				value: "Zero-Latency",
 				label: "perceived launcher response",
 			},
 			{
@@ -661,7 +660,7 @@ const projects = Object.freeze({
 						media: {
 							kind: "video",
 							src: "https://i.gyazo.com/62c5a056391249fdae10184a9c62aa1a.mp4",
-							context: "A separate testing environment with an artificial gravity well to demonstrate eager client behavior in physically-simulated setting.",
+							context: "A separate testing environment with an artificial gravity well to demonstrate eager client behavior in a physically-simulated setting.",
 						}
 					},
 					{
@@ -832,7 +831,7 @@ const projects = Object.freeze({
 						media: {
 							kind: "image",
 							src: "https://i.gyazo.com/0962ab0af7b8fa417dbf47dfacd0e9d9.gif",
-							description: "Peer's torso replicating smoothly to match their local camera.",
+							context: "Peer's torso replicating smoothly to match their local camera.",
 						},
 					},
 					{
@@ -910,7 +909,7 @@ const projects = Object.freeze({
 	torsoYawWeight = 1,
 }`,
 							// "src": "assets/OffsetCamera.webp",
-							"description": "Enough settings to use this camera between racing games, shooters, horror games, and more.",
+							"context": "Enough settings to use this camera between racing games, shooters, horror games, and more.",
 						},
 					},
 					{
@@ -1069,7 +1068,7 @@ const projects = Object.freeze({
 							"kind": "image",
 							"label": "Moving the plane of reflection",
 							"src": "assets/Reflector1.webp",
-							"description": "The user has their control widget to toggle behavior. They also have their physical plane they can manipulate in the same manner they have with any other roblox instance.",
+							"context": "The user has their control widget to toggle behavior. They also have their physical plane they can manipulate in the same manner they have with any other roblox instance.",
 						}
 					},
 				],
@@ -1088,7 +1087,7 @@ const projects = Object.freeze({
 						"media": {
 							"kind": "image",
 							"label": "Different validation states",
-							"src": "assets/ReflectorStates.webp",
+							"src": "assets/Reflector1.webp",
 							"description": "A non-exhaustive assortment of different visual states the plugin can be in during use.",
 							"context": "When reflecting objects in Studio, there's many edge cases that can invalidate selections or result in dangerous irreversible situations.",
 							"decision": "Take extra time developing clear gui states that communicate exact issues, warning, and valid operations.",
@@ -1497,106 +1496,7 @@ function highlightCodeLine(line, language) {
 	return escapeHtml(line) || " ";
 }
 
-/**
- * Installs syntax-highlighting styles used by modal code snippets.
- *
- * Keeping the colors here makes the code component self-contained, so adding a code
- * media slot only requires `kind: "code"`, `language: "luau"`, and `code`.
- *
- * @returns {void}
- */
-function installCodeHighlightStyles() {
-	if (document.getElementById("code-highlight-token-styles")) {
-		return;
-	}
 
-	const style = document.createElement("style");
-	style.id = "code-highlight-token-styles";
-	style.textContent = `
-        .code-embed .tok-comment {
-            color: rgba(210, 214, 255, 0.42);
-            font-style: italic;
-        }
-
-        .code-embed .tok-keyword {
-            color: #f2a7ff;
-            font-weight: 700;
-        }
-
-        .code-embed .tok-string {
-            color: #b8ffcf;
-        }
-
-        .code-embed .tok-number {
-            color: #ffd58a;
-        }
-
-        .code-embed .tok-builtin {
-            color: #9fd7ff;
-        }
-
-        .code-embed .tok-type {
-            color: #d7c3ff;
-        }
-
-        .code-embed .tok-operator {
-            color: rgba(255, 158, 158, 0.78);
-        }
-    `;
-	document.head.appendChild(style);
-}
-
-/**
- * Installs styles for looping video evidence-card backgrounds.
- *
- * Video cards still use the existing blurred image background as a fallback, while
- * the video sits above it and below the card content. Browser autoplay requires
- * muted and playsinline, which are set by `evidenceBackgroundVideo`.
- *
- * @returns {void}
- */
-function installMediaBackgroundStyles() {
-	if (document.getElementById("media-background-video-styles")) {
-		return;
-	}
-
-	const style = document.createElement("style");
-	style.id = "media-background-video-styles";
-	style.textContent = `
-        .evidence-card.has-media {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .evidence-card.has-media::before {
-            z-index: 0;
-        }
-
-        .evidence-card.has-media::after {
-            z-index: 1;
-        }
-
-        .evidence-media-bg-video {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.22;
-            filter: blur(10px) saturate(0.85) brightness(0.72);
-            transform: scale(1.08);
-            pointer-events: none;
-        }
-
-        .evidence-card.has-media .evidence-media-button,
-        .evidence-card.has-media .evidence-content {
-            position: relative;
-            z-index: 2;
-        }
-    `;
-	document.head.appendChild(style);
-}
 
 /**
  * Builds the hash route for a project id.
@@ -1766,7 +1666,7 @@ function mediaForEvidence(group) {
  */
 function mediaBackgroundStyle(project, slot) {
 	const image =
-		slot && (slot.thumbnail || (slot.kind !== "video" ? slot.src : ""))
+		slot && (slot.thumbnail || (slot.kind !== "video" ? slot.src : slot.src))
 			? slot.thumbnail || slot.src
 			: project.asset;
 	return image ? ` style="--media-bg: url('${escapeHtml(image)}')"` : "";
@@ -2352,5 +2252,3 @@ document.addEventListener("keydown", event => {
  * Re-render the application whenever the hash route changes.
  */
 window.addEventListener("hashchange", route);
-installCodeHighlightStyles();
-installMediaBackgroundStyles();
