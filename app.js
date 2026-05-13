@@ -117,7 +117,7 @@ const projects = Object.freeze({
 	"asylum-life": {
 		"id": "asylum-life",
 		"title": "Asylum Life",
-		"role": "Gameplay Engineer & Acting Operations Lead",
+		"role": "Gameplay Engineer & Acting Operations Lead (2024 - 2025)",
 		"asset": "assets/AsylumLife.webp",
 		"link": "https://www.roblox.com/games/132352755769957/Asylum-Life",
 		"linkLabel": "Open Roblox experience",
@@ -309,91 +309,85 @@ const projects = Object.freeze({
 	"eclipsis": {
 		"id": "eclipsis",
 		"title": "Eclipsis",
-		"role": "Systems Engineer & Game Designer",
+		"role": "Systems Engineer & Game Designer (2022 - PRESENT)",
 		"asset": "assets/Eclipsis.webp",
 		"link": "https://www.roblox.com/games/632574862/Eclipsis",
 		"linkLabel": "Open Roblox experience",
 		"pitch": "Pipe-network graph modernization, terrain/rendering optimization, game design, team formation, and education.",
 		"proof": [
 			"Performance",
-			"Legacy systems",
-			"Game design",
-			"Delegation",
+			"Legacy Systems",
+			"Game Design",
+			"Team Delegation",
 			"Security",
 		],
 		"stats": [
 			{
-				value: "1 month",
-				label: "pipe network push",
+				value: "Teamwork",
+				label: "Form teams and delegate responsibilities between them",
 			},
 			{
-				value: "Graph",
-				label: "network representation",
+				value: "~4000ms → ~100ms",
+				label: "Lower ping-pong response times in late games",
 			},
 			{
 				value: "~24s → ~9s",
-				label: "terrain load time",
+				label: "Optimize terrain loading times",
 			},
 			{
-				value: "~3000 → ~900",
-				label: "draw calls",
+				value: "~3000 → ~140",
+				label: "Reduce map draw calls",
 			},
 		],
 		"sections": [
 			{
-				"title": "Terrain Generation",
-				"intro": "A focused optimization pass that changed asset layout, rendering cost, and migration expectations together.",
-				"groups": [
-					{
-						"title": "Reduced Part Count",
-						"text": "Collapsed avoidable instance cost and reduced draw pressure.",
-					},
-					{
-						"title": "Shared Textures",
-						"text": "Moved repeated visual data toward reusable assets.",
-					},
-					{
-						"title": "Reformatted Assets",
-						"text": "Changed the data format so the renderer had less work to do.",
-					},
-					{
-						"title": "Restructured Pipeline",
-						"text": "Updated migrations so old data could survive the new representation.",
-					},
-					{
-						"title": "Sustained Push",
-						"text": "Worked for three weeks straight to get the change through.",
-					},
-				],
-			},
-			{
 				"title": "Pipe Networks",
-				"intro": "The important shift was moving from local physical parts doing too much work to explicit graph and aggregate state.",
+				"intro": "I translated domain-unaware nodes doing too much work to explicit graph and aggregate state algorithms after a month of continous labor",
 				"groups": [
 					{
 						"title": "Hierarchical Graphs",
-						"text": "Pioneered graph representations that separated physical layout from logical network behavior.",
+						"text": "Pioneered hierarchical-graph representations that separated physical layout from logical network behaviors, enabling efficient context-aware graph algorithms where the old implementation didn't.",
 						"media": {
 							"kind": "diagram",
 							"label": "Pipe network graph diagram",
-							"src": "assets/PipeNetworkGraphs.webp",
-							"description": "Annotated graph view showing how the pipe network can be reasoned about as connected logical structure instead of only as physical parts in the world.",
-							"context": "The old mental model made too much behavior local to individual pieces. That made reasoning, replication, and debugging harder than necessary.",
-							"decision": "Separate physical layout from logical network behavior, then treat the network as explicit graph state that can be inspected and updated directly.",
+							"src": "assets/EclipsisPipeDiagram.webp",
+							"description": "Annotated graph view showing how the pipe network can be reasoned about as connected logical structure instead of only as physical parts in the world. Green circle nodes are Flanges. Blue diamond nodes are Network Nodes. Yellow triangles are Networks. Network Node information is formatted as +Production|-Consumption|Capacity. Network information is formatted as +Production|-Consumption Storage/Capacity.",
+							"context": "The old mental model made too much behavior local to individual pieces. That made reasoning, replication, and debugging harder than necessary. It also eliminated contextual optimization opportunities leveraging existential bulk processing.",
+							"decision": "Separate physical layout from logical network behavior, then treat the network as explicit graph state that can be inspected and updated directly. Have flanges share network-nodes and network nodes share networks.",
 							"result": "The system became easier to explain, debug, optimize, and extend because the important state was no longer scattered across the map representation.",
 						},
 					},
 					{
-						"title": "Existential Processing",
-						"text": "Processed the things that existed and changed instead of broad boolean sweeps.",
+						"title": "Years Of Cleaning",
+						"text": "Resulted in 29,476 lines of code across every structure and network-facing system combined. Was the initial push team needed to release network-related features with confidence after years of hinderance.",
 					},
 					{
 						"title": "Centralized Replication",
-						"text": "Reduced redundant network state replication by centralizing the source of truth.",
+						"text": "When faced with bandwidth explosion of all networks replicating their state to the client, I built a solution to centralize and tame their bandwidth usage.",
+						media: {
+							kind: "image",
+							src: "assets/EclipsisNetworkConfigurations.webp",
+							label: "Replicated configuration object state",
+							result: "A centralized, reactive, automatically replicated, readonly interface of configuration instances used to transfer network information from the server to the client in a controlled manner. Since the release of buffers and tools like Squash, there exists the opportunity to reduce bandwidth further."
+						}
 					},
 					{
-						"title": "Sustained Push",
-						"text": "Worked for a month straight on the network modernization.",
+						"title": "Existential Processing",
+						"text": "Utilize ECS-esque patterns to distinguish different states of data and process them as infrequently as possible. My springboard topic of education among the team.",
+					},
+				],
+			},
+			{
+				"title": "Terrain Generation",
+				"intro": "A focused optimization pass that changed asset layout, rendering cost, and migration expectations together over the course of three weeks.",
+				"groups": [
+					{
+						"title": "Eliminated Waste",
+						"text": "Collapsed avoidable instance costs and reduced drawcall pressure across structures and terrain cells. Identified repeated visual data across all assets and consolidated them. Now superseded by a mesh-per-cell approach thanks to a talented coworker.",
+					},
+					{
+						"title": "Restructured Pipeline",
+						"text": "Rewrote generation pipeline with modernized data layouts and invariants to bring generation times from ~24 seconds to ~9 seconds, reducing churn. Wrote new migrations to ensure existing data was not corrupted.",
 					},
 				],
 			},
@@ -403,19 +397,11 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "Data-Oriented Design",
-						"text": "Taught data layout and processing choices around actual game constraints.",
+						"text": "Taught the team data layout and processing choices around actual game constraints so they could maintain and extend new pipe, terrain, and structure logic.",
 					},
 					{
 						"title": "Folder-Per-Feature",
-						"text": "Introduced architecture habits that make systems easier to locate and modify.",
-					},
-					{
-						"title": "Analytics",
-						"text": "Explained experience analytics and player-behavior reasoning.",
-					},
-					{
-						"title": "Rojo Adaptation",
-						"text": "Helped adapt project workflow toward external tooling.",
+						"text": "When we experienced friction reasoning about features scattered across the codebase, I introduced folder-per-feature architecture habits using Rojo that make systems easier to locate and modify. Applied responsibly among the existing service-oriented architecture to avoid disrupting progress and stability.",
 					},
 				],
 			},
@@ -666,7 +652,7 @@ const projects = Object.freeze({
 					},
 					{
 						"title": "Cooldown UX",
-						"text": "Improved feedback so players understand when they can shoot.",
+						"text": "Experimenting with color-coded animated cursors to communicate reload status and duration.",
 						media: {
 							kind: "image",
 							src: "https://i.gyazo.com/7c0f115af4bf12ec72cbf3fb0391a498.gif",
@@ -677,7 +663,7 @@ const projects = Object.freeze({
 					},
 					{
 						"title": "Knockback",
-						"text": "Stabilized explosions to make rocket jumping intentional and rewarding.",
+						"text": "Stabilized explosions communicate rocket jumping is intentional and rewarding.",
 						media: {
 							kind: "image",
 							src: "https://i.gyazo.com/bdd94f7432179e45241ba30d969f8ab9.gif",
@@ -724,7 +710,7 @@ const projects = Object.freeze({
 					},
 					{
 						"title": "Time Range",
-						"text": "Opening times encode progression from 5 minutes to 12 days, occupying the short-mid term progression bar.",
+						"text": "Opening times encode progression from 5 minutes to 12 days, occupying the short-mid term progression timeline.",
 						media: {
 							kind: "video",
 							src: "assets/RocketSpleefUnlock.webm",
@@ -781,7 +767,7 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "Shorter Rounds",
-						"text": "Content should increase pressure and accelerate rounds resolving.",
+						"text": "Content should increase pressure and accelerate round resolution.",
 						media: {
 							kind: "video",
 							src: "https://cdn.medal.tv/ugcc/content-social/jZdiw6EhY7vMNGO-R65Xng.mp4?auth=exp=1778682600~data=MzI3MDU0MzgsbDNCdHJaYkI1NWp6T1FqWXIsMWUyQWQ2RU9hRSwtMQ~hmac=cb8a1731763e0e3345eea48588751858259ab90fcc13225f363a684554347d0a",
@@ -1323,7 +1309,7 @@ const proofMap = Object.freeze([
 			},
 			{
 				title: "Reflector",
-				detail: "Studio plugin for QOL reflection workflows.",
+				detail: "Comprehensive case-by-case algorithms.",
 				projectId: "reflector",
 			},
 			{
@@ -1351,17 +1337,22 @@ const proofMap = Object.freeze([
 	},
 	{
 		title: "UX",
-		detail: "Readable feedback, input support, placement feel, camera feel, and workflow clarity.",
+		detail: "Readable feedback, crossplatform, placement feel, camera feel, and workflow clarity.",
 		items: [
 			{
 				title: "Rocket Spleef",
-				detail: "Cooldown feedback, knockback feel, party-game readability.",
+				detail: "Item & event interactions, crate UX, establishing visual language.",
 				projectId: "rocket-spleef",
 			},
 			{
 				title: "Depths of Industry",
 				detail: "Satisfying and responsive placement, cross-platform input.",
 				projectId: "depths-of-industry",
+			},
+			{
+				title: "Asylum Life",
+				detail: "Responsive minigames, cosmetics, emotes, and GUI.",
+				projectId: "asylum-life",
 			},
 			{
 				title: "Offset Camera",
@@ -1892,7 +1883,7 @@ function renderLanding() {
 				<p class="eyebrow">Roblox · gameplay · systems · tooling · production</p>
 				<h1 id="hero-title">Senior Gameplay & Systems Engineer</h1>
 				<p></p>
-				<p class="hero-lede">I ship impressive player-facing features, securely modernize legacy systems, and am ready to take <i><b>you</b></i> to the next level.</p>
+				<p class="hero-lede">Ship intuitive player-facing features. Lead teams and modernize legacy systems. Ready to take <i><b>you</b></i> to the next level.</p>
 				<p class="hero-lede"></p>
 			</div>
 			<aside class="hero-panel" aria-label="Role fit summary">
