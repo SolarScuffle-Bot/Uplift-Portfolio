@@ -450,11 +450,11 @@ const projects = Object.freeze({
 						"text": "Designed and scoped new update content in accordance with balancing roadmap, replacing beloved problematic structures at the heart of our economy problems. A few examples I designed, modelled, and implemented are Pressurizers, Spire Batteries, and Crystal Atomizers.",
 					},
 					{
-						"title": "Balance Changes",
+						"title": "Balancing Changes",
 						"text": "Approached balancing with the goals of encouraging land-expansion and eliminating infinite economy sources. Took it upon myself to align game to vision, identifying and designing fun, unique replacements to each problematic structure.",
 					},
 					{
-						"title": "Roadmap",
+						"title": "Roadmaps",
 						"text": "Planned updates using community feedback and data-driven priorities, such as fixing our economy and optimizing terrain generation, to establish the foundation for pivotal features like PVE that will redefine the game's retention rates.",
 					},
 					{
