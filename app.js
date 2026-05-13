@@ -1143,7 +1143,7 @@ const projects = Object.freeze({
 						"media": {
 							"kind": "image",
 							"label": "Moving the plane of reflection",
-							"src": "assets/Reflector1.webp",
+							"src": "assets/Reflector2.webp",
 							"context": "The user has their control widget to toggle behavior. They also have their physical plane they can manipulate in the same manner they have with any other roblox instance.",
 						}
 					},
@@ -1190,7 +1190,7 @@ const projects = Object.freeze({
 	},
 	"ocean-demo": {
 		"id": "ocean-demo",
-		"title": "Ocean Tech Demo",
+		"title": "Ocean Tech",
 		"role": "Wave Simulation",
 		"asset": "assets/CallOfTheAbyss.webp",
 		"link": "https://www.roblox.com/games/120797260198041/Call-of-the-Abyss",
@@ -1199,8 +1199,9 @@ const projects = Object.freeze({
 		"proof": [
 			"Simulation",
 			"Physics",
-			"Server authority",
-			"Weather",
+			"Server Authority",
+			"Client Rendering",
+			"High Performance",
 		],
 		"stats": [
 			{
@@ -1250,10 +1251,20 @@ const projects = Object.freeze({
 					{
 						"title": "Buoys",
 						"text": "Add tags to parts to make them float in the water. Use attributes to define how deep into the water (submarines).",
+						media: {
+							kind: "video",
+							src: "https://i.gyazo.com/ea412c43bbb697f8c14e7066bfaa59b1.mp4",
+							label: "Buoys and boats floating in active waters",
+						}
 					},
 					{
 						"title": "Boats",
 						"text": "Add tags to boats with FloatParts, Propellers, and Seats to navigate turbulent waves.",
+						media: {
+							kind: "video",
+							src: "https://i.gyazo.com/0d6fa5bee91689c14a118297912b5cec.mp4",
+							label: "Driving boat across huge turbulent waves"
+						}
 					},
 				],
 			},
