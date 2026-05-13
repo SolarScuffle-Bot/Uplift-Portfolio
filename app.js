@@ -140,166 +140,179 @@ const projects = Object.freeze({
 		"linkLabel": "Open Roblox experience",
 		"pitch": "Live-service Roblox production work across gameplay features, GUI-heavy UX, QA, debugging, operations, and mentorship.",
 		"proof": [
-			"Feature ownership",
-			"Cross-disciplinary coordination",
-			"Live debugging",
-			"QA process",
+			"Twin Atlas Partnership",
+			"Feature Ownership",
+			"Cross-Disciplinary Coordination",
+			"Live Debugging",
+			"Quality Assurance",
 			"Mentorship",
 		],
 		"stats": [
 			{
-				value: "Top 30",
-				label: "earning Roblox experience",
+				value: "Twin Atlas Partner",
+				label: "Part of the Twin Atlas Partnership Program",
 			},
 			{
-				value: "Weekly",
-				label: "release pressure",
+				value: "Weekly Live-Service",
+				label: "Strict weekly cadence for content release",
 			},
 			{
-				value: "Live",
-				label: "servers and player data",
+				value: "Top 30+ Earning",
+				label: "A top 30 earning startup Roblox experience",
 			},
 			{
-				value: "Multi-team",
-				label: "production coordination",
+				value: "192.8M+ Visits",
+				label: "Hundreds of concurrent servers for a global audience",
 			},
 		],
 		"sections": [
 			{
-				"title": "Collaboration",
-				"intro": "The value was not just writing code. The value was turning ambiguous production needs into shippable, testable updates.",
+				"title": "Leadership",
+				"intro": "Temporary acting operations lead work while still carrying engineering responsibility.",
 				"groups": [
 					{
-						"title": "Twin Atlas",
-						"text": "Partnered with Reverie Studios on design advice and QA management.",
+						"title": "Define Weekly Roadmaps",
+						"text": "Executives relied on me to define and delegate weekly tasks for our various teams, spanning programmers, GUI contractors, SFX artists, and art/modelling management.",
 					},
 					{
-						"title": "Executives",
-						"text": "Worked directly with executives and management to define unambiguous updates.",
+						"title": "Release Hygiene",
+						"text": "Established standards for freezing production scope per-week and scoping features across multiple weeks. Pushed towards asynchronous workflows using drafts and git to enable concurrent feature production.",
 					},
 					{
-						"title": "Art & Modelling",
-						"text": "Helped make producer-facing ideas concrete enough for art, modelling, and implementation.",
+						"title": "Communication",
+						"text": "Responsible for moving communication channels from Facetime calls, groupchats, and direct-messages over discord to dedicated public work-server discussion so all stakeholders were in-the-know about updates and design discussions.",
 					},
 					{
-						"title": "GUI Team",
-						"text": "Implemented cosmetics, settings, minigames, and UI-facing flows with GUI contributors.",
+						"title": "Transparent & Globally Remote",
+						"text": "To further keep our teams in the know, I took it upon myself to push for standardizing concise and focused daily meetings while working in voice-channels, as we were a globally remote team.",
+					},
+				],
+			},
+			{
+				"title": "Consultation",
+				"intro": "Raised team consistency by making standards explicit instead of relying on hidden expectations.",
+				"groups": [
+					{
+						"title": "Architecture Principles",
+						"text": "The codebase inherited unmanageable technical-debt across many authors, obscuring appropriate design decisions. That is why I developed internal guidelines describing codebase architecture principles for high-velocity product development.",
+					},
+					{
+						"title": "Industry Practices",
+						"text": "Introduced industry-standard production habits around QA, ownership, code review, deployment, and release expectations.",
+					},
+					{
+						"title": "Executive Mindsets",
+						"text": "Sat with newly acclaimed executives to help connect technical decisions to production consequences, ensuring the team is utilizing their roles and strengths to the fullest and features / expectations are realistically scoped.",
+					},
+				],
+			},
+			{
+				"title": "Data-Driven",
+				"intro": "Encouraged letting analytics drive game design decisions to optimize user experiences and reach wider audiences.",
+				"groups": [
+					{
+						"title": "Onboarding",
+						"text": "When designing onboarding, stakeholders kept close tabs on our funnels, Day 1 Retention, and Day 7 Retention from week to week. We diagnosed problems with our shop GUI via our onboarding funnel, where I then personally worked with one of our GUI artists to optimize the interface leading to improved follow-through. This has since been superseded by removing the gui from onboarding altogether.",
+					},
+					{
+						title: "Thumbnails",
+						text: "Our QPTR (Qualified PlayThrough Rate) was bottlenecking growth, so working with our thumbnail artist we optimized thumbnails via Thumbnail Personalization and measured concrete wins that unlocked continued growth. This growth helped highlight bottlenecks in onboarding.",
+					},
+					{
+						"title": "Doors & Elevator",
+						"text": "Identifyied poor AP (Average Playtime) performance, worked with design lead to diagnose faulty doors and elevator logic preventing player interactions. Immediately initiated necessary thorough refactors to eliminate deeply nested poor infrastructure. Was ready to deploy before next release. Monitored health of system in live games after release and performed emergency repairs independently.",
+						media: {
+							kind: "video",
+							src: "assets/AsylumLifeElevator.webm",
+							label: "Calling and riding the elevator",
+							context: "The elevator was the primary method of transporting staff from their spawn locations to the patients down below. It was the primary method of escape for patients. When the elevator broke our gameloop was severed, leading to a rapid decline in player count.",
+							decision: "Refactor the elevators, doors, buttons, and the entire deeply nested hierachy that contributed to logical decay. Take opportunity to improve UX and atmosphere.",
+							result: "Reliable doors and elevators that deliver staff and patients alike, souped up with better sound design and visual indicators to convey the feeling of inauthentic normalcy in the asylum. In original implementation the horizontal bar above the elevator was a blinking light, now superseded with a progress bar.",
+						}
 					},
 				],
 			},
 			{
 				"title": "Minigames",
-				"intro": "Short player actions needed to read clearly, respond immediately, and avoid feeling like static menu chores.",
+				"intro": "Short player interactions rewarding players for participating with chores, igniting a sense of accomplishment.",
 				"groups": [
 					{
 						"title": "Washing Clothes",
-						"text": "GUI state, timing, readable feedback, and completion flow.",
+						"text": "Translated minigame concept from Twin Atlas into an intentionally responsive and satisfying interaction combining animations, visual effects, and sound design.",
+						media: {
+							kind: "video",
+							src: "assets/AsylumLifeLaundryMinigame.webm",
+							label: "Starting the laundry by playing dedicated minigame",
+							context: "Patients can progress passively by finding dirty laundry across the asylum and bringing it to the laundromat, where they interact with this satisfying minigame for rewards."
+						}
 					},
 					{
-						"title": "Painting",
-						"text": "Short-loop interaction design with visual and audio response.",
+						"title": "Painting Canvases",
+						"text": "Designed three related versions of the minigame that reinforce the visual language used. Each intentionally designed and abstractly related to the task at hand.",
+						media: {
+							kind: "video",
+							src: "assets/AsylumLifePaintingMinigame.webm",
+							label: "Painting a canvas by playing a dedicated minigame",
+							context: "Patients can progress passively by entering the art station to paint pictures, where they interact with this satisfying minigame for rewards."
+						}
 					},
 					{
-						"title": "Plunging Toilets",
-						"text": "Simple physical premise translated into readable GUI interaction.",
-					},
-					{
-						"title": "Tightening Pipes",
-						"text": "Timing, feedback, and clear success/failure communication.",
-					},
-				],
-			},
-			{
-				"title": "Emotes",
-				"intro": "Player expression feature work focused on recognisable flow, input support, and satisfying feedback.",
-				"groups": [
-					{
-						"title": "Design Reference",
-						"text": "Studied The Strongest Battlegrounds and designed the GUI direction myself.",
-					},
-					{
-						"title": "Cross-Platform UX",
-						"text": "Planned interaction flow around multiple input modes instead of desktop only.",
-					},
-					{
-						"title": "Satisfying Use",
-						"text": "Prioritized fast recognition, selection clarity, and player-facing polish.",
+						"title": "Tightening Valves",
+						"text": "My original contributions were towards plunging toilets with a plunger. Design eventually switched to tightening valves with wrenches using my same system to protect user safety and etiquette.",
+						media: {
+							kind: "video",
+							src: "assets/AsylumLifePipeMinigame.webm",
+							label: "Tightening a valve by playing a dedicated minigame",
+							context: "Patients can progress passively by entering a maintenance room to tightend degraded valves and relieve stress, where they interact with this satisfying minigame for rewards."
+						}
 					},
 				],
 			},
 			{
-				"title": "Settings & Cosmetics",
-				"intro": "Responsive UI work with immediate client feedback and server-owned truth.",
+				"title": "Gui Features",
+				"intro": "Responsive UI work with immediate client feedback and server-owned truth to keep players focused on the game, not the interface.",
 				"groups": [
 					{
-						"title": "Settings",
-						"text": "Responsive toggles, immediate feedback, server-authoritative persistence.",
+						"title": "Emotes",
+						"text": "Built cross-platform syncing custom emote gui to drive player-expression and open both monetization and progression opportunities. Everything from the animated character and springs to the sound design was intentionally crafted to convey a responsive, lightweight, bubbly feeling experience. The inner-menu and tab buttons near the top were added after my contributions.",
+						media: {
+							kind: "video",
+							src: "assets/AsylumLifeEmotes.webm",
+							label: "Emote gui demonstration",
+							context: "Players can earn or purchase emotes over time and sync with other players via song and dance."
+						}
 					},
 					{
 						"title": "Cosmetics",
-						"text": "Cross-platform editor work, improved original design, fast local feel, server-owned results.",
+						"text": "Cross-platform accessory placement and texture swapping work. Intentionally server-owned with local client updates to avoid waiting for server validation.",
+						media: {
+							kind: "video",
+							src: "assets/AsylumLifeCosmetics.webm",
+							label: "Cosmetic gui demonstration",
+							context: "Players can earn or purchase cosmetics and skins over time. This is how they utilize them to build team-specific outfits and foster roleplay."
+						}
 					},
 					{
-						"title": "State Flow",
-						"text": "Reduced confusion by making UI state and server results easier to understand.",
-					},
-				],
-			},
-			{
-				"title": "Doors & Elevators",
-				"intro": "Production fixes where the important work was scoping, modernizing, and stabilizing fragile legacy systems.",
-				"groups": [
-					{
-						"title": "Scoped",
-						"text": "Separated symptoms from causes before expanding the work.",
+						"title": "Settings",
+						"text": "Data-driven gui with immediate client-side updates and sanitized server-sided responses. Reorganized new internals to expose necessary data while using opportunity to clean out technical debt in data replication.",
+						media: {
+							kind: "video",
+							src: "assets/AsylumLifeSettings.webm",
+							label: "Settings gui demonstration",
+							context: "Players thankfully have a wide variety of settings to choose from, allowing them to tune their experience just right. This way players are as comfortable as can be while playing our game, extending playtimes and improving retention rates."
+						}
 					},
 					{
-						"title": "Modernized",
-						"text": "Cleaned up legacy behavior without turning the fix into a rewrite.",
-					},
-					{
-						"title": "Optimized",
-						"text": "Removed needless repeated work where it affected live behavior.",
-					},
-				],
-			},
-			{
-				"title": "Operations Lead",
-				"intro": "Temporary leadership work while still carrying engineering responsibility.",
-				"groups": [
-					{
-						"title": "Led Teams",
-						"text": "Programmers, QA, and contractors.",
-					},
-					{
-						"title": "Delegated Updates",
-						"text": "Programmers, GUI artists, SFX artists, and art/modelling management.",
-					},
-					{
-						"title": "Release Hygiene",
-						"text": "Clearer handoffs, checklists, and testing expectations before shipping.",
-					},
-				],
-			},
-			{
-				"title": "Mentorship",
-				"intro": "Raised team consistency by making standards explicit instead of relying on hidden expectations.",
-				"groups": [
-					{
-						"title": "Styleguides",
-						"text": "Shared coding and review expectations.",
-					},
-					{
-						"title": "Architecture Principles",
-						"text": "Explained why certain structures reduce future risk.",
-					},
-					{
-						"title": "Industry Practices",
-						"text": "Introduced production habits around QA, ownership, and review.",
-					},
-					{
-						"title": "Executive Mindsets",
-						"text": "Helped connect technical decisions to production consequences.",
+						"title": "Mitch's Hitlist",
+						"text": "A shady NPC interaction to pit patients against other players while respecting their levels, experience, and roles. Fosters player interaction and incites drama, which fuels our roleplay interactions.",
+						media: {
+							kind: "image",
+							src: "assets/AsylumLifeHitman.webp",
+							label: "Mitch's Hitlist gui demonstration",
+							context: "Hitlists are notoriously difficult to get right because of the huge diversity in player skills and experience. Luckily as a data-driven game, we have enough data to make education decisions.",
+							decision: "Account for each players' levels, teams, subteams, and experience to guide users to fair, winnable fights.",
+							result: "Players are eager to get their next bonus with confidence, no longer complaining about unfair matchups."
+						}
 					},
 				],
 			},
@@ -308,16 +321,12 @@ const projects = Object.freeze({
 				"intro": "Security work covered both adversarial clients and engine-level failure modes.",
 				"groups": [
 					{
-						"title": "Engine Bugs",
-						"text": "Investigated corrupted animations that could crash games.",
-					},
-					{
 						"title": "Network Security",
-						"text": "Addressed abuse of networked remotes from legacy implementations.",
+						"text": "Addressed abuse of networked remotes from legacy implementations and sanitized our monetization-critical events, preventing bad actors from faking purchases or crashing the random-event handler.",
 					},
 					{
-						"title": "Authority Model",
-						"text": "Separated responsive UX from trusted state changes.",
+						"title": "Obfuscation",
+						"text": "Explored using ByteNet with our security specialists to obfuscate exploit-hot remotes with compressed buffers.",
 					},
 				],
 			},
