@@ -492,7 +492,7 @@ const projects = Object.freeze({
 					},
 					{
 						"title": "Tournament Team",
-						"text": "Hosted and organized tournaments for years before becoming a developer, formalizing with written rules, eventually delegated responsibilities to new host with minimal oversight.",
+						"text": "Hosted and organized tournaments for years before becoming a developer, formalized with written rules, eventually delegated responsibilities to new host with minimal oversight.",
 						media: {
 							kind: "image",
 							src: "assets/EclipsisTournaments.webp",
