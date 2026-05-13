@@ -176,11 +176,11 @@ const projects = Object.freeze({
 					},
 					{
 						"title": "Release Hygiene",
-						"text": "Established standards for freezing production scope per-week and scoping features across multiple weeks. Pushed towards asynchronous workflows using drafts and git to enable concurrent feature production.",
+						"text": "Established standards for freezing production scope per week and scoping features across multiple weeks. Pushed towards asynchronous workflows using drafts and Git to enable concurrent feature production.",
 					},
 					{
 						"title": "Communication",
-						"text": "Responsible for moving communication channels from Facetime calls, groupchats, and direct-messages over discord to dedicated public work-server discussion so all stakeholders were in-the-know about updates and design discussions.",
+						"text": "Responsible for moving communication channels from FaceTime calls, group chats, and direct messages over Discord to dedicated public work-server discussion so all stakeholders were in the know about updates and design discussions.",
 					},
 					{
 						"title": "Transparent & Globally Remote",
@@ -194,7 +194,7 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "Architecture Principles",
-						"text": "The codebase inherited unmanageable technical-debt across many authors, obscuring appropriate design decisions. That is why I developed internal guidelines describing codebase architecture principles for high-velocity product development.",
+						"text": "The codebase inherited unmanageable technical debt across many authors, obscuring appropriate design decisions. That is why I developed internal guidelines describing codebase architecture principles for high-velocity product development.",
 					},
 					{
 						"title": "Industry Practices",
@@ -212,7 +212,7 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "Onboarding",
-						"text": "When designing onboarding, stakeholders kept close tabs on our funnels, Day 1 Retention, and Day 7 Retention from week to week. We diagnosed problems with our shop GUI via our onboarding funnel, where I then personally worked with one of our GUI artists to optimize the interface leading to improved follow-through. This has since been superseded by removing the gui from onboarding altogether.",
+						"text": "When designing onboarding, stakeholders kept close tabs on our funnels, Day 1 Retention, and Day 7 Retention from week to week. We diagnosed problems with our shop GUI via our onboarding funnel, where I then personally worked with one of our GUI artists to optimize the interface leading to improved follow-through. This has since been superseded by removing the GUI from onboarding altogether.",
 					},
 					{
 						title: "Thumbnails",
@@ -220,13 +220,13 @@ const projects = Object.freeze({
 					},
 					{
 						"title": "Doors & Elevator",
-						"text": "Identifyied poor AP (Average Playtime) performance, worked with design lead to diagnose faulty doors and elevator logic preventing player interactions. Immediately initiated necessary thorough refactors to eliminate deeply nested poor infrastructure. Was ready to deploy before next release. Monitored health of system in live games after release and performed emergency repairs independently.",
+						"text": "Identified poor AP (Average Playtime) performance, worked with design lead to diagnose faulty doors and elevator logic preventing player interactions. Immediately initiated necessary thorough refactors to eliminate deeply nested poor infrastructure. Was ready to deploy before next release. Monitored health of system in live games after release and performed emergency repairs independently.",
 						media: {
 							kind: "video",
 							src: "assets/AsylumLifeElevator.webm",
 							label: "Calling and riding the elevator",
 							context: "The elevator was the primary method of transporting staff from their spawn locations to the patients down below. It was the primary method of escape for patients. When the elevator broke our gameloop was severed, leading to a rapid decline in player count.",
-							decision: "Refactor the elevators, doors, buttons, and the entire deeply nested hierachy that contributed to logical decay. Take opportunity to improve UX and atmosphere.",
+							decision: "Refactor the elevators, doors, buttons, and the entire deeply nested hierarchy that contributed to logical decay. Take opportunity to improve UX and atmosphere.",
 							result: "Reliable doors and elevators that deliver staff and patients alike, souped up with better sound design and visual indicators to convey the feeling of inauthentic normalcy in the asylum. In original implementation the horizontal bar above the elevator was a blinking light, now superseded with a progress bar.",
 						}
 					},
@@ -263,22 +263,22 @@ const projects = Object.freeze({
 							kind: "video",
 							src: "assets/AsylumLifePipeMinigame.webm",
 							label: "Tightening a valve by playing a dedicated minigame",
-							context: "Patients can progress passively by entering a maintenance room to tightend degraded valves and relieve stress, where they interact with this satisfying minigame for rewards."
+							context: "Patients can progress passively by entering a maintenance room to tighten degraded valves and relieve stress, where they interact with this satisfying minigame for rewards."
 						}
 					},
 				],
 			},
 			{
-				"title": "Gui Features",
+				"title": "GUI Features",
 				"intro": "Responsive UI work with immediate client feedback and server-owned truth to keep players focused on the game, not the interface.",
 				"groups": [
 					{
 						"title": "Emotes",
-						"text": "Built cross-platform syncing custom emote gui to drive player-expression and open both monetization and progression opportunities. Everything from the animated character and springs to the sound design was intentionally crafted to convey a responsive, lightweight, bubbly feeling experience. The inner-menu and tab buttons near the top were added after my contributions.",
+						"text": "Built cross-platform syncing custom emote GUI to drive player expression and open both monetization and progression opportunities. Everything from the animated character and springs to the sound design was intentionally crafted to convey a responsive, lightweight, bubbly feeling experience. The inner-menu and tab buttons near the top were added after my contributions.",
 						media: {
 							kind: "video",
 							src: "assets/AsylumLifeEmotes.webm",
-							label: "Emote gui demonstration",
+							label: "Emote GUI demonstration",
 							context: "Players can earn or purchase emotes over time and sync with other players via song and dance."
 						}
 					},
@@ -288,17 +288,17 @@ const projects = Object.freeze({
 						media: {
 							kind: "video",
 							src: "assets/AsylumLifeCosmetics.webm",
-							label: "Cosmetic gui demonstration",
+							label: "Cosmetic GUI demonstration",
 							context: "Players can earn or purchase cosmetics and skins over time. This is how they utilize them to build team-specific outfits and foster roleplay."
 						}
 					},
 					{
 						"title": "Settings",
-						"text": "Data-driven gui with immediate client-side updates and sanitized server-sided responses. Reorganized new internals to expose necessary data while using opportunity to clean out technical debt in data replication.",
+						"text": "Data-driven GUI with immediate client-side updates and sanitized server-side responses. Reorganized new internals to expose necessary data while using opportunity to clean out technical debt in data replication.",
 						media: {
 							kind: "video",
 							src: "assets/AsylumLifeSettings.webm",
-							label: "Settings gui demonstration",
+							label: "Settings GUI demonstration",
 							context: "Players thankfully have a wide variety of settings to choose from, allowing them to tune their experience just right. This way players are as comfortable as can be while playing our game, extending playtimes and improving retention rates."
 						}
 					},
@@ -308,9 +308,9 @@ const projects = Object.freeze({
 						media: {
 							kind: "image",
 							src: "assets/AsylumLifeHitman.webp",
-							label: "Mitch's Hitlist gui demonstration",
+							label: "Mitch's Hitlist GUI demonstration",
 							context: "Hitlists are notoriously difficult to get right because of the huge diversity in player skills and experience. Luckily as a data-driven game, we have enough data to make education decisions.",
-							decision: "Account for each players' levels, teams, subteams, and experience to guide users to fair, winnable fights.",
+							decision: "Account for each player's levels, teams, subteams, and experience to guide users to fair, winnable fights.",
 							result: "Players are eager to get their next bonus with confidence, no longer complaining about unfair matchups."
 						}
 					},
@@ -369,7 +369,7 @@ const projects = Object.freeze({
 		"sections": [
 			{
 				"title": "Pipe Networks",
-				"intro": "I translated domain-unaware nodes doing too much work to explicit graph and aggregate state algorithms after a month of continous labor",
+				"intro": "I translated domain-unaware nodes doing too much work to explicit graph and aggregate state algorithms after a month of continuous labor",
 				"groups": [
 					{
 						"title": "Hierarchical Graphs",
@@ -393,7 +393,7 @@ const projects = Object.freeze({
 					},
 					{
 						"title": "Years-Worth Of Cleaning",
-						"text": "Totaled to 29,476 lines of code across every structure and network-facing system combined. Was the initial push our team needed to release network-related features with confidence after years of hinderance.",
+						"text": "Totaled to 29,476 lines of code across every structure and network-facing system combined. Was the initial push our team needed to release network-related features with confidence after years of hindrance.",
 						media: {
 							kind: "image",
 							src: "assets/EclipsisPipeOptimizations.webp",
@@ -423,11 +423,11 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "Balanced Waste Costs",
-						"text": "Reduced drawcalls from ~3000 to ~140 after collapsing avoidable instance costs across structures and terrain cells. Was a balancing act between streaming cost and rendering cost. Consolidated repeated visual data across all assets. Now superseded by a mesh-per-cell approach thanks to a talented coworker.",
+						"text": "Reduced draw calls from ~3000 to ~140 after collapsing avoidable instance costs across structures and terrain cells. Was a balancing act between streaming cost and rendering cost. Consolidated repeated visual data across all assets. Now superseded by a mesh-per-cell approach thanks to a talented coworker.",
 						media: {
 							kind: "image",
 							src: "assets/EclipsisDrawCounts.webp",
-							label: "Screenshot of live start-of-game drawcalls",
+							label: "Screenshot of live start-of-game draw calls",
 						}
 					},
 					{
@@ -460,7 +460,7 @@ const projects = Object.freeze({
 					},
 					{
 						"title": "Balancing Changes",
-						"text": "Approached balancing with the goals of encouraging land-expansion and eliminating infinite economy sources. Took it upon myself to align game to vision, identifying and designing fun, unique replacements to each problematic structure.",
+						"text": "Approached balancing with the goals of encouraging land expansion and eliminating infinite economy sources. Took it upon myself to align game to vision, identifying and designing fun, unique replacements to each problematic structure.",
 					},
 					{
 						"title": "Roadmaps",
@@ -687,7 +687,7 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "Zero-Latency Feel",
-						"text": "Researched and designed client-eager, server-authoritative projectile behavior. Handles all possible edge-cases relating to client/server desync to ensure best compromising outcome.",
+						"text": "Researched and designed client-eager, server-authoritative projectile behavior. Handles all possible edge cases relating to client/server desync to ensure best compromising outcome.",
 						media: {
 							kind: "video",
 							src: "https://i.gyazo.com/62c5a056391249fdae10184a9c62aa1a.mp4",
@@ -771,7 +771,7 @@ const projects = Object.freeze({
 							kind: "video",
 							src: "assets/RocketSpleefOpen.webm",
 							label: "Watching Common Crate open",
-							context: "Players can earn a weighted random set of rewards from different crates, publically displayed in accordance with Roblox's legal policies."
+							context: "Players can earn a weighted random set of rewards from different crates, publicly displayed in accordance with Roblox's legal policies."
 						}
 					},
 				],
@@ -858,7 +858,7 @@ const projects = Object.freeze({
 							src: "https://i.gyazo.com/f0a55813686b3d8a783e70a620e88fdc.mp4",
 							label: "Unlocking Uncommon pedestal",
 							context: "Players unlock a series of pedestals to increase the surface area of their crate spawns.",
-							decision: "I wanted to compliment the random nature of crates falling on random pedestals, while also giving the players something to spend their coins on.",
+							decision: "I wanted to complement the random nature of crates falling on random pedestals, while also giving the players something to spend their coins on.",
 							result: "Pedestals can be bought for coins and guarantee the first crate is of the same rarity.",
 						}
 					},
@@ -906,7 +906,7 @@ const projects = Object.freeze({
 			},
 			{
 				value: "Secure",
-				label: "Resillient optimized torso replication",
+				label: "Resilient optimized torso replication",
 			},
 			{
 				value: "Configurable",
@@ -920,7 +920,7 @@ const projects = Object.freeze({
 				"groups": [
 					{
 						"title": "\"It Just Works\"",
-						"text": "Preserves default-camera expectations by integrating natively with roblox state handling and lifecycles.",
+						"text": "Preserves default-camera expectations by integrating natively with Roblox state handling and lifecycles.",
 					},
 					{
 						"title": "Roblox Native",
@@ -943,7 +943,7 @@ const projects = Object.freeze({
 					},
 					{
 						"title": "Security",
-						"text": "Avoids trusting unnecessary client state while maintaining client-sided settings. Guards against remote attacks.",
+						"text": "Avoids trusting unnecessary client state while maintaining client-side settings. Guards against remote attacks.",
 					},
 				],
 			},
@@ -996,7 +996,7 @@ const projects = Object.freeze({
 	rotateCharacterYawToFollowCamera = true,
 
 	-- Set us to true if you want to restrict how far the camera can turn horizontally when standing or sitting.
-	-- (Keep us off if your character flings around while seated or platformstanding to prevent nausea, jittery camera corrections, and weird physics beahvior)
+	-- (Keep us off if your character flings around while seated or platformstanding to prevent nausea, jittery camera corrections, and weird physics behavior)
 	restrictCameraByTorsoYawWhenStanding = false,
 	restrictCameraByTorsoYawWhenSitting = false,
 
@@ -1156,7 +1156,7 @@ const projects = Object.freeze({
 					},
 					{
 						"title": "\"It Just Works\"",
-						"text": "Intelligenty scans selections to deduce correct orientation and perform degraded reflections, preserving the intended result of the reflection using only rotations and translations.",
+						"text": "Intelligently scans selections to deduce correct orientation and perform degraded reflections, preserving the intended result of the reflection using only rotations and translations.",
 					},
 				],
 			},
@@ -1175,7 +1175,7 @@ const projects = Object.freeze({
 							"kind": "image",
 							"label": "Moving the plane of reflection",
 							"src": "assets/Reflector2.webp",
-							"context": "The user has their control widget to toggle behavior. They also have their physical plane they can manipulate in the same manner they have with any other roblox instance.",
+							"context": "The user has their control widget to toggle behavior. They also have their physical plane they can manipulate in the same manner they have with any other Roblox instance.",
 						}
 					},
 				],
@@ -1197,7 +1197,7 @@ const projects = Object.freeze({
 							"src": "assets/Reflector1.webp",
 							"description": "A non-exhaustive assortment of different visual states the plugin can be in during use.",
 							"context": "When reflecting objects in Studio, there's many edge cases that can invalidate selections or result in dangerous irreversible situations.",
-							"decision": "Take extra time developing clear gui states that communicate exact issues, warning, and valid operations.",
+							"decision": "Take extra time developing clear GUI states that communicate exact issues, warning, and valid operations.",
 							"result": "The user feels confident their selection will not break when reflected. They feel well-informed about why a selection might be invalid or take time to process.",
 						},
 					},
@@ -1248,7 +1248,7 @@ const projects = Object.freeze({
 				label: "Define buoys and boats",
 			},
 			{
-				value: "Server Authoritive",
+				value: "Server Authoritative",
 				label: "Defined on server, rendered on clients",
 			},
 		],
@@ -1267,7 +1267,7 @@ const projects = Object.freeze({
 					},
 					{
 						"title": "Performance",
-						"text": "Waves are computed using optimal formulas, data-oriented pipelines, and rendered client-sided across multiple actors using an intricate level-of-detail system.",
+						"text": "Waves are computed using optimal formulas, data-oriented pipelines, and rendered client-side across multiple actors using an intricate level-of-detail system.",
 					},
 					{
 						"title": "Tunable",
@@ -1401,7 +1401,7 @@ const proofMap = Object.freeze([
 			},
 			{
 				title: "Offset Camera",
-				detail: "Native roblox camera camera feel.",
+				detail: "Native Roblox camera feel.",
 				projectId: "offset-camera",
 			},
 			{
